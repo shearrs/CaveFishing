@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 20206541}
   - component: {fileID: 20206540}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +239,7 @@ GameObject:
   - component: {fileID: 301577706}
   - component: {fileID: 301577709}
   - component: {fileID: 301577708}
-  - component: {fileID: 301577707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,29 +261,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1761485091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &301577707
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301577705}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &301577708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -347,7 +323,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675474836}
-  m_Layer: 0
+  - component: {fileID: 675474837}
+  m_Layer: 6
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,8 +345,34 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1761485091}
+  - {fileID: 1389482530}
   m_Father: {fileID: 1841325606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &675474837
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675474835}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &701728631
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +665,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1389482529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389482530}
+  - component: {fileID: 1389482531}
+  m_Layer: 6
+  m_Name: Ground Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389482530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389482529}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 675474836}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1389482531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389482529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f2309e51d081d4e90083c854904852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  highlightOnDetect: 1
+  defaultGizmoColor: {r: 0, g: 1, b: 0.52732944, a: 1}
+  detectingGizmoColor: {r: 0, g: 1, b: 0.021003485, a: 1}
+  maxDetections: 1
+  <DetectionMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 1
+  <DetectTriggers>k__BackingField: 1
+  <Radius>k__BackingField: 0.45
+  <Offset>k__BackingField: {x: 0, y: 0.4, z: 0}
 --- !u!1 &1761485090
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761485091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,6 +762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841325606}
+  - component: {fileID: 1841325607}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -728,6 +787,25 @@ Transform:
   - {fileID: 675474836}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841325607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841325605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7db98d85c23c8b4aba1ed1dfbcab57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputMap: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
+  controller: {fileID: 675474837}
+  relativeTransform: {fileID: 701728637}
+  groundDetector: {fileID: 1389482531}
+  moveSpeed: 5
+  jumpForce: 10
+  gravity: -9.81
 --- !u!1 &1982331271
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +818,7 @@ GameObject:
   - component: {fileID: 1982331275}
   - component: {fileID: 1982331274}
   - component: {fileID: 1982331273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,5 +919,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1204563241}
-  - {fileID: 1841325606}
   - {fileID: 20206543}
+  - {fileID: 1841325606}
