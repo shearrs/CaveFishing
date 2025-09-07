@@ -52,8 +52,8 @@ namespace CaveFishing.Players
 
         private void Update()
         {
-            //ApplyRotation();
-            //ApplyMovement(movementInput.ReadValue<Vector2>());
+            ApplyRotation();
+            ApplyMovement(movementInput.ReadValue<Vector2>());
             ApplyGravity();
         }
 
@@ -84,17 +84,15 @@ namespace CaveFishing.Players
     
         private void ApplyGravity()
         {
-            if (jumpBufferTimer.IsDone)
+            if (!isJumping && jumpBufferTimer.IsDone)
             {
-                //if (groundDetector.Detect())
-                //    yVelocity = -0.5f * Time.deltaTime;
-                //else
+                if (groundDetector.Detect())
+                    yVelocity = -0.5f * Time.deltaTime;
+                else
                     yVelocity += (gravity * Time.deltaTime * Time.deltaTime);
-            }
-            else
-                return;
 
-            controller.Move(yVelocity * Vector3.up);
+                controller.Move(yVelocity * Vector3.up);
+            }
         }
 
         private void OnJumpInput(ManagedInputInfo info)
@@ -116,23 +114,19 @@ namespace CaveFishing.Players
             jumpBufferTimer.Start();
 
             var force = jumpForce;
-            yVelocity = force * Time.deltaTime;
 
-            // FIX FIX AFLJK:AFJLK:AFSLJKFJKLSADFJL
-            while (yVelocity > 0f)
+            do
             {
                 if (jumpBufferTimer.IsDone && groundDetector.Detect())
                     break;
 
                 yVelocity = force * Time.deltaTime;
+
                 controller.Move(yVelocity * Vector3.up);
                 force += gravity * Time.deltaTime;
 
                 yield return null;
-            }
-
-            yVelocity = 0f;
-            Debug.Log("end");
+            } while (yVelocity > 0f);
 
             isJumping = false;
         }
