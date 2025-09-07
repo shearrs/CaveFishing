@@ -1,0 +1,19 @@
+{
+    "name": "CaveFishing.Players.Editor",
+    "rootNamespace": "CaveFishing.Players.Editor",
+    "references": [
+        "GUID:bc9c2eb1bf6b94f4b82f86ecd181f5c7",
+        "GUID:5cb9b49caeb04804393ac93afe3aaf32"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

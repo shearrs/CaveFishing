@@ -1,12 +1,13 @@
 using Shears;
 using Shears.Detection;
 using Shears.Input;
+using System;
 using System.Collections;
 using UnityEngine;
 
 namespace CaveFishing.Players
 {
-    public class Player : MonoBehaviour
+    public class PlayerCharacter : MonoBehaviour
     {
         private const float JUMP_BUFFER_TIME = 0.25f;
 
@@ -19,22 +20,33 @@ namespace CaveFishing.Players
         [SerializeField] private AreaDetector3D groundDetector;
 
         [Header("Settings")]
-        [SerializeField] private float moveSpeed = 5f;
-        [SerializeField] private float jumpForce = 10f;
+        [SerializeField] private float moveSpeed = 3f;
+        [SerializeField] private float jumpForce = 3f;
         [SerializeField] private float gravity = -9.81f;
 
         private bool isJumping = false;
+        private bool isCrouched = false;
+        private float height;
+        private Vector3 center;
         private float yVelocity = 0;
 
         private readonly Timer jumpBufferTimer = new(JUMP_BUFFER_TIME);
         private IManagedInput movementInput;
         private IManagedInput jumpInput;
+        private IManagedInput crouchInput;
+
+        public event Action Crouched;
+        public event Action Uncrouched;
 
         private void Awake()
         {
+            height = controller.height;
+            center = controller.center;
+
             inputMap.GetInputs(
                 ("Move", i => movementInput = i),
-                ("Jump", i => jumpInput = i)
+                ("Jump", i => jumpInput = i),
+                ("Crouch", i => crouchInput = i)
                 );
 
             inputMap.EnableAllInputs();
@@ -43,11 +55,15 @@ namespace CaveFishing.Players
         private void OnEnable()
         {
             jumpInput.Started += OnJumpInput;
+            crouchInput.Started += OnCrouchInputStarted;
+            crouchInput.Canceled += OnCrouchInputCanceled;
         }
 
         private void OnDisable()
         {
             jumpInput.Started -= OnJumpInput;
+            crouchInput.Started -= OnCrouchInputStarted;
+            crouchInput.Canceled -= OnCrouchInputCanceled;
         }
 
         private void Update()
@@ -81,7 +97,7 @@ namespace CaveFishing.Players
 
             controller.Move(movement);
         }
-    
+
         private void ApplyGravity()
         {
             if (!isJumping && jumpBufferTimer.IsDone)
@@ -129,6 +145,42 @@ namespace CaveFishing.Players
             } while (yVelocity > 0f);
 
             isJumping = false;
+        }
+
+        private void OnCrouchInputStarted(ManagedInputInfo info)
+        {
+            Crouch();
+        }
+
+        private void OnCrouchInputCanceled(ManagedInputInfo info)
+        {
+            Uncrouch();
+        }
+
+        private void Crouch()
+        {
+            if (isCrouched)
+                return;
+
+            controller.height = height * 0.5f;
+            controller.center = new(center.x, center.y * 0.5f, center.z);
+
+            isCrouched = true;
+
+            Crouched?.Invoke();
+        }
+
+        private void Uncrouch()
+        {
+            if (!isCrouched)
+                return;
+
+            controller.height = height;
+            controller.center = center;
+
+            isCrouched = false;
+
+            Uncrouched?.Invoke();
         }
     }
 }
