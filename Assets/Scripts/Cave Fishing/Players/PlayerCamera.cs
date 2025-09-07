@@ -19,7 +19,7 @@ namespace CaveFishing.Players
         private ManagedCamera managedCamera;
         private FirstPersonCameraState firstPersonState;
         private Tween crouchTween;
-        private readonly TweenData crouchTweenData = new(0.35f, easingFunction: EasingFunction.Ease.EaseOutBack);
+        private ITweenData crouchTweenData;
 
         private void OnValidate()
         {
@@ -44,6 +44,9 @@ namespace CaveFishing.Players
         {
             managedCamera = GetComponent<ManagedCamera>();
             firstPersonState = GetComponent<FirstPersonCameraState>();
+
+            var tweenData = playerCharacter.CrouchTweenData;
+            crouchTweenData = new TweenData(tweenData.Duration + 0.1f, tweenData.ForceFinalValue, tweenData.Loops, tweenData.LoopMode, EasingFunction.Ease.EaseOutBack);
         }
 
         private void OnEnable()

@@ -1,6 +1,7 @@
 using Shears;
 using Shears.Detection;
 using Shears.Input;
+using Shears.Tweens;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -31,9 +32,14 @@ namespace CaveFishing.Players
         private float yVelocity = 0;
 
         private readonly Timer jumpBufferTimer = new(JUMP_BUFFER_TIME);
+        private readonly ITweenData crouchTweenData = new TweenData(0.35f);
+        private Tween crouchTween;
+
         private IManagedInput movementInput;
         private IManagedInput jumpInput;
         private IManagedInput crouchInput;
+
+        public ITweenData CrouchTweenData => crouchTweenData;
 
         public event Action Crouched;
         public event Action Uncrouched;
@@ -162,8 +168,18 @@ namespace CaveFishing.Players
             if (isCrouched)
                 return;
 
-            controller.height = height * 0.5f;
-            controller.center = new(center.x, center.y * 0.5f, center.z);
+            var startHeight = controller.height;
+            var startCenter = controller.center;
+            var endCenter = new Vector3(center.x, center.y * 0.5f, center.z);
+
+            void update(float t)
+            {
+                controller.height = Mathf.LerpUnclamped(startHeight, height * 0.5f, t);
+                controller.center = Vector3.LerpUnclamped(startCenter, endCenter, t);
+            }
+
+            crouchTween?.Dispose();
+            crouchTween = TweenManager.DoTween(update, crouchTweenData);
 
             isCrouched = true;
 
@@ -175,8 +191,17 @@ namespace CaveFishing.Players
             if (!isCrouched)
                 return;
 
-            controller.height = height;
-            controller.center = center;
+            var startHeight = controller.height;
+            var startCenter = controller.center;
+
+            void update(float t)
+            {
+                controller.height = Mathf.LerpUnclamped(startHeight, height, t);
+                controller.center = Vector3.LerpUnclamped(startCenter, center, t);
+            }
+
+            crouchTween?.Dispose();
+            crouchTween = TweenManager.DoTween(update, crouchTweenData);
 
             isCrouched = false;
 

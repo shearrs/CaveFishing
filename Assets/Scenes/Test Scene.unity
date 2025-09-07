@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 675474838}
   - component: {fileID: 675474837}
   m_Layer: 6
-  m_Name: Controller
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,8 +390,8 @@ MonoBehaviour:
   controller: {fileID: 675474837}
   relativeTransform: {fileID: 701728637}
   groundDetector: {fileID: 1389482531}
-  moveSpeed: 5
-  jumpForce: 5
+  moveSpeed: 3
+  jumpForce: 3
   gravity: -9.81
 --- !u!1 &701728631
 GameObject:
@@ -506,7 +506,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -547,6 +547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputMap: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
   playerCharacter: {fileID: 675474838}
+  sensitivity: 0.125
+  offset: {x: 0, y: 1.5, z: 0}
 --- !u!114 &701728639
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -561,7 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 675474836}
   offset: {x: 0, y: 1.5, z: 0}
-  sensitivity: 0.2
+  sensitivity: 0.125
   minXRotation: -89
   maxXRotation: 89
 --- !u!114 &701728640
@@ -764,6 +766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1761485091}
+  - component: {fileID: 1761485092}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -788,6 +791,19 @@ Transform:
   - {fileID: 1982331272}
   m_Father: {fileID: 675474836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1761485092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761485090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94701f0cd8f2c904f802b3e45bda2231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 675474838}
 --- !u!1 &1841325605
 GameObject:
   m_ObjectHideFlags: 0
