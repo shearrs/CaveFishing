@@ -27,6 +27,7 @@ namespace CaveFishing.Players
 
         private bool isJumping = false;
         private bool isCrouched = false;
+        private Vector3 previousMovement;
         private float height;
         private Vector3 center;
         private float yVelocity = 0;
@@ -41,6 +42,8 @@ namespace CaveFishing.Players
 
         public ITweenData CrouchTweenData => crouchTweenData;
 
+        public event Action BeganMoving;
+        public event Action EndedMoving;
         public event Action Crouched;
         public event Action Uncrouched;
 
@@ -102,6 +105,13 @@ namespace CaveFishing.Players
             movement *= moveSpeed * Time.deltaTime;
 
             controller.Move(movement);
+
+            if (previousMovement == Vector3.zero && movement != Vector3.zero)
+                BeganMoving?.Invoke();
+            else if (previousMovement != Vector3.zero && movement == Vector3.zero)
+                EndedMoving?.Invoke();
+
+            previousMovement = movement;
         }
 
         private void ApplyGravity()

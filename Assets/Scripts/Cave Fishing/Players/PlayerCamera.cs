@@ -10,16 +10,23 @@ namespace CaveFishing.Players
     {
         [Header("Components")]
         [SerializeField] private ManagedInputMap inputMap;
-        [SerializeField] private PlayerCharacter playerCharacter;
+        [SerializeField] private PlayerCharacter character;
 
         [Header("Settings")]
         [SerializeField] private float sensitivity = 0.125f;
         [SerializeField] private Vector3 offset = new(0f, 1.5f, 0f);
+        [SerializeField] private float headBobHeight = 0.05f;
+        [SerializeField] private TweenData headBobTweenData = new(0.25f, loops: -1, loopMode:LoopMode.PingPong);
+
+        private float headBobOffset;
 
         private ManagedCamera managedCamera;
         private FirstPersonCameraState firstPersonState;
+
         private Tween crouchTween;
+        private Tween headBobTween;
         private ITweenData crouchTweenData;
+        private readonly ITweenData headBobCancelTweenData = new TweenData(0.15f);
 
         private void OnValidate()
         {
@@ -31,8 +38,8 @@ namespace CaveFishing.Players
             if (!camera.HasState(firstPersonState))
                 camera.AddState(firstPersonState);
 
-            if (playerCharacter != null)
-                firstPersonState.Target = playerCharacter.transform;
+            if (character != null)
+                firstPersonState.Target = character.transform;
             else
                 firstPersonState.Target = null;
 
@@ -45,26 +52,60 @@ namespace CaveFishing.Players
             managedCamera = GetComponent<ManagedCamera>();
             firstPersonState = GetComponent<FirstPersonCameraState>();
 
-            var tweenData = playerCharacter.CrouchTweenData;
+            var tweenData = character.CrouchTweenData;
             crouchTweenData = new TweenData(tweenData.Duration + 0.1f, tweenData.ForceFinalValue, tweenData.Loops, tweenData.LoopMode, EasingFunction.Ease.EaseOutBack);
         }
 
         private void OnEnable()
         {
-            playerCharacter.Crouched += OnCrouched;
-            playerCharacter.Uncrouched += OnUncrouched;
+            character.BeganMoving += OnBeganMoving;
+            character.EndedMoving += OnEndedMoving;
+            character.Crouched += OnCrouched;
+            character.Uncrouched += OnUncrouched;
         }
 
         private void OnDisable()
         {
-            playerCharacter.Crouched -= OnCrouched;
-            playerCharacter.Uncrouched -= OnUncrouched;
+            character.BeganMoving -= OnBeganMoving;
+            character.EndedMoving -= OnEndedMoving;
+            character.Crouched -= OnCrouched;
+            character.Uncrouched -= OnUncrouched;
         }
 
         private void OnDestroy()
         {
             Destroy(managedCamera);
             Destroy(firstPersonState);
+        }
+
+        private void OnBeganMoving()
+        {
+            var startOffset = headBobOffset;
+
+            void update(float t)
+            {
+                headBobOffset = Mathf.LerpUnclamped(startOffset, headBobHeight, t);
+
+                firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
+            }
+
+            headBobTween?.Dispose();
+            headBobTween = TweenManager.DoTween(update, headBobTweenData);
+        }
+
+        private void OnEndedMoving()
+        {
+            var startOffset = headBobOffset;
+
+            void update(float t)
+            {
+                headBobOffset = Mathf.LerpUnclamped(startOffset, 0f, t);
+
+                firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
+            }
+
+            headBobTween?.Dispose();
+            headBobTween = TweenManager.DoTween(update, headBobCancelTweenData);
         }
 
         private void OnCrouched()

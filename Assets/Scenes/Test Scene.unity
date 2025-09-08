@@ -546,9 +546,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputMap: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
-  playerCharacter: {fileID: 675474838}
+  character: {fileID: 675474838}
   sensitivity: 0.125
   offset: {x: 0, y: 1.5, z: 0}
+  headBobHeight: 0.125
+  headBobTweenData:
+    useDataObject: 0
+    tweenDataObject: {fileID: 0}
+    duration: 0.35
+    forceFinalValue: 1
+    loops: -1
+    loopMode: 2
+    easingFunction: 0
 --- !u!114 &701728639
 MonoBehaviour:
   m_ObjectHideFlags: 2

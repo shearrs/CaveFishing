@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using ShearsLibrary.Cameras;
+using UnityEngine.UIElements;
 
 namespace CaveFishing.Players.Editor
 {
@@ -30,6 +31,11 @@ namespace CaveFishing.Players.Editor
 
             DestroyImmediate(managedCamera);
             DestroyImmediate(firstPersonState);
+        }
+
+        public override VisualElement CreateInspectorGUI()
+        {
+            return base.CreateInspectorGUI();
         }
     }
 }
