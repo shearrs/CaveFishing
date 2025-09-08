@@ -12,9 +12,12 @@ namespace CaveFishing.Fishing
             rb = GetComponent<Rigidbody>();
         }
 
-        public void SetPosition(Vector3 position)
+        public void Cast(Vector3 origin, Vector3 force)
         {
-            rb.position = position;
+            transform.SetParent(null);
+            rb.position = origin;
+            rb.linearVelocity = Vector3.zero;
+            rb.AddForce(force, ForceMode.Impulse);
         }
 
         private void OnTriggerEnter(Collider other)

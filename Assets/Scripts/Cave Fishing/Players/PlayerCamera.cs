@@ -1,6 +1,6 @@
 using Shears.Input;
 using Shears.Tweens;
-using ShearsLibrary.Cameras;
+using Shears.Cameras;
 using UnityEngine;
 
 namespace CaveFishing.Players

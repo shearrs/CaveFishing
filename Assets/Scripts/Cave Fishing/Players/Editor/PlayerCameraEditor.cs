@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using ShearsLibrary.Cameras;
+using Shears.Cameras;
 using UnityEngine.UIElements;
 
 namespace CaveFishing.Players.Editor
