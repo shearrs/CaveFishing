@@ -7,6 +7,7 @@ namespace CaveFishing.Players
     public class PlayerFisher : MonoBehaviour
     {
         [SerializeField] private ManagedInputProvider inputProvider;
+        [SerializeField] private Transform relativeTransform;
         [SerializeField] private FishingRod fishingRod;
 
         private IManagedInput castInput;
@@ -14,6 +15,11 @@ namespace CaveFishing.Players
         private void Awake()
         {
             castInput = inputProvider.GetInput("Cast");
+        }
+
+        private void Start()
+        {
+            fishingRod.transform.SetParent(relativeTransform);
         }
 
         private void OnEnable()
