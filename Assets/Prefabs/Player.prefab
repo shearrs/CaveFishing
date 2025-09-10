@@ -25,15 +25,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318020370137782558}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 1.386, z: 1}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0.51, y: 0.886, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5210345769855403414}
   - {fileID: 4004628491977782793}
+  - {fileID: 2649987757615069140}
   m_Father: {fileID: 1343779198950833898}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!114 &8513386133915588134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,8 +48,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobber: {fileID: 5211783033466833211}
-  castPosition: {x: 0, y: 0.5, z: 0.7}
-  castForce: 5
+  castPoint: {fileID: 2649987757615069140}
+  forwardCastForce: 10
+  upCastForce: 5
+  releaseRotation: 20
+  chargeRotation: -24
+  chargeTweenData:
+    useDataObject: 0
+    tweenDataObject: {fileID: 0}
+    duration: 1
+    forceFinalValue: 1
+    loops: 0
+    loopMode: 0
+    easingFunction: 0
+  releaseTweenData:
+    useDataObject: 0
+    tweenDataObject: {fileID: 0}
+    duration: 0.1
+    forceFinalValue: 1
+    loops: 0
+    loopMode: 0
+    easingFunction: 0
 --- !u!1 &690003578110987984
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +80,7 @@ GameObject:
   - component: {fileID: 6936065377200286868}
   - component: {fileID: 2341176891150415467}
   - component: {fileID: 1667817976123807200}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +690,7 @@ GameObject:
   - component: {fileID: 7191416663236807787}
   - component: {fileID: 5896223376007998950}
   - component: {fileID: 5211783033466833211}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bobber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +738,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!135 &5896223376007998950
 SphereCollider:
@@ -947,6 +967,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &7616421159069818826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2649987757615069140}
+  m_Layer: 7
+  m_Name: Cast Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2649987757615069140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7616421159069818826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.123, z: 1.132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8571578720977429162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8002161089427878180
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +1023,7 @@ Transform:
   m_GameObject: {fileID: 8002161089427878180}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

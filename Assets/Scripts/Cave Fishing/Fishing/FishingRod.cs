@@ -1,25 +1,55 @@
+using Shears;
+using Shears.Tweens;
+using System.Collections;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
 {
     public class FishingRod : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private Bobber bobber;
-        [SerializeField] private Vector3 castPosition;
-        [SerializeField] private float castForce = 5f;
+        [SerializeField] private Transform castPoint;
 
-        private Vector3 CastPosition => transform.TransformPoint(castPosition);
+        [Header("Cast Force Settings")]
+        [SerializeField] private float forwardCastForce = 10f;
+        [SerializeField] private float upCastForce = 5f;
+
+        [Header("Tween Settings")]
+        [SerializeField] private float releaseRotation = 20f;
+        [SerializeField] private float chargeRotation = -24f;
+        [SerializeField] private StructTweenData chargeTweenData;
+        [SerializeField] private StructTweenData releaseTweenData;
+
+        private Tween tween;
+
+        public void BeginCharging()
+        {
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = chargeRotation;
+
+            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, chargeTweenData);
+        }
 
         public void Cast()
         {
-            bobber.gameObject.SetActive(true);
-            bobber.Cast(CastPosition, castForce * transform.forward);
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = releaseRotation;
+
+            tween?.Dispose();
+            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, releaseTweenData);
+            tween.AddOnComplete(OnCastTweenComplete);
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnCastTweenComplete()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(CastPosition, 0.2f);
+            Vector3 forward = castPoint.forward;
+            forward.y = 0;
+            forward.Normalize();
+            Vector3 force = forwardCastForce * forward + upCastForce * castPoint.up;
+
+            bobber.gameObject.SetActive(true);
+            bobber.Cast(castPoint.position, force);
         }
     }
 }

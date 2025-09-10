@@ -24,15 +24,22 @@ namespace CaveFishing.Players
 
         private void OnEnable()
         {
-            castInput.Performed += OnCastInput;
+            castInput.Started += OnCastInputStarted;
+            castInput.Canceled += OnCastInputCanceled;
         }
 
         private void OnDisable()
         {
-            castInput.Performed -= OnCastInput;
+            castInput.Started -= OnCastInputStarted;
+            castInput.Canceled -= OnCastInputCanceled;
         }
 
-        private void OnCastInput(ManagedInputInfo info)
+        private void OnCastInputStarted(ManagedInputInfo info)
+        {
+            fishingRod.BeginCharging();
+        }
+
+        private void OnCastInputCanceled(ManagedInputInfo info)
         {
             fishingRod.Cast();
         }
