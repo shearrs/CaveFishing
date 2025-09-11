@@ -7,6 +7,8 @@ namespace CaveFishing.Fishing
 {
     public class FishingRod : MonoBehaviour
     {
+        public enum State { None, Charging, Casted, Reeling }
+
         [Header("Components")]
         [SerializeField] private Bobber bobber;
         [SerializeField] private Transform castPoint;
@@ -21,10 +23,16 @@ namespace CaveFishing.Fishing
         [SerializeField] private float releaseRotation = 20f;
         [SerializeField] private float chargeRotation = -24f;
         [SerializeField, Range(0f, 1f)] private float releaseTime = 0.85f;
+        [SerializeField, Range(0f, 1f)] private float reelTime = 0.85f;
         [SerializeField] private StructTweenData chargeTweenData;
         [SerializeField] private StructTweenData releaseTweenData;
+        [SerializeField] private StructTweenData reelTweenData;
+        [SerializeField] private StructTweenData returnTweenData;
 
         private Tween tween;
+        private State state = State.None;
+
+        public State CurrentState => state;
 
         private void Awake()
         {
@@ -39,6 +47,7 @@ namespace CaveFishing.Fishing
             eulerRotation.x = chargeRotation;
 
             tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, chargeTweenData);
+            state = State.Charging;
         }
 
         public void Cast()
@@ -55,6 +64,18 @@ namespace CaveFishing.Fishing
             tween.AddEvent(releaseTime, () => OnCastTweenComplete(forwardForce, upForce));
         }
 
+        public void Reel()
+        {
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = chargeRotation;
+
+            tween?.Dispose();
+            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, reelTweenData);
+            tween.AddEvent(reelTime, OnReelTweenComplete);
+
+            state = State.Reeling;
+        }
+
         private void OnCastTweenComplete(float forwardForce, float upForce)
         {
             Vector3 forward = castPoint.forward;
@@ -64,6 +85,21 @@ namespace CaveFishing.Fishing
 
             bobber.gameObject.SetActive(true);
             bobber.Cast(castPoint.position, force);
+
+            state = State.Casted;
+        }
+
+        private void OnReelTweenComplete()
+        {
+            bobber.gameObject.SetActive(false);
+
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = releaseRotation;
+
+            tween?.Dispose();
+            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, returnTweenData);
+
+            state = State.None;
         }
     }
 }

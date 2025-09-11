@@ -15,8 +15,10 @@ namespace CaveFishing.Fishing
         public void Cast(Vector3 origin, Vector3 force)
         {
             rb.position = origin;
-            rb.isKinematic = false;
             rb.rotation = Quaternion.identity;
+            rb.PublishTransform();
+
+            rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
             
             rb.AddForce(force, ForceMode.Impulse);

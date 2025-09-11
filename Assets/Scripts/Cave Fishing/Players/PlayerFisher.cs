@@ -36,12 +36,16 @@ namespace CaveFishing.Players
 
         private void OnCastInputStarted(ManagedInputInfo info)
         {
-            fishingRod.BeginCharging();
+            if (fishingRod.CurrentState == FishingRod.State.Casted)
+                fishingRod.Reel();
+            else
+                fishingRod.BeginCharging();
         }
 
         private void OnCastInputCanceled(ManagedInputInfo info)
         {
-            fishingRod.Cast();
+            if (fishingRod.CurrentState == FishingRod.State.Charging)
+                fishingRod.Cast();
         }
     }
 }
