@@ -1,3 +1,4 @@
+using Shears.Beziers;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
@@ -7,11 +8,28 @@ namespace CaveFishing.Fishing
     {
         [Header("Components")]
         [SerializeField] private LineRenderer lineRenderer;
+        [SerializeField] private Bezier bezier;
         [SerializeField] private Transform start;
         [SerializeField] private Transform end;
 
         [Header("Settings")]
+        [SerializeField, Range(2, 32)] private int resolution;
         [SerializeField] private Vector3 endOffset = new(0f, 0.15f, 0f);
+
+        private void Awake()
+        {
+            bezier.AddPoint(transform.position);
+            bezier.SetLocalTangent2(0, Vector3.down);
+            bezier.AddPoint(transform.position);
+        }
+
+        private void OnValidate()
+        {
+            if (lineRenderer == null)
+                return;
+
+            lineRenderer.positionCount = resolution;
+        }
 
         private void LateUpdate()
         {
@@ -23,17 +41,19 @@ namespace CaveFishing.Fishing
 
             lineRenderer.enabled = true;
 
-            Vector3 startPos = start.position;
-            Vector3 startT = startPos + (Vector3.down);
-            Vector3 endPos = end.position + endOffset;
+            bezier.SetPosition(0, start.position);
+            bezier.SetPosition(1, end.position);
 
-            Vector3 t1 = Vector3.Lerp(startPos, startT, 0.5f);
-            Vector3 t2 = Vector3.Lerp(startT, endPos, 0.5f);
-            Vector3 t3 = Vector3.Lerp(t1, t2, 0.5f);
+            for (int i = 0; i < resolution; i++)
+            {
+                float t = (float)i / (resolution - 1);
+                Vector3 pos = bezier.Sample(t);
 
-            lineRenderer.SetPosition(0, start.position);
-            lineRenderer.SetPosition(1, t3);
-            lineRenderer.SetPosition(2, end.position + endOffset);
+                if (i == resolution - 1)
+                    pos += endOffset;
+
+                lineRenderer.SetPosition(i, pos);
+            }
         }
     }
 }
