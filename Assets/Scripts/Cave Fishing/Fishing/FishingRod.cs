@@ -26,6 +26,13 @@ namespace CaveFishing.Fishing
 
         private Tween tween;
 
+        private void Awake()
+        {
+            bobber.gameObject.SetActive(true);
+            bobber.transform.SetParent(null);
+            bobber.gameObject.SetActive(false);
+        }
+
         public void BeginCharging()
         {
             Vector3 eulerRotation = transform.localEulerAngles;

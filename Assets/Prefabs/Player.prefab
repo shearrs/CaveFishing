@@ -49,12 +49,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bobber: {fileID: 5211783033466833211}
   castPoint: {fileID: 2649987757615069140}
-  forwardCastForce: 1
-  upCastForce: 3
+  minForwardCastForce: 0.5
+  maxForwardCastForce: 3
+  minUpCastForce: 0.5
+  maxUpCastForce: 3
   releaseRotation: 20
   chargeRotation: -24
   releaseTime: 0.85
   chargeTweenData:
+    isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
     duration: 1
@@ -89,6 +92,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   releaseTweenData:
+    isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
     duration: 0.25
