@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 448054345173799630}
   - component: {fileID: 671394426872992253}
   - component: {fileID: 3820997423931571557}
+  - component: {fileID: 8269169415265798950}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -671,6 +672,48 @@ CharacterController:
   m_SkinWidth: 0.04
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8269169415265798950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8547109476936458506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53faf994fce29c42927c622a59b1529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LogLevels>k__BackingField: 28
+  graphData: {fileID: 11400000, guid: 966fced13be51bf4fb4afc0538b803fa, type: 2}
+  stateTree: []
+  injectedReferences:
+    entries:
+    - key:
+        name: PlayerCharacter
+        assemblyQualifiedName: CaveFishing.Players.PlayerCharacter, CaveFishing.Players,
+          Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        prettyName: Player Character
+      value:
+        parentGraphID: 013400b0-2be0-4ae5-996c-3fa7e8b876de
+        graphID: 013400b0-2be0-4ae5-996c-3fa7e8b876de
+        targetIDs:
+        - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+        fieldType:
+          name: PlayerCharacter
+          assemblyQualifiedName: CaveFishing.Players.PlayerCharacter, CaveFishing.Players,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          prettyName: Player Character
+        value: {fileID: 671394426872992253}
+  runtimeInfoExpanded: 0
+  referencesExpanded: 0
+  parameterDisplay: []
+  externalParameters: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &9025303398262065810
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,9 @@ namespace CaveFishing.Fishing
         private void Awake()
         {
             bezier.AddPoint(transform.position);
-            bezier.SetLocalTangent2(0, Vector3.down);
             bezier.AddPoint(transform.position);
+            bezier.SetLocalTangent2(0, Vector3.down);
+            bezier.SetLocalTangent2(1, Vector3.up * 0.1f);
         }
 
         private void OnValidate()
@@ -42,15 +43,12 @@ namespace CaveFishing.Fishing
             lineRenderer.enabled = true;
 
             bezier.SetPosition(0, start.position);
-            bezier.SetPosition(1, end.position);
+            bezier.SetPosition(1, end.position + endOffset);
 
             for (int i = 0; i < resolution; i++)
             {
                 float t = (float)i / (resolution - 1);
                 Vector3 pos = bezier.Sample(t);
-
-                if (i == resolution - 1)
-                    pos += endOffset;
 
                 lineRenderer.SetPosition(i, pos);
             }

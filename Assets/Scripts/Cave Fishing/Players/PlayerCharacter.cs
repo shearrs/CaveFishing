@@ -10,6 +10,7 @@ namespace CaveFishing.Players
 {
     public class PlayerCharacter : MonoBehaviour
     {
+        #region Variables
         private const float JUMP_BUFFER_TIME = 0.25f;
 
         [Header("Player Components")]
@@ -46,6 +47,7 @@ namespace CaveFishing.Players
         public event Action EndedMoving;
         public event Action Crouched;
         public event Action Uncrouched;
+        #endregion
 
         private void Awake()
         {
@@ -75,7 +77,7 @@ namespace CaveFishing.Players
             crouchInput.Canceled -= OnCrouchInputCanceled;
         }
 
-        private void Update()
+        public void UpdateCharacter()
         {
             ApplyRotation();
             ApplyMovement(movementInput.ReadValue<Vector2>());
@@ -127,6 +129,7 @@ namespace CaveFishing.Players
             }
         }
 
+        #region Jumping
         private void OnJumpInput(ManagedInputInfo info)
         {
             if (isJumping || !groundDetector.Detect())
@@ -162,7 +165,9 @@ namespace CaveFishing.Players
 
             isJumping = false;
         }
+        #endregion
 
+        #region Crouching
         private void OnCrouchInputStarted(ManagedInputInfo info)
         {
             Crouch();
@@ -217,5 +222,6 @@ namespace CaveFishing.Players
 
             Uncrouched?.Invoke();
         }
+        #endregion
     }
 }

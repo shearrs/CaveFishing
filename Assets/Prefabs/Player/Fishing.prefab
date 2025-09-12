@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5414881159558514858}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Cast Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1783386472366268692}
   - component: {fileID: 1143003601293069680}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fishing Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,6 +93,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3885797115798375927}
   - {fileID: 5962918795400521329}
   m_Father: {fileID: 1808051232814620116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,8 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1828142683969174278}
+  bezier: {fileID: 232615519875601288}
   start: {fileID: 5414881159558514858}
   end: {fileID: 6372712286926735735}
+  resolution: 16
   endOffset: {x: 0, y: 0.15, z: 0}
 --- !u!1 &3045123069538034137
 GameObject:
@@ -208,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5962918795400521329}
   - component: {fileID: 1828142683969174278}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Line Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +279,20 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Parameters:
@@ -457,7 +474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116856420730325880}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -566,6 +583,53 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7548031395741862512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3885797115798375927}
+  - component: {fileID: 232615519875601288}
+  m_Layer: 0
+  m_Name: Bezier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3885797115798375927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548031395741862512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1783386472366268692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &232615519875601288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548031395741862512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78769f95462bbe4d93080e259a32515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  closed: 0
+  points: []
 --- !u!1 &7749276303338104416
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,10 +689,10 @@ MonoBehaviour:
   releaseTime: 0.85
   reelTime: 0.85
   chargeTweenData:
-    isExpanded: 0
+    isExpanded: 1
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 1
+    duration: 0.8
     forceFinalValue: 1
     loops: 0
     loopMode: 0
@@ -698,7 +762,7 @@ MonoBehaviour:
     isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 0.65
+    duration: 0.4
     forceFinalValue: 1
     loops: 0
     loopMode: 0
@@ -733,12 +797,12 @@ MonoBehaviour:
     isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 0.5
+    duration: 0.4
     forceFinalValue: 1
     loops: 0
     loopMode: 0
     usesCurve: 0
-    easingFunction: 0
+    easingFunction: 2
     curve:
       serializedVersion: 2
       m_Curve:

@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3251f27db25e54d8fd770aee2cc34b, type: 3}
+  m_Name: Player State Machine Graph
+  m_EditorClassIdentifier: 
+  id: 013400b0-2be0-4ae5-996c-3fa7e8b876de
+  position: {x: 0, y: 0}
+  scale: {x: 1, y: 1}
+  layers:
+  - parentName: Root
+    parentID: $ROOT
+    position: {x: 0, y: 0}
+    scale: {x: 1, y: 1}
+  graphElements:
+    rid: 2670046608922771517
+  nodeData:
+  - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+  edgeData: []
+  selection: []
+  rootNodes:
+  - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+  copyBuffer: 
+  clipboardData:
+    list: []
+  rootDefaultStateID: f41a2bd3-6d25-41ec-8e61-79132c361cc8
+  parameters: []
+  compilationData:
+    parameterNames:
+      entries: []
+    parameterIDs:
+      entries: []
+    stateIDs:
+      keys:
+      - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+      values:
+      - rid: 2670046608922771525
+    parameterProviders: []
+    defaultState:
+      rid: 2670046608922771525
+  references:
+    version: 2
+    RefIds:
+    - rid: 2670046608922771517
+      type: {class: GraphElementDictionary, ns: Shears.GraphViews, asm: Shears.GraphViews}
+      data:
+        keys:
+        - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+        values:
+        - rid: 2670046608922771518
+    - rid: 2670046608922771518
+      type: {class: StateNodeData, ns: Shears.StateMachineGraphs, asm: Shears.StateMachineGraphs}
+      data:
+        id: f41a2bd3-6d25-41ec-8e61-79132c361cc8
+        name: Player Control
+        position: {x: 200.00002, y: 244.80002}
+        edges: []
+        parentID: $ROOT
+        stateType:
+          name: PlayerControlState
+          assemblyQualifiedName: CaveFishing.Players.PlayerControlState, CaveFishing.Players,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          prettyName: Player Control State
+    - rid: 2670046608922771525
+      type: {class: PlayerControlState, ns: CaveFishing.Players, asm: CaveFishing.Players}
+      data:
+        name: Player Control
+        transitions: []
+        character: {fileID: 0}

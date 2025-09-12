@@ -43,6 +43,9 @@ namespace CaveFishing.Fishing
 
         public void BeginCharging()
         {
+            if (state == State.Reeling)
+                return;
+
             Vector3 eulerRotation = transform.localEulerAngles;
             eulerRotation.x = chargeRotation;
 
@@ -73,6 +76,8 @@ namespace CaveFishing.Fishing
             tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, reelTweenData);
             tween.AddEvent(reelTime, OnReelTweenComplete);
 
+            bobber.Reel();
+
             state = State.Reeling;
         }
 
@@ -98,8 +103,7 @@ namespace CaveFishing.Fishing
 
             tween?.Dispose();
             tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, returnTweenData);
-
-            state = State.None;
+            tween.AddOnComplete(() => state = State.None);
         }
     }
 }

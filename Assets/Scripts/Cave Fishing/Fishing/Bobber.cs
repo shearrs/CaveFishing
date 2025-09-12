@@ -7,6 +7,8 @@ namespace CaveFishing.Fishing
     {
         private Rigidbody rb;
 
+        private bool isInWater = false;
+
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
@@ -24,12 +26,18 @@ namespace CaveFishing.Fishing
             rb.AddForce(force, ForceMode.Impulse);
         }
 
+        public void Reel()
+        {
+            isInWater = false;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out FishingSpot fishingSpot))
                 return;
 
             rb.isKinematic = true;
+            isInWater = true;
         }
     }
 }
