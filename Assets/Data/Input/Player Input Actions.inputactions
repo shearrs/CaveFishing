@@ -153,6 +153,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Wordle",
+            "id": "eb6d3d34-b4ab-4918-af3f-2a491ba6e429",
+            "actions": [
+                {
+                    "name": "Key",
+                    "type": "PassThrough",
+                    "id": "361f6236-d315-4d72-977e-0410fa4877c7",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f9cde66d-f8c2-4df1-9c36-9a798ef4334b",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

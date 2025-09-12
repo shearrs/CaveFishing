@@ -28,6 +28,7 @@ namespace CaveFishing.Players
 
         private bool isJumping = false;
         private bool isCrouched = false;
+        private bool isEnabled = false;
         private Vector3 previousMovement;
         private float height;
         private Vector3 center;
@@ -60,7 +61,7 @@ namespace CaveFishing.Players
                 ("Crouch", i => crouchInput = i)
                 );
 
-            inputMap.EnableAllInputs();
+            Enable();
         }
 
         private void OnEnable()
@@ -77,8 +78,31 @@ namespace CaveFishing.Players
             crouchInput.Canceled -= OnCrouchInputCanceled;
         }
 
+        public void Enable()
+        {
+            if (isEnabled)
+                return;
+
+            inputMap.EnableAllInputs();
+
+            isEnabled = true;
+        }
+
+        public void Disable()
+        {
+            if (!isEnabled)
+                return;
+
+            inputMap.DisableAllInputs();
+
+            isEnabled = false;
+        }
+
         public void UpdateCharacter()
         {
+            if (!isEnabled)
+                return;
+
             ApplyRotation();
             ApplyMovement(movementInput.ReadValue<Vector2>());
             ApplyGravity();
