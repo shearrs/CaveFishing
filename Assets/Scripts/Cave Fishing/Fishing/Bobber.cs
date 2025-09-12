@@ -1,3 +1,5 @@
+using Shears.Tweens;
+using System;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
@@ -5,9 +7,14 @@ namespace CaveFishing.Fishing
     [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
     public class Bobber : MonoBehaviour
     {
+        [SerializeField] private float biteOffset = 0.15f;
+
+        private bool isBiting = false;
         private Rigidbody rb;
 
-        private bool isInWater = false;
+        public bool IsBiting => isBiting;
+
+        public event Action EnteredWater;
 
         private void Awake()
         {
@@ -26,9 +33,22 @@ namespace CaveFishing.Fishing
             rb.AddForce(force, ForceMode.Impulse);
         }
 
-        public void Reel()
+        public void BeginBite()
         {
-            isInWater = false;
+            Vector3 offset = biteOffset * Vector3.down;
+
+            rb.DoMoveTween(rb.position + offset, new StructTweenData(0.5f, easingFunction: EasingFunction.Ease.EaseOutBack));
+
+            isBiting = true;
+        }
+
+        public void EndBite()
+        {
+            Vector3 offset = biteOffset * Vector3.up;
+
+            rb.DoMoveTween(rb.position + offset, new StructTweenData(0.5f, easingFunction: EasingFunction.Ease.EaseOutBack));
+
+            isBiting = false;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -37,9 +57,8 @@ namespace CaveFishing.Fishing
                 return;
 
             rb.isKinematic = true;
-            isInWater = true;
 
-            // begin timer somewhere to start fishing
+            EnteredWater?.Invoke();
         }
     }
 }

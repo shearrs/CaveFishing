@@ -708,7 +708,7 @@ MonoBehaviour:
           prettyName: Player Character
         value: {fileID: 671394426872992253}
   runtimeInfoExpanded: 0
-  referencesExpanded: 0
+  referencesExpanded: 1
   parameterDisplay: []
   externalParameters: []
   references:

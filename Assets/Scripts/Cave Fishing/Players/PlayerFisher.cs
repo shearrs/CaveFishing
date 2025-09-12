@@ -1,11 +1,15 @@
 using CaveFishing.Fishing;
+using Shears;
 using Shears.Input;
+using Shears.Logging;
+using System.Collections;
 using UnityEngine;
 
 namespace CaveFishing.Players
 {
-    public class PlayerFisher : MonoBehaviour
+    public class PlayerFisher : SHMonoBehaviourLogger
     {
+        [Header("Components")]
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private Transform relativeTransform;
         [SerializeField] private FishingRod fishingRod;
@@ -26,12 +30,14 @@ namespace CaveFishing.Players
         {
             castInput.Started += OnCastInputStarted;
             castInput.Canceled += OnCastInputCanceled;
+            fishingRod.FishReeled += OnFishReeled;
         }
 
         private void OnDisable()
         {
             castInput.Started -= OnCastInputStarted;
             castInput.Canceled -= OnCastInputCanceled;
+            fishingRod.FishReeled -= OnFishReeled;
         }
 
         private void OnCastInputStarted(ManagedInputInfo info)
@@ -46,6 +52,11 @@ namespace CaveFishing.Players
         {
             if (fishingRod.CurrentState == FishingRod.State.Charging)
                 fishingRod.Cast();
+        }
+
+        private void OnFishReeled()
+        {
+            Log("Fish reeled.");
         }
     }
 }
