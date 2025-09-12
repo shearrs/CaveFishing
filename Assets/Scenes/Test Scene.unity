@@ -750,6 +750,18 @@ PrefabInstance:
       value: 0.9441854
       objectReference: {fileID: 0}
     - target: {fileID: 7074482626253768615, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074482626253768615, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.049
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074482626253768615, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.681
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074482626253768615, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.14682844
       objectReference: {fileID: 0}
@@ -776,6 +788,18 @@ PrefabInstance:
     - target: {fileID: 7891501153380528596, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.70199263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891501153380528596, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891501153380528596, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 7891501153380528596, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.465
       objectReference: {fileID: 0}
     - target: {fileID: 7891501153380528596, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_LocalRotation.w
@@ -849,6 +873,18 @@ PrefabInstance:
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269169415265798950, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: referencesExpanded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269169415265798950, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: runtimeInfoExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: chargeTweenData.isExpanded
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

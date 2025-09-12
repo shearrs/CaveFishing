@@ -38,6 +38,8 @@ namespace CaveFishing.Fishing
 
             rb.isKinematic = true;
             isInWater = true;
+
+            // begin timer somewhere to start fishing
         }
     }
 }
