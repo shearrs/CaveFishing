@@ -5,15 +5,15 @@ namespace CaveFishing.Fishing
 {
     public static class WordleDatabase
     {
-        private static readonly string[] words = new string[]
+        private static readonly List<string> words = new()
         {
-            "hooks", "lines", "sinks", "flies", "float",
-            "ropes", "cable", "winch", "angle", "casts",
+            "sinks", "flies", "float", "cable", "winch",
             "drift", "catch", "chums", "swing", "canoe",
             "ferry", "yacht", "kayak", "decks", "sails",
-            "coast", "shore", "tides", "river", "caves",
-            "depth", "lakes", "water", "swamp", "hooks",
-            "guppy", "bream", "poach", "fried", "worms"
+            "coast", "shore", "river", "caves", "casts",
+            "depth", "lakes", "water", "swamp", "docks",
+            "guppy", "bream", "poach", "fried", "worms",
+            "fishy", "angle", "diver", "motor", "bilge"
         };
 
         private static readonly HashSet<string> wordList = new()
@@ -584,6 +584,7 @@ namespace CaveFishing.Fishing
             "ditty",
             "diver",
             "dizzy",
+            "docks",
             "dodge",
             "dodgy",
             "dogma",
@@ -780,6 +781,7 @@ namespace CaveFishing.Fishing
             "flesh",
             "flick",
             "flier",
+            "flies",
             "fling",
             "flint",
             "flirt",
@@ -1777,6 +1779,7 @@ namespace CaveFishing.Fishing
             "since",
             "sinew",
             "singe",
+            "sinks",
             "siren",
             "sissy",
             "sixth",
@@ -2335,11 +2338,11 @@ namespace CaveFishing.Fishing
             "zonal",
         };
 
-        public static bool IsValidWord(string word) => wordList.Contains(word);
+        public static bool IsValidWord(string word) => words.Contains(word) || wordList.Contains(word);
 
         public static string GetWord()
         {
-            return words[Random.Range(0, words.Length)];
+            return words[Random.Range(0, words.Count)];
         }
     }
 }
