@@ -1,14 +1,17 @@
+using Shears;
 using Shears.Input;
+using Shears.Tweens;
 using Shears.UI;
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CaveFishing.Fishing.UI
 {
     public class WordleLetterUI : MonoBehaviour
     {
+        private const float FLIP_DELAY = 0.25f;
+
         [Header("Components")]
         [SerializeField] private WordleLetter letter;
 
@@ -20,6 +23,12 @@ namespace CaveFishing.Fishing.UI
         [SerializeField] private Color yellowColor;
         [SerializeField] private Color greenColor;
 
+        [Header("Tweens")]
+        [SerializeField] private TweenData flipTweenData = new(0.2f);
+
+        private Tween flipTween;
+        private CoroutineChain coroutineChain;
+
         public string Letter => letter.Letter;
 
         public event Action<ManagedKey> Clicked;
@@ -28,6 +37,8 @@ namespace CaveFishing.Fishing.UI
         {
             if (text != null)
                 text.text = letter.Letter;
+
+            coroutineChain = CoroutineChain.Create().WithLifetime(this);
         }
 
         private void OnEnable()
@@ -65,28 +76,55 @@ namespace CaveFishing.Fishing.UI
             text.text = letter.Letter;
         }
 
-        private void OnTypeChanged()
+        private void OnTypeChanged(int delay)
         {
-            SetFill(letter.Type);
+            if (delay == 0)
+                SetFill(letter.Type);
+            else
+                coroutineChain
+                    .WaitForSeconds(delay * FLIP_DELAY)
+                    .Then(() => SetFill(letter.Type))
+                    .Run();
         }
 
         public void SetFill(WordleLetter.LetterType type)
         {
+            Color fillColor = Color.white;
+            Color textColor = Color.white;
+
             switch (type)
             {
                 case WordleLetter.LetterType.Gray:
-                    background.BaseColor = grayColor;
+                    fillColor = grayColor;
+                    textColor = Color.white;
                     break;
                 case WordleLetter.LetterType.Yellow:
-                    background.BaseColor = yellowColor;
+                    fillColor = yellowColor;
+                    textColor = Color.white;
                     break;
                 case WordleLetter.LetterType.Green:
-                    background.BaseColor = greenColor;
+                    fillColor = greenColor;
+                    textColor = Color.white;
                     break;
                 case WordleLetter.LetterType.None:
-                    background.BaseColor = Color.white;
+                    fillColor = Color.white;
+                    textColor = Color.black;
                     break;
             }
+
+            flipTween?.Dispose();
+
+            Vector3 rotation = new(0f, 90f, 0);
+            flipTween = transform.DoRotateLocalTween(Quaternion.Euler(rotation), true, flipTweenData);
+
+            void onComplete()
+            {
+                background.BaseColor = fillColor;
+                text.color = textColor;
+                flipTween = transform.DoRotateLocalTween(Quaternion.identity, true, flipTweenData);
+            }
+
+            flipTween.AddOnComplete(onComplete);
         }
     }
 }

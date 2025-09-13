@@ -14,9 +14,9 @@ namespace CaveFishing.Fishing
             letters[index].SetLetter(letter);
         }
 
-        public void SetLetterType(int index, WordleLetter.LetterType type)
+        public void SetLetterType(int index, WordleLetter.LetterType type, int delay)
         {
-            letters[index].SetType(type);
+            letters[index].SetType(type, delay);
         }
 
         public void AddLetter(string newLetter)

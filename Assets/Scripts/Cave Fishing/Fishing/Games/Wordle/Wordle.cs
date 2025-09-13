@@ -13,9 +13,8 @@ namespace CaveFishing.Fishing
 
         [Header("Words")]
         [SerializeField, ReadOnly] private string targetWord;
+        [SerializeField, ReadOnly] private int currentGuess = 0;
         [SerializeField] private List<WordleWord> words;
-
-        [SerializeField] private int currentGuess = 0;
 
         private readonly List<char> grayCharacters = new();
         private readonly List<char> yellowCharacters = new();
@@ -81,13 +80,13 @@ namespace CaveFishing.Fishing
                 char character = guess[i];
                 
                 if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
-                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray, i);
                 else
                 {
                     if (!char.ToLower(targetWord[i]).Equals(char.ToLower(character)))
-                        currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow);
+                        currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow, i);
                     else
-                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
+                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green, i);
                 }
             }
 

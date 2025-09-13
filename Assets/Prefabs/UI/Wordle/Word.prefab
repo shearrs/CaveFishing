@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3736888497711276590, guid: 8e702352642056e40a1734488933558c, type: 3}
+      propertyPath: flipTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -515,6 +519,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1507615678589466801, guid: 8e702352642056e40a1734488933558c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736888497711276590, guid: 8e702352642056e40a1734488933558c, type: 3}
+      propertyPath: flipTweenData.isExpanded
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

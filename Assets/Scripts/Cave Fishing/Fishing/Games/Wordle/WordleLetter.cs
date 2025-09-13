@@ -14,7 +14,7 @@ namespace CaveFishing.Fishing
         public LetterType Type => letterType;
 
         public event Action LetterChanged;
-        public event Action TypeChanged;
+        public event Action<int> TypeChanged;
 
         public void SetLetter(string text)
         {
@@ -23,11 +23,11 @@ namespace CaveFishing.Fishing
             LetterChanged?.Invoke();
         }
 
-        public void SetType(LetterType type)
+        public void SetType(LetterType type, int delay = 0)
         {
             letterType = type;
 
-            TypeChanged?.Invoke();
+            TypeChanged?.Invoke(delay);
         }
     }
 }

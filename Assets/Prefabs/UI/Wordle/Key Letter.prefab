@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f7ca6e2214bcc48b623a28ac97a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1043160464506350777}
+  modulate: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &5436161579092501097
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +226,40 @@ MonoBehaviour:
   grayColor: {r: 0.39607844, g: 0.40784314, b: 0.41568628, a: 1}
   yellowColor: {r: 0.7882353, g: 0.7058824, b: 0.34117648, a: 1}
   greenColor: {r: 0.4117647, g: 0.67058825, b: 0.39215687, a: 1}
+  flipTweenData:
+    usesDataObject: 1
+    tweenDataObject: {fileID: 11400000, guid: 06abde984cb157f4ea0cf3700097d2f0, type: 2}
+    duration: 0.15
+    forceFinalValue: 1
+    loops: 0
+    loopMode: 0
+    usesCurve: 0
+    easingFunction: 0
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    unityEvents: []
 --- !u!1 &5464618402394043558
 GameObject:
   m_ObjectHideFlags: 0

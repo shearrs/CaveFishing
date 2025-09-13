@@ -14,7 +14,7 @@ namespace CaveFishing.Fishing
             "depth", "lakes", "water", "swamp", "docks",
             "guppy", "bream", "poach", "fried", "worms",
             "fishy", "angle", "diver", "motor", "bilge",
-            "barge"
+            "barge", "trout", "coral"
         };
 
         private static readonly HashSet<string> wordList = new()
