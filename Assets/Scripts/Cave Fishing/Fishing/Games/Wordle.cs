@@ -68,6 +68,9 @@ namespace CaveFishing.Fishing
             string guess = currentWord.Word;
             Log("Submit guess: " + guess);
 
+            if (!WordleDatabase.IsValidWord(guess))
+                return;
+
             if (guess == targetWord)
             {
                 Disable();
@@ -117,14 +120,16 @@ namespace CaveFishing.Fishing
                         GreenCharacterAdded?.Invoke(character.ToString());
                     }
                     else
-                        Log("Correct character already guessed: " + character);
+                        Log("Correct character already guessed: " + character, SHLogLevels.Verbose);
                 }
                 else
-                    Log("Incorrect character already guessed: " + character);
+                    Log("Incorrect character already guessed: " + character, SHLogLevels.Verbose);
             }
 
             currentGuess++;
-            Log("guess: " + currentGuess, SHLogLevels.Fatal);
+            if (currentGuess >= MAX_GUESSES)
+                return;
+
             currentWord = words[currentGuess];
         }
 
