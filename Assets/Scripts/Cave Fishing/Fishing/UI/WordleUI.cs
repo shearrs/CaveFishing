@@ -15,26 +15,26 @@ namespace CaveFishing.Fishing.UI
         [SerializeField] private ManagedPanel uiContainer;
 
         [Header("Words")]
-        [SerializeField] private List<WordleWord> words;
-        [SerializeField] private List<WordleLetter> keyboard;
-
-        private IManagedInput keyInput;
-
-        private void Awake()
-        {
-            keyInput = inputMap.GetInput("Key");
-        }
+        [SerializeField] private List<WordleLetterUI> keyboard;
 
         private void OnEnable()
         {
             wordle.Enabled += OnWordleEnabled;
-            keyInput.Performed += OnKeyPressed;
+            wordle.Disabled += OnWordleDisabled;
+
+            wordle.GrayCharacterAdded += OnGrayCharacterAdded;
+            wordle.YellowCharacterAdded += OnYellowCharacterAdded;
+            wordle.GreenCharacterAdded += OnGreenCharacterAdded;
         }
 
         private void OnDisable()
         {
             wordle.Enabled -= OnWordleEnabled;
-            keyInput.Performed -= OnKeyPressed;
+            wordle.Disabled -= OnWordleDisabled;
+
+            wordle.GrayCharacterAdded -= OnGrayCharacterAdded;
+            wordle.YellowCharacterAdded -= OnYellowCharacterAdded;
+            wordle.GreenCharacterAdded -= OnGreenCharacterAdded;
         }
 
         private void OnWordleEnabled()
@@ -42,9 +42,36 @@ namespace CaveFishing.Fishing.UI
             uiContainer.Enable();
         }
 
-        private void OnKeyPressed(ManagedInputInfo info)
+        private void OnWordleDisabled()
         {
-            Debug.Log(keyInput.ReadValue<KeyControl>());
+            uiContainer.Disable();
+        }
+
+        private void OnGrayCharacterAdded(string character)
+        {
+            foreach (var letter in keyboard)
+            {
+                if (letter.Letter == character)
+                    letter.SetFill(WordleLetter.LetterType.Gray);
+            }
+        }
+
+        private void OnYellowCharacterAdded(string character)
+        {
+            foreach (var letter in keyboard)
+            {
+                if (letter.Letter == character)
+                    letter.SetFill(WordleLetter.LetterType.Yellow);
+            }
+        }
+
+        private void OnGreenCharacterAdded(string character)
+        {
+            foreach (var letter in keyboard)
+            {
+                if (letter.Letter == character)
+                    letter.SetFill(WordleLetter.LetterType.Green);
+            }
         }
     }
 }

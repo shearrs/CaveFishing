@@ -1,79 +1,160 @@
+using Shears;
+using Shears.Input;
+using Shears.Logging;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
 {
-    public class Wordle : MonoBehaviour
+    public class Wordle : SHMonoBehaviourLogger
     {
         private const int MAX_GUESSES = 6;
 
-        private readonly List<char> unguessedCharacters = new();
-        private readonly List<char> guessedCharacters = new();
-        private readonly List<char> yellowGuessedCharacters = new();
-        private readonly List<char> greenGuessedCharacters = new();
-        private readonly List<string> guesses = new();
-        private string currentWord;
-        private int currentGuess = 1;
+        [Header("Input")]
+        [SerializeField] private ManagedInputMap inputMap;
+
+        [Header("Words")]
+        [SerializeField, ReadOnly] private string targetWord;
+        [SerializeField] private List<WordleWord> words;
+
+        [SerializeField] private int currentGuess = 0;
+
+        private readonly List<char> grayCharacters = new();
+        private readonly List<char> yellowCharacters = new();
+        private readonly List<char> greenCharacters = new();
+        private readonly List<ManagedKey> pressedKeys = new();
+        private IManagedInput keyInput;
+        private WordleWord currentWord;
 
         public event Action Enabled;
-        public event Action<char> AddYellowCharacter;
-        public event Action<char> AddGreenCharacter;
-        public event Action<string> CorrectWordGuessed;
-        public event Action MaxGuessesReached;
+        public event Action Disabled;
+        public event Action<string> GrayCharacterAdded;
+        public event Action<string> YellowCharacterAdded;
+        public event Action<string> GreenCharacterAdded;
+
+        private void Awake()
+        {
+            keyInput = inputMap.GetInput("Key");
+
+            Enable();
+        }
+
+        private void OnDisable()
+        {
+            keyInput.Performed -= OnKeyPressed;
+        }
 
         public void Enable()
         {
-            unguessedCharacters.Clear();
-            guessedCharacters.Clear();
-            yellowGuessedCharacters.Clear();
-            greenGuessedCharacters.Clear();
-            guesses.Clear();
+            currentGuess = 0;
+            currentWord = words[0];
+            targetWord = WordleDatabase.GetWord();
 
-            currentGuess = 1;
-            currentWord = WordleDatabase.GetWord();
-
-            for (char c = 'A'; c <= 'Z'; c++)
-                unguessedCharacters.Add(c);
+            keyInput.Performed += OnKeyPressed;
 
             Enabled?.Invoke();
         }
 
-        public void SubmitGuess(string guess)
+        public void Disable()
         {
-            if (guess.Equals(currentWord, StringComparison.OrdinalIgnoreCase))
+            keyInput.Performed -= OnKeyPressed;
+
+            Disabled?.Invoke();
+        }
+
+        public void SubmitGuess()
+        {
+            string guess = currentWord.Word;
+            Log("Submit guess: " + guess);
+
+            if (guess == targetWord)
             {
-                CorrectWordGuessed?.Invoke(guess);
+                Disable();
                 return;
+            }
+
+            for (int i = 0; i < guess.Length; i++)
+            {
+                char character = guess[i];
+                
+                if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
+                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+                else
+                {
+                    if (!char.ToLower(targetWord[i]).Equals(char.ToLower(character)))
+                        currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow);
+                    else
+                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
+                }
             }
 
             foreach (var character in guess)
             {
-                if (!guessedCharacters.Contains(character))
+                if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase) && !grayCharacters.Contains(character))
                 {
-                    unguessedCharacters.Remove(character);
-                    guessedCharacters.Add(character);
+                    Log("Added gray character: " + character);
 
-                    if (currentWord.Contains(character) && !greenGuessedCharacters.Contains(character))
-                    {
-                        if (guess.IndexOf(character) == currentWord.IndexOf(character))
-                        {
-                            greenGuessedCharacters.Add(character);
-                            AddGreenCharacter?.Invoke(character);
-                        }
-                        else if (!yellowGuessedCharacters.Contains(character))
-                        {
-                            yellowGuessedCharacters.Add(character);
-                            AddYellowCharacter?.Invoke(character);
-                        }
-                    }
+                    grayCharacters.Add(character);
+                    GrayCharacterAdded?.Invoke(character.ToString());
                 }
+                else if (targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
+                {
+                    int currentIndex = guess.IndexOf(character);
+
+                    if (!char.ToLower(targetWord[currentIndex]).Equals(char.ToLower(character)) && !greenCharacters.Contains(character) && !yellowCharacters.Contains(character))
+                    {
+                        Log("Added yellow character: " + character);
+
+                        yellowCharacters.Add(character);
+                        YellowCharacterAdded?.Invoke(character.ToString());
+                    }
+                    else if (char.ToLower(targetWord[currentIndex]).Equals(char.ToLower(character)) && !greenCharacters.Contains(character))
+                    {
+                        Log("Added green character: " + character);
+
+                        greenCharacters.Add(character);
+                        GreenCharacterAdded?.Invoke(character.ToString());
+                    }
+                    else
+                        Log("Correct character already guessed: " + character);
+                }
+                else
+                    Log("Incorrect character already guessed: " + character);
             }
 
             currentGuess++;
+            Log("guess: " + currentGuess, SHLogLevels.Fatal);
+            currentWord = words[currentGuess];
+        }
 
-            if (currentGuess > MAX_GUESSES)
-                MaxGuessesReached?.Invoke();
+        private void OnKeyPressed(ManagedInputInfo info)
+        {
+            ManagedKeyboard.GetKeysPressedThisFrame(pressedKeys);
+
+            if (pressedKeys.Count == 0)
+                return;
+
+            Log("Key pressed: " + pressedKeys[0].GetDisplayName(), SHLogLevels.Verbose);
+
+            if (pressedKeys.Contains(ManagedKey.Backspace))
+            {
+                currentWord.RemoveLetter();
+                return;
+            }
+            else if (pressedKeys.Contains(ManagedKey.Enter) && currentWord.Word.Length == 5)
+            {
+                SubmitGuess();
+                return;
+            }
+
+            foreach (var key in pressedKeys)
+            {
+                if (!key.IsLetter())
+                    continue;
+
+                currentWord.AddLetter(key.GetDisplayName());
+            }
         }
     }
 }
