@@ -11,9 +11,6 @@ namespace CaveFishing.Fishing
     {
         private const int MAX_GUESSES = 6;
 
-        [Header("Input")]
-        [SerializeField] private ManagedInputMap inputMap;
-
         [Header("Words")]
         [SerializeField, ReadOnly] private string targetWord;
         [SerializeField] private List<WordleWord> words;
@@ -23,8 +20,6 @@ namespace CaveFishing.Fishing
         private readonly List<char> grayCharacters = new();
         private readonly List<char> yellowCharacters = new();
         private readonly List<char> greenCharacters = new();
-        private readonly List<ManagedKey> pressedKeys = new();
-        private IManagedInput keyInput;
         private WordleWord currentWord;
 
         public event Action Enabled;
@@ -33,16 +28,11 @@ namespace CaveFishing.Fishing
         public event Action<string> YellowCharacterAdded;
         public event Action<string> GreenCharacterAdded;
 
+        public int CurrentWordLength => currentWord.Word.Length;
+
         private void Awake()
         {
-            keyInput = inputMap.GetInput("Key");
-
-            Enable();
-        }
-
-        private void OnDisable()
-        {
-            keyInput.Performed -= OnKeyPressed;
+            Invoke(nameof(Enable), 0.5f);
         }
 
         public void Enable()
@@ -51,16 +41,25 @@ namespace CaveFishing.Fishing
             currentWord = words[0];
             targetWord = WordleDatabase.GetWord();
 
-            keyInput.Performed += OnKeyPressed;
+            CursorManager.SetCursorVisibility(true);
+            CursorManager.SetCursorLockMode(CursorLockMode.None);
 
             Enabled?.Invoke();
         }
 
         public void Disable()
         {
-            keyInput.Performed -= OnKeyPressed;
-
             Disabled?.Invoke();
+        }
+
+        public void AddLetter(string letter)
+        {
+            currentWord.AddLetter(letter);
+        }
+
+        public void RemoveLetter()
+        {
+            currentWord.RemoveLetter();
         }
 
         public void SubmitGuess()
@@ -131,35 +130,6 @@ namespace CaveFishing.Fishing
                 return;
 
             currentWord = words[currentGuess];
-        }
-
-        private void OnKeyPressed(ManagedInputInfo info)
-        {
-            ManagedKeyboard.GetKeysPressedThisFrame(pressedKeys);
-
-            if (pressedKeys.Count == 0)
-                return;
-
-            Log("Key pressed: " + pressedKeys[0].GetDisplayName(), SHLogLevels.Verbose);
-
-            if (pressedKeys.Contains(ManagedKey.Backspace))
-            {
-                currentWord.RemoveLetter();
-                return;
-            }
-            else if (pressedKeys.Contains(ManagedKey.Enter) && currentWord.Word.Length == 5)
-            {
-                SubmitGuess();
-                return;
-            }
-
-            foreach (var key in pressedKeys)
-            {
-                if (!key.IsLetter())
-                    continue;
-
-                currentWord.AddLetter(key.GetDisplayName());
-            }
         }
     }
 }

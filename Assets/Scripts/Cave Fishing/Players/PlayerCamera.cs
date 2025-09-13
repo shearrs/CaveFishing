@@ -56,6 +56,11 @@ namespace CaveFishing.Players
             crouchTweenData = new TweenData(tweenData.Duration + 0.1f, tweenData.ForceFinalValue, tweenData.Loops, tweenData.LoopMode, EasingFunction.Ease.EaseOutBack);
         }
 
+        private void Start()
+        {
+            managedCamera.SetState(null);
+        }
+
         private void OnEnable()
         {
             character.BeganMoving += OnBeganMoving;

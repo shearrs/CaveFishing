@@ -13,7 +13,8 @@ namespace CaveFishing.Fishing
             "coast", "shore", "river", "caves", "casts",
             "depth", "lakes", "water", "swamp", "docks",
             "guppy", "bream", "poach", "fried", "worms",
-            "fishy", "angle", "diver", "motor", "bilge"
+            "fishy", "angle", "diver", "motor", "bilge",
+            "barge"
         };
 
         private static readonly HashSet<string> wordList = new()
@@ -2338,7 +2339,7 @@ namespace CaveFishing.Fishing
             "zonal",
         };
 
-        public static bool IsValidWord(string word) => words.Contains(word) || wordList.Contains(word);
+        public static bool IsValidWord(string word) => words.Contains(word.ToLower()) || wordList.Contains(word.ToLower());
 
         public static string GetWord()
         {

@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LogLevels>k__BackingField: 29
-  inputMap: {fileID: 11400000, guid: 5202f97b5ba8ada4bae70df225a6b190, type: 2}
   targetWord: 
   words:
   - {fileID: 1928137051870628209}
@@ -60,6 +59,7 @@ MonoBehaviour:
   - {fileID: 9030754087876847117}
   - {fileID: 1303794805422901229}
   - {fileID: 8769162057574842600}
+  currentGuess: 0
 --- !u!114 &4142149094881612096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd68865157bacf43a30e03a5eae72a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <LogLevels>k__BackingField: 29
   inputMap: {fileID: 11400000, guid: 5202f97b5ba8ada4bae70df225a6b190, type: 2}
   wordle: {fileID: 2374619623436828015}
   uiContainer: {fileID: 180035725138804033}
@@ -626,7 +627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2512,6 +2513,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 3572258207059040534, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: letter
+      value: BACKSPACE
+      objectReference: {fileID: 0}
     - target: {fileID: 3917767309587509890, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3120,6 +3125,26 @@ PrefabInstance:
     - target: {fileID: 2216917411812126743, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
       propertyPath: m_text
       value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548267291896294636, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: clickFoldout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548267291896294636, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: eventsFoldout
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548267291896294636, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: selectFoldout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548267291896294636, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: activationFoldout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548267291896294636, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
+      propertyPath: navigationFoldout
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3572258207059040534, guid: 1b00f4ac53e89cf418993e774be72036, type: 3}
       propertyPath: letter
