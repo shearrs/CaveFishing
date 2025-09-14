@@ -25,8 +25,7 @@ MonoBehaviour:
   nodeData:
   - f41a2bd3-6d25-41ec-8e61-79132c361cc8
   edgeData: []
-  selection:
-  - f41a2bd3-6d25-41ec-8e61-79132c361cc8
+  selection: []
   rootNodes:
   - f41a2bd3-6d25-41ec-8e61-79132c361cc8
   copyBuffer: 
@@ -43,10 +42,10 @@ MonoBehaviour:
       keys:
       - f41a2bd3-6d25-41ec-8e61-79132c361cc8
       values:
-      - rid: 2670046656661291089
+      - rid: 2670046662106546305
     parameterProviders: []
     defaultState:
-      rid: 2670046656661291089
+      rid: 2670046662106546305
   references:
     version: 2
     RefIds:
@@ -71,7 +70,7 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
           assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
           prettyName: Player Control State
-    - rid: 2670046656661291089
+    - rid: 2670046662106546305
       type: {class: PlayerControlState, ns: CaveFishing.Players, asm: CaveFishing.Players}
       data:
         name: Player Control

@@ -24,7 +24,9 @@ namespace CaveFishing.Fishing
 
         public event Action Enabled;
         public event Action Disabled;
+        public event Action InvalidWordSubmitted;
 
+        public WordleWord CurrentWord => currentWord;
         public int CurrentWordLength => currentWord.Word.Length;
 
         private void Awake()
@@ -65,7 +67,10 @@ namespace CaveFishing.Fishing
             Log("Submit guess: " + guess);
 
             if (!WordleDatabase.IsValidWord(guess))
+            {
+                InvalidWordSubmitted?.Invoke();
                 return;
+            }
 
             if (guess == targetWord)
             {

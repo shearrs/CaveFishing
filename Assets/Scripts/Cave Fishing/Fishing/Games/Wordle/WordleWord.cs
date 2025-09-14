@@ -7,6 +7,7 @@ namespace CaveFishing.Fishing
     {
         [SerializeField] private List<WordleLetter> letters;
 
+        public IReadOnlyList<WordleLetter> WordleLetters => letters;
         public string Word => GetWord();
 
         public void SetLetter(int index, string letter)
