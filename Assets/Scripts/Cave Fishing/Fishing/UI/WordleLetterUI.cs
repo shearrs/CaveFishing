@@ -27,7 +27,7 @@ namespace CaveFishing.Fishing.UI
         [SerializeField] private TweenData flipTweenData = new(0.2f);
 
         private Tween flipTween;
-        private CoroutineChain coroutineChain;
+        private Timer flipTimer = new();
 
         public string Letter => letter.Letter;
 
@@ -37,8 +37,6 @@ namespace CaveFishing.Fishing.UI
         {
             if (text != null)
                 text.text = letter.Letter;
-
-            coroutineChain = CoroutineChain.Create().WithLifetime(this);
         }
 
         private void OnEnable()
@@ -81,10 +79,11 @@ namespace CaveFishing.Fishing.UI
             if (delay == 0)
                 SetFill(letter.Type);
             else
-                coroutineChain
-                    .WaitForSeconds(delay * FLIP_DELAY)
-                    .Then(() => SetFill(letter.Type))
-                    .Run();
+            {
+                flipTimer.Start(delay * FLIP_DELAY);
+                flipTimer.ClearOnCompletes();
+                flipTimer.AddOnComplete(() => SetFill(letter.Type));
+            }
         }
 
         public void SetFill(WordleLetter.LetterType type)
