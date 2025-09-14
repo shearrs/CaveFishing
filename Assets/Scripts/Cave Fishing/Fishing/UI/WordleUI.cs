@@ -34,20 +34,12 @@ namespace CaveFishing.Fishing.UI
         {
             wordle.Enabled += OnWordleEnabled;
             wordle.Disabled += OnWordleDisabled;
-
-            wordle.GrayCharacterAdded += OnGrayCharacterAdded;
-            wordle.YellowCharacterAdded += OnYellowCharacterAdded;
-            wordle.GreenCharacterAdded += OnGreenCharacterAdded;
         }
 
         private void OnDisable()
         {
             wordle.Enabled -= OnWordleEnabled;
             wordle.Disabled -= OnWordleDisabled;
-
-            wordle.GrayCharacterAdded -= OnGrayCharacterAdded;
-            wordle.YellowCharacterAdded -= OnYellowCharacterAdded;
-            wordle.GreenCharacterAdded -= OnGreenCharacterAdded;
 
             keyInput.Performed -= OnKeyPressed;
         }
@@ -66,33 +58,6 @@ namespace CaveFishing.Fishing.UI
 
             UnsubscribeFromKeyboard();
             keyInput.Performed -= OnKeyPressed;
-        }
-
-        private void OnGrayCharacterAdded(string character)
-        {
-            foreach (var letter in keyboard)
-            {
-                if (letter.Letter == character)
-                    letter.SetFill(WordleLetter.LetterType.Gray);
-            }
-        }
-
-        private void OnYellowCharacterAdded(string character)
-        {
-            foreach (var letter in keyboard)
-            {
-                if (letter.Letter == character)
-                    letter.SetFill(WordleLetter.LetterType.Yellow);
-            }
-        }
-
-        private void OnGreenCharacterAdded(string character)
-        {
-            foreach (var letter in keyboard)
-            {
-                if (letter.Letter == character)
-                    letter.SetFill(WordleLetter.LetterType.Green);
-            }
         }
 
         private void SubscribeToKeyboard()

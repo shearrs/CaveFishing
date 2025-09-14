@@ -15,6 +15,7 @@ namespace CaveFishing.Fishing
         [SerializeField, ReadOnly] private string targetWord;
         [SerializeField, ReadOnly] private int currentGuess = 0;
         [SerializeField] private List<WordleWord> words;
+        [SerializeField] private List<WordleLetter> keyboard;
 
         private readonly List<char> grayCharacters = new();
         private readonly List<char> yellowCharacters = new();
@@ -23,9 +24,6 @@ namespace CaveFishing.Fishing
 
         public event Action Enabled;
         public event Action Disabled;
-        public event Action<string> GrayCharacterAdded;
-        public event Action<string> YellowCharacterAdded;
-        public event Action<string> GreenCharacterAdded;
 
         public int CurrentWordLength => currentWord.Word.Length;
 
@@ -79,70 +77,61 @@ namespace CaveFishing.Fishing
             {
                 char character = guess[i];
                 
-                if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
+                if (!targetWord.Contains(character))
+                {
                     currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+
+                    if (!grayCharacters.Contains(character))
+                        grayCharacters.Add(character);
+                }
                 else
                 {
                     char targetCharacter = targetWord[i];
 
-                    if (char.ToLower(targetCharacter).Equals(char.ToLower(character)))
+                    if (targetCharacter == character)
+                    {
                         currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
+
+                        if (!greenCharacters.Contains(targetCharacter))
+                            greenCharacters.Add(targetCharacter);
+                    }
                     else
                     {
-                        int targetIndex = targetWord.IndexOf(character, StringComparison.OrdinalIgnoreCase);
+                        int targetIndex = targetWord.IndexOf(character);
                         bool needsLetter = false;
 
                         while (targetIndex != -1)
                         {
-                            if (currentWord.GetLetter(targetIndex).Equals(targetCharacter.ToString(), StringComparison.OrdinalIgnoreCase))
+                            if (currentWord.GetLetter(targetIndex) != targetCharacter.ToString())
                             {
                                 needsLetter = true;
                                 break;
                             }
 
-                            targetIndex = targetWord.IndexOf(character, targetIndex);
+                            if (targetIndex == targetWord.Length - 1)
+                                break;
+
+                            targetIndex = targetWord.IndexOf(character, targetIndex + 1);
+
+                            Log($"Index: {targetIndex}", SHLogLevels.Fatal);
                         }
 
                         if (needsLetter)
+                        {
                             currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow);
+
+                            if (!yellowCharacters.Contains(targetCharacter))
+                                yellowCharacters.Add(targetCharacter);
+                        }
                         else
+                        {
                             currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+
+                            if (!grayCharacters.Contains(targetCharacter))
+                                grayCharacters.Add(targetCharacter);
+                        }
                     }
                 }
-            }
-
-            foreach (var character in guess)
-            {
-                if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase) && !grayCharacters.Contains(character))
-                {
-                    Log("Added gray character: " + character);
-
-                    grayCharacters.Add(character);
-                    GrayCharacterAdded?.Invoke(character.ToString());
-                }
-                else if (targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
-                {
-                    int currentIndex = guess.IndexOf(character);
-
-                    if (!char.ToLower(targetWord[currentIndex]).Equals(char.ToLower(character)) && !greenCharacters.Contains(character) && !yellowCharacters.Contains(character))
-                    {
-                        Log("Added yellow character: " + character);
-
-                        yellowCharacters.Add(character);
-                        YellowCharacterAdded?.Invoke(character.ToString());
-                    }
-                    else if (char.ToLower(targetWord[currentIndex]).Equals(char.ToLower(character)) && !greenCharacters.Contains(character))
-                    {
-                        Log("Added green character: " + character);
-
-                        greenCharacters.Add(character);
-                        GreenCharacterAdded?.Invoke(character.ToString());
-                    }
-                    else
-                        Log("Correct character already guessed: " + character, SHLogLevels.Verbose);
-                }
-                else
-                    Log("Incorrect character already guessed: " + character, SHLogLevels.Verbose);
             }
 
             currentGuess++;

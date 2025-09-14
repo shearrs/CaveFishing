@@ -2342,7 +2342,7 @@ namespace CaveFishing.Fishing
 
         public static string GetWord()
         {
-            return words[Random.Range(0, words.Count)];
+            return words[Random.Range(0, words.Count)].ToUpper();
         }
     }
 }
