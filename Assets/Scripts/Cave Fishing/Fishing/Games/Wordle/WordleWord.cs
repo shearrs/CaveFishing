@@ -14,9 +14,9 @@ namespace CaveFishing.Fishing
             letters[index].SetLetter(letter);
         }
 
-        public void SetLetterType(int index, WordleLetter.LetterType type, int delay)
+        public void SetLetterType(int index, WordleLetter.LetterType type)
         {
-            letters[index].SetType(type, delay);
+            letters[index].SetType(type, index);
         }
 
         public void AddLetter(string newLetter)
@@ -41,6 +41,11 @@ namespace CaveFishing.Fishing
                     return;
                 }
             }
+        }
+
+        public string GetLetter(int index)
+        {
+            return letters[index].Letter;
         }
 
         private string GetWord()

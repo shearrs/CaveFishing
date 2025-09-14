@@ -80,13 +80,34 @@ namespace CaveFishing.Fishing
                 char character = guess[i];
                 
                 if (!targetWord.Contains(character, StringComparison.OrdinalIgnoreCase))
-                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray, i);
+                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
                 else
                 {
-                    if (!char.ToLower(targetWord[i]).Equals(char.ToLower(character)))
-                        currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow, i);
+                    char targetCharacter = targetWord[i];
+
+                    if (char.ToLower(targetCharacter).Equals(char.ToLower(character)))
+                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
                     else
-                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green, i);
+                    {
+                        int targetIndex = targetWord.IndexOf(character, StringComparison.OrdinalIgnoreCase);
+                        bool needsLetter = false;
+
+                        while (targetIndex != -1)
+                        {
+                            if (currentWord.GetLetter(targetIndex).Equals(targetCharacter.ToString(), StringComparison.OrdinalIgnoreCase))
+                            {
+                                needsLetter = true;
+                                break;
+                            }
+
+                            targetIndex = targetWord.IndexOf(character, targetIndex);
+                        }
+
+                        if (needsLetter)
+                            currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow);
+                        else
+                            currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+                    }
                 }
             }
 

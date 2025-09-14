@@ -8,13 +8,12 @@ namespace CaveFishing.Fishing
         private static readonly List<string> words = new()
         {
             "sinks", "flies", "float", "cable", "winch",
-            "drift", "catch", "chums", "swing", "canoe",
-            "ferry", "yacht", "kayak", "decks", "sails",
+            "drift", "catch", "trout", "swing", "canoe",
+            "ferry", "yacht", "kayak", "coral", "bilge",
             "coast", "shore", "river", "caves", "casts",
-            "depth", "lakes", "water", "swamp", "docks",
-            "guppy", "bream", "poach", "fried", "worms",
-            "fishy", "angle", "diver", "motor", "bilge",
-            "barge", "trout", "coral"
+            "depth", "water", "swamp", "barge", "motor",
+            "guppy", "bream", "poach", "fried", "wormy",
+            "fishy", "angle", "diver",
         };
 
         private static readonly HashSet<string> wordList = new()
