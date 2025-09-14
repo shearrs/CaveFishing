@@ -24,7 +24,7 @@ namespace CaveFishing.Fishing.UI
 
         private readonly Dictionary<string, WordleLetterUI> mappedKeyboard = new();
         private readonly List<ManagedKey> pressedKeys = new();
-        private readonly List<Tween> shakeTweens = new();
+        private Tween shakeTween;
         private IManagedInput keyInput;
 
         private void Awake()
@@ -81,23 +81,12 @@ namespace CaveFishing.Fishing.UI
 
         private void OnInvalidWordSubmitted()
         {
-            var currentLetters = wordle.CurrentWord.WordleLetters;
+            var word = wordle.CurrentWord;
 
-            foreach (var tween in shakeTweens)
-                tween?.Dispose();
+            if (shakeTween.IsPlaying)
+                return;
 
-            shakeTweens.Clear();
-
-            // THIS DOESNT WORK AS IT DOESNT SET THEIR LOCAL POSITION BACK
-            // EITHER WE NEED A DICTIONARY
-            // OR TWEENS NEED A SET OF CALLBACKS FOR WHEN THEY ARE STOPPED OR SOMETHING
-
-            foreach (var letter in currentLetters)
-            {
-                var tween = letter.transform.DoShakeTween(10f, 0.02f, shakeTweenData);
-
-                shakeTweens.Add(tween);
-            }
+            shakeTween = word.transform.DoShakeTween(5, 0.02f, shakeTweenData);
         }
 
         private void OnKeyPressed(ManagedInputInfo info)
