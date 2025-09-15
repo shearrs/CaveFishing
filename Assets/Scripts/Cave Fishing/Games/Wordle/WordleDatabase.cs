@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CaveFishing.Fishing
+namespace CaveFishing.Games.WordleGame
 {
     public static class WordleDatabase
     {

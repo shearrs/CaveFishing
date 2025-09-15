@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CaveFishing.Fishing
+namespace CaveFishing.Games.WordleGame
 {
     public class WordleLetter : MonoBehaviour
     {

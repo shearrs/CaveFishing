@@ -1,17 +1,16 @@
 {
-    "name": "CaveFishing.Players",
-    "rootNamespace": "CaveFishing.Players",
+    "name": "CaveFishing.Games.WordleGame.UI",
+    "rootNamespace": "CaveFishing.Games.WordleGame.UI",
     "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
-        "GUID:624a85509f829424398b0fa44ae4b076",
-        "GUID:82e1ca9b695ad5f4b9951665b5cfbd3f",
-        "GUID:bc9c2eb1bf6b94f4b82f86ecd181f5c7",
+        "GUID:f407bcfcca25ec846a3710ecbfd18364",
         "GUID:47c78b473e92098469ae5153d34a31e6",
-        "GUID:846fcb6554688f647858d656b3fb5159",
+        "GUID:624a85509f829424398b0fa44ae4b076",
         "GUID:f9343658ba9f34f40af4f1a7b0c76be7",
-        "GUID:a4c64ce83ac5e5b42bef8d9745c514f4",
-        "GUID:b1016d1f77c4823448db1fcc842dc749",
-        "GUID:7493c8a77dd446d4a91af371740c7ff8"
+        "GUID:5cb9b49caeb04804393ac93afe3aaf32",
+        "GUID:7493c8a77dd446d4a91af371740c7ff8",
+        "GUID:58fc0b6e02ecec44ea7cf5aaa77705e5"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

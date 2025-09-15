@@ -6,7 +6,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace CaveFishing.Fishing.UI
+namespace CaveFishing.Games.WordleGame.UI
 {
     public class WordleLetterUI : MonoBehaviour
     {

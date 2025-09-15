@@ -5,7 +5,7 @@ using Shears.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CaveFishing.Fishing.UI
+namespace CaveFishing.Games.WordleGame.UI
 {
     public class WordleUI : SHMonoBehaviourLogger
     {

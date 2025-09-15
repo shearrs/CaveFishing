@@ -1,13 +1,15 @@
 using Shears;
 using Shears.Input;
 using Shears.Logging;
+using Shears.Signals;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CaveFishing.Fishing
+namespace CaveFishing.Games.WordleGame
 {
-    public class Wordle : SHMonoBehaviourLogger
+    public class Wordle : Minigame
     {
         private const int MAX_GUESSES = 6;
 
@@ -20,17 +22,20 @@ namespace CaveFishing.Fishing
         private readonly List<char> grayCharacters = new();
         private readonly List<char> yellowCharacters = new();
         private readonly List<char> greenCharacters = new();
+        private bool isEnding = false;
         private WordleWord currentWord;
+
+        public WordleWord CurrentWord => currentWord;
+        public int CurrentWordLength => currentWord.Word.Length;
 
         public event Action Enabled;
         public event Action Disabled;
         public event Action InvalidWordSubmitted;
 
-        public WordleWord CurrentWord => currentWord;
-        public int CurrentWordLength => currentWord.Word.Length;
-
-        public void Enable()
+        public override void Enable()
         {
+            isEnding = false;
+
             currentGuess = 0;
             currentWord = words[0];
             targetWord = WordleDatabase.GetWord();
@@ -41,11 +46,15 @@ namespace CaveFishing.Fishing
             CursorManager.SetCursorLockMode(CursorLockMode.None);
 
             Enabled?.Invoke();
+            SignalShuttle.Emit(new GameEnabledSignal());
         }
 
         public void Disable()
         {
+            isEnding = false;
+
             Disabled?.Invoke();
+            SignalShuttle.Emit(new GameDisabledSignal());
         }
 
         private void ResetLetters()
@@ -66,16 +75,25 @@ namespace CaveFishing.Fishing
 
         public void AddLetter(string letter)
         {
+            if (isEnding)
+                return;
+
             currentWord.AddLetter(letter);
         }
 
         public void RemoveLetter()
         {
+            if (isEnding)
+                return;
+
             currentWord.RemoveLetter();
         }
 
         public void SubmitGuess()
         {
+            if (isEnding)
+                return;
+
             string guess = currentWord.Word;
             Log("Submit guess: " + guess);
 
@@ -87,6 +105,7 @@ namespace CaveFishing.Fishing
 
             if (guess == targetWord)
             {
+                StartCoroutine(IEEndGame());
                 return;
             }
 
@@ -182,6 +201,15 @@ namespace CaveFishing.Fishing
                     break;
                 }
             }
+        }
+    
+        private IEnumerator IEEndGame()
+        {
+            isEnding = true;
+
+            yield return CoroutineUtil.WaitForSeconds(3.0f);
+
+            Disable();
         }
     }
 }
