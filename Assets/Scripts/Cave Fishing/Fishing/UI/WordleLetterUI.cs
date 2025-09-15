@@ -111,6 +111,9 @@ namespace CaveFishing.Fishing.UI
                     break;
             }
 
+            if (type == WordleLetter.LetterType.None)
+                return;
+
             flipTween?.Dispose();
 
             Vector3 rotation = new(0f, 90f, 0);
