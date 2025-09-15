@@ -8,6 +8,8 @@ namespace CaveFishing.Players
     [RequireComponent(typeof(ManagedCamera), typeof(FirstPersonCameraState))]
     public class PlayerCamera : MonoBehaviour
     {
+        [SerializeField] private bool isEnabled = true;
+
         [Header("Components")]
         [SerializeField] private ManagedInputMap inputMap;
         [SerializeField] private PlayerCharacter character;
@@ -58,7 +60,10 @@ namespace CaveFishing.Players
 
         private void Start()
         {
-            managedCamera.SetState(null);
+            if (!isEnabled)
+                managedCamera.SetState(null);
+            else
+                managedCamera.SetState(firstPersonState);
         }
 
         private void OnEnable()

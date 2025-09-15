@@ -1121,17 +1121,65 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4032587420668280591, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269169415265798950, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: runtimeInfoExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: reelTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.usesCurve
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: chargeTweenData.isExpanded
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: releaseTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: returnTweenData.curve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8547109476936458506, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

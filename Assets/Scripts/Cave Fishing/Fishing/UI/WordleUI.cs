@@ -83,7 +83,7 @@ namespace CaveFishing.Fishing.UI
         {
             var word = wordle.CurrentWord;
 
-            if (shakeTween.IsPlaying)
+            if (shakeTween != null && shakeTween.IsPlaying)
                 return;
 
             shakeTween = word.transform.DoShakeTween(5, 0.02f, shakeTweenData);
