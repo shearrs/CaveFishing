@@ -29,11 +29,6 @@ namespace CaveFishing.Fishing
         public WordleWord CurrentWord => currentWord;
         public int CurrentWordLength => currentWord.Word.Length;
 
-        private void Awake()
-        {
-            Invoke(nameof(Enable), 0.5f);
-        }
-
         public void Enable()
         {
             currentGuess = 0;
