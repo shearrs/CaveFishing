@@ -1,0 +1,135 @@
+{
+    "version": 1,
+    "name": "Showcase Input Actions",
+    "maps": [
+        {
+            "name": "Showcase",
+            "id": "a511cb86-f1ff-441d-84af-930af8a790a0",
+            "actions": [
+                {
+                    "name": "Fishing 1",
+                    "type": "Button",
+                    "id": "f01a6fc6-9824-49a5-bb0e-fd525eeec8cf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fishing 2",
+                    "type": "Button",
+                    "id": "5132a53f-1110-45b8-857b-c3376c9f143a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Toggle Camera",
+                    "type": "Button",
+                    "id": "79d07373-b34f-4f41-9729-42e573331d03",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Increase Smoothing",
+                    "type": "Button",
+                    "id": "9f0363f8-9a05-4745-b589-fb4484631caa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Decrease Smoothing",
+                    "type": "Button",
+                    "id": "0af423df-3150-41dd-a2e9-32834a799099",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reset Smoothing",
+                    "type": "Button",
+                    "id": "1eb39691-6fe3-431f-8562-1a748fa144b6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d4e20177-97e2-446f-8ff2-084e8dee1b07",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fishing 1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd474ced-69b1-4833-b5d8-6b3dd911692a",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fishing 2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f256f588-bf4e-457c-a57d-af780c1488fc",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Toggle Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94cd6542-888f-4ecf-b428-eb65be6f9ba5",
+                    "path": "<Keyboard>/equals",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Increase Smoothing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edf08fc6-4132-45a3-ac82-26bc403c99b1",
+                    "path": "<Keyboard>/minus",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Decrease Smoothing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63b43024-98ea-44bf-9b28-3b2eb12ef32d",
+                    "path": "<Keyboard>/backslash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset Smoothing",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

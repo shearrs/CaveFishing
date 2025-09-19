@@ -9,19 +9,22 @@ namespace CaveFishing
         private enum Mode { Teleport, Lerp, Tween }
 
         [SerializeField] private Transform moveTarget;
+        [SerializeField] private Transform scaleTarget;
         [SerializeField] private Mode mode;
         [SerializeField] private bool test;
 
         [Header("Positions")]
         [SerializeField] private Vector3 offPosition;
         [SerializeField] private Vector3 onPosition;
+        [SerializeField] private Vector3 scale = Vector3.one;
 
         [Header("Movement Settings")]
         [SerializeField] private float moveTime = 0.5f;
         [SerializeField] private StructTweenData tweenData;
 
         private bool isEnabled = false;
-        private Tween tween;
+        private Tween moveTween;
+        private Tween scaleTween;
 
         private void Update()
         {
@@ -45,27 +48,33 @@ namespace CaveFishing
         {
             isEnabled = true;
 
-            MoveTo(onPosition);
+            MoveTo(onPosition, scale);
         }
 
         public void Disable()
         {
             isEnabled = false;
 
-            MoveTo(offPosition);
+            MoveTo(offPosition, Vector3.one);
         }
 
-        private void MoveTo(Vector3 pos)
+        private void MoveTo(Vector3 pos, Vector3 scale)
         {
             StopAllCoroutines();
-            tween?.Dispose();
+            moveTween?.Dispose();
+            scaleTween?.Dispose();
 
             if (mode == Mode.Teleport)
                 moveTarget.localPosition = pos;
             else if (mode == Mode.Lerp)
                 StartCoroutine(IEMoveTo(moveTarget.parent.TransformPoint(pos)));
             else if (mode == Mode.Tween)
-                tween = moveTarget.DoMoveTween(moveTarget.parent.TransformPoint(pos), tweenData);
+            {
+                var scaledPos = moveTarget.parent.TransformPoint(pos);
+
+                moveTween = moveTarget.DoMoveLocalTween(pos, tweenData);
+                scaleTween = scaleTarget.DoScaleLocalTween(scale, tweenData);
+            }
         }
 
         private IEnumerator IEMoveTo(Vector3 position)
