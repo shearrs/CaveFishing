@@ -57,12 +57,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455381270098567348}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.123, z: 1.132}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.38268334, y: 0.000000025135025, z: -0.000000016012772, w: 0.9238796}
+  m_LocalPosition: {x: 0, y: 0.88986945, z: 0.15143289}
+  m_LocalScale: {x: 23.792719, y: 11.441885, z: 11.441889}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1808051232814620116}
+  m_Father: {fileID: 2706874002313815924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1623896301145806279
 GameObject:
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3885226734343727533}
-  - component: {fileID: 1610228358646664161}
+  - component: {fileID: 5138068095606887572}
   m_Layer: 7
   m_Name: Pivot 0
   m_TagString: Untagged
@@ -150,7 +150,7 @@ Transform:
   - {fileID: 8132058630175127933}
   m_Father: {fileID: 2859220295343389416}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!114 &1610228358646664161
+--- !u!114 &5138068095606887572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,15 +159,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2187129924368351222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3a2ef160639224faa559f6a2ff9261, type: 3}
+  m_Script: {fileID: 11500000, guid: ceed461444e2fb44caf617b6a284c986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 217328717460948952}
-  followPosition: 0
-  offset: {x: 0, y: 0, z: 0}
-  positionSmoothTime: 0
-  followRotation: 1
-  rotationTime: 0.05
+  springStrength: 10
+  damping: 50
 --- !u!1 &3045123069538034137
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 508551582412039885}
-  - component: {fileID: 908202656296906224}
+  - component: {fileID: 8382974368541227759}
   m_Layer: 7
   m_Name: Pivot 2
   m_TagString: Untagged
@@ -374,7 +371,7 @@ Transform:
   - {fileID: 3575048226499148953}
   m_Father: {fileID: 8132058630175127933}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!114 &908202656296906224
+--- !u!114 &8382974368541227759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -383,15 +380,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3255413975883142952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3a2ef160639224faa559f6a2ff9261, type: 3}
+  m_Script: {fileID: 11500000, guid: ceed461444e2fb44caf617b6a284c986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 8132058630175127933}
-  followPosition: 0
-  offset: {x: 0, y: 0, z: 0}
-  positionSmoothTime: 0
-  followRotation: 1
-  rotationTime: 0.05
+  springStrength: 10
+  damping: 50
 --- !u!1 &4066503163597484240
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8132058630175127933}
-  - component: {fileID: 5762172011897967026}
+  - component: {fileID: 5969512938460022957}
   m_Layer: 7
   m_Name: Pivot 1
   m_TagString: Untagged
@@ -665,7 +659,7 @@ Transform:
   - {fileID: 508551582412039885}
   m_Father: {fileID: 3885226734343727533}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!114 &5762172011897967026
+--- !u!114 &5969512938460022957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -674,15 +668,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4134357527114999083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3a2ef160639224faa559f6a2ff9261, type: 3}
+  m_Script: {fileID: 11500000, guid: ceed461444e2fb44caf617b6a284c986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 3885226734343727533}
-  followPosition: 0
-  offset: {x: 0, y: 0, z: 0}
-  positionSmoothTime: 0
-  followRotation: 1
-  rotationTime: 0.05
+  springStrength: 10
+  damping: 50
 --- !u!1 &5056675250599703492
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +886,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.1251, z: -0}
   m_LocalScale: {x: 0.042029664, y: 0.1327667, z: 0.042029634}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5414881159558514858}
   m_Father: {fileID: 3575048226499148953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4874880279802294850
@@ -1129,7 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78769f95462bbe4d93080e259a32515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawGizmos: 1
+  drawGizmos: 0
   closed: 0
   points: []
 --- !u!1 &7749276303338104416
@@ -1164,7 +1156,6 @@ Transform:
   m_Children:
   - {fileID: 2859220295343389416}
   - {fileID: 1783386472366268692}
-  - {fileID: 5414881159558514858}
   - {fileID: 6372712286926735735}
   m_Father: {fileID: 9026674239116312980}
   m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
@@ -1344,7 +1335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3575048226499148953}
-  - component: {fileID: 9034665083662313433}
+  - component: {fileID: 2009538574650143774}
   m_Layer: 7
   m_Name: Pivot 3
   m_TagString: Untagged
@@ -1368,7 +1359,7 @@ Transform:
   - {fileID: 2706874002313815924}
   m_Father: {fileID: 508551582412039885}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!114 &9034665083662313433
+--- !u!114 &2009538574650143774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1377,12 +1368,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8183458405283793024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3a2ef160639224faa559f6a2ff9261, type: 3}
+  m_Script: {fileID: 11500000, guid: ceed461444e2fb44caf617b6a284c986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 508551582412039885}
-  followPosition: 0
-  offset: {x: 0, y: 0.340119, z: 0}
-  positionSmoothTime: 0
-  followRotation: 1
-  rotationTime: 0.05
+  springStrength: 10
+  damping: 50
