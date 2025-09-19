@@ -51,6 +51,9 @@ namespace CaveFishing.Players
         private void OnFishReeled()
         {
             Log("Fish reeled.");
+            var minigame = fishingRod.Bobber.GetMinigame();
+
+            minigame.Enable();
         }
     }
 }
