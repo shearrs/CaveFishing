@@ -23,6 +23,7 @@ namespace CaveFishing.Players
 
         [Header("Settings")]
         [SerializeField] private float moveSpeed = 3f;
+        [SerializeField] private float sprintSpeed = 6f;
         [SerializeField] private float jumpForce = 3f;
         [SerializeField] private float gravity = -9.81f;
 
@@ -41,6 +42,7 @@ namespace CaveFishing.Players
         private IManagedInput movementInput;
         private IManagedInput jumpInput;
         private IManagedInput crouchInput;
+        private IManagedInput sprintInput;
 
         public ITweenData CrouchTweenData => crouchTweenData;
 
@@ -58,7 +60,8 @@ namespace CaveFishing.Players
             inputMap.GetInputs(
                 ("Move", i => movementInput = i),
                 ("Jump", i => jumpInput = i),
-                ("Crouch", i => crouchInput = i)
+                ("Crouch", i => crouchInput = i),
+                ("Sprint", i => sprintInput = i)
                 );
 
             Enable();
@@ -128,7 +131,8 @@ namespace CaveFishing.Players
             right.Normalize();
 
             var movement = (forward * input.y) + (right * input.x);
-            movement *= moveSpeed * Time.deltaTime;
+            float speed = sprintInput.IsPressed() ? sprintSpeed : moveSpeed;
+            movement *= speed * Time.deltaTime;
 
             controller.Move(movement);
 
