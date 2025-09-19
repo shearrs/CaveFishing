@@ -62,8 +62,6 @@ namespace CaveFishing.Players
         {
             if (!isEnabled)
                 managedCamera.SetState(null);
-            else
-                managedCamera.SetState(firstPersonState);
         }
 
         private void OnEnable()
