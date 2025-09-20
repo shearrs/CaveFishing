@@ -116,8 +116,6 @@ namespace CaveFishing.Games.WordleGame
             guessLetters.AddRange(currentWord.WordleLetters);
             targetCharacters.AddRange(targetWord);
 
-            Log("before: " + targetCharacters.ToCollectionString());
-
             for (int i = 0; i < guess.Length; i++)
             {
                 char guessCharacter = guess[i];
@@ -151,8 +149,6 @@ namespace CaveFishing.Games.WordleGame
                 }
             }
 
-            Log("after: " + targetCharacters.ToCollectionString());
-
             // these are all possible yellows
             for (int i = 0; i < guessLetters.Count; i++)
             {
@@ -165,8 +161,6 @@ namespace CaveFishing.Games.WordleGame
 
                     continue;
                 }
-
-                Debug.Log($"contains {character}");
 
                 letter.SetType(WordleLetter.LetterType.Yellow, currentWord.IndexOf(letter));
 
