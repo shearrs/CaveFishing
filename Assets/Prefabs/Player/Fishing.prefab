@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 217328717460948952}
-  springStrength: 10
-  damping: 50
+  springStrength: 25
+  damping: 100
 --- !u!1 &3045123069538034137
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 8132058630175127933}
-  springStrength: 10
-  damping: 50
+  springStrength: 25
+  damping: 100
 --- !u!1 &4066503163597484240
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,8 +672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 3885226734343727533}
-  springStrength: 10
-  damping: 50
+  springStrength: 25
+  damping: 100
 --- !u!1 &5056675250599703492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,5 +1372,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 508551582412039885}
-  springStrength: 10
-  damping: 50
+  springStrength: 25
+  damping: 100

@@ -49,6 +49,8 @@ namespace CaveFishing.Games.WordleGame
             return letters[index].Letter;
         }
 
+        public int IndexOf(WordleLetter letter) => letters.IndexOf(letter);
+
         private string GetWord()
         {
             string word = string.Empty;

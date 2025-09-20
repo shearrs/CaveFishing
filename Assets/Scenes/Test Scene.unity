@@ -1646,6 +1646,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2374619623436828015, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
+      propertyPath: <LogLevels>k__BackingField
+      value: 29
+      objectReference: {fileID: 0}
     - target: {fileID: 2596054373969500488, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
