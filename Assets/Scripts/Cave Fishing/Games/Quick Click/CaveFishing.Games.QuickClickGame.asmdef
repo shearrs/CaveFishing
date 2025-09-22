@@ -1,0 +1,17 @@
+{
+    "name": "CaveFishing.Games.QuickClickGame",
+    "rootNamespace": "CaveFishing.Games.QuickClickGame",
+    "references": [
+        "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
+        "GUID:7493c8a77dd446d4a91af371740c7ff8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
