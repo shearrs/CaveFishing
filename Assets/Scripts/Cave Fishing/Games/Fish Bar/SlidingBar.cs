@@ -22,9 +22,9 @@ namespace CaveFishing.Games.FishBarGame
 
         }
 
-        public void MoveUp()
+        public void MoveUp(float amount)
         {
-
+            progress += amount;
         }
 
         private void MoveDown()
