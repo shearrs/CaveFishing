@@ -1,3 +1,4 @@
+using CaveFishing.Games;
 using Shears.Tweens;
 using System;
 using UnityEngine;
@@ -9,8 +10,9 @@ namespace CaveFishing.Fishing
     {
         [SerializeField] private float biteOffset = 0.15f;
 
-        private bool isBiting = false;
         private Rigidbody rb;
+        private FishingSpot currentSpot;
+        private bool isBiting = false;
 
         public bool IsBiting => isBiting;
 
@@ -42,6 +44,11 @@ namespace CaveFishing.Fishing
             isBiting = true;
         }
 
+        public Minigame GetMinigame()
+        {
+            return currentSpot.GetMinigame();
+        }
+
         public void EndBite()
         {
             Vector3 offset = biteOffset * Vector3.up;
@@ -58,6 +65,7 @@ namespace CaveFishing.Fishing
 
             rb.isKinematic = true;
 
+            currentSpot = fishingSpot;
             EnteredWater?.Invoke();
         }
     }

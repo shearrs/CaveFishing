@@ -41,6 +41,7 @@ namespace CaveFishing.Fishing
         private State state = State.None;
 
         public State CurrentState => state;
+        public Bobber Bobber => bobber;
 
         public event Action FishReeled;
 
@@ -95,6 +96,7 @@ namespace CaveFishing.Fishing
             if (bobber.IsBiting)
             {
                 bobber.EndBite();
+
                 FishReeled?.Invoke();
             }
         }

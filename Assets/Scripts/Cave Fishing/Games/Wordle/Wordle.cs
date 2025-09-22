@@ -1,6 +1,5 @@
 using Shears;
 using Shears.Input;
-using Shears.Logging;
 using Shears.Signals;
 using System;
 using System.Collections;
@@ -22,6 +21,8 @@ namespace CaveFishing.Games.WordleGame
         private readonly List<char> grayCharacters = new();
         private readonly List<char> yellowCharacters = new();
         private readonly List<char> greenCharacters = new();
+        private readonly List<WordleLetter> guessLetters = new();
+        private readonly List<char> targetCharacters = new();
         private bool isEnding = false;
         private WordleWord currentWord;
 
@@ -49,7 +50,7 @@ namespace CaveFishing.Games.WordleGame
             SignalShuttle.Emit(new GameEnabledSignal());
         }
 
-        public void Disable()
+        public override void Disable()
         {
             isEnding = false;
 
@@ -103,85 +104,72 @@ namespace CaveFishing.Games.WordleGame
                 return;
             }
 
+            guessLetters.Clear();
+            targetCharacters.Clear();
+            guessLetters.AddRange(currentWord.WordleLetters);
+            targetCharacters.AddRange(targetWord);
+
+            for (int i = 0; i < guess.Length; i++)
+            {
+                char guessCharacter = guess[i];
+
+                if (!targetCharacters.Contains(guessCharacter))
+                {
+                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
+
+                    if (!grayCharacters.Contains(guessCharacter))
+                    {
+                        grayCharacters.Add(guessCharacter);
+                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Gray);
+                    }
+
+                    guessLetters.Remove(currentWord.WordleLetters[i]);
+                }
+                else if (guessCharacter == targetWord[i])
+                {
+                    currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
+
+                    if (!greenCharacters.Contains(guessCharacter))
+                    {
+                        yellowCharacters.Remove(guessCharacter);
+                        greenCharacters.Add(guessCharacter);
+
+                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Green);
+                    }
+
+                    guessLetters.Remove(currentWord.WordleLetters[i]);
+                    targetCharacters.Remove(guessCharacter);
+                }
+            }
+
+            // these are all possible yellows
+            for (int i = 0; i < guessLetters.Count; i++)
+            {
+                var letter = guessLetters[i];
+                char character = letter.Letter[0];
+
+                if (!targetCharacters.Contains(character))
+                {
+                    letter.SetType(WordleLetter.LetterType.Gray, currentWord.IndexOf(letter));
+
+                    continue;
+                }
+
+                letter.SetType(WordleLetter.LetterType.Yellow, currentWord.IndexOf(letter));
+
+                if (!greenCharacters.Contains(character) && !yellowCharacters.Contains(character))
+                {
+                    yellowCharacters.Add(character);
+                    SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Yellow);
+                }
+
+                targetCharacters.Remove(character);
+            }
+
             if (guess == targetWord)
             {
                 StartCoroutine(IEEndGame());
                 return;
-            }
-
-            for (int i = 0; i < guess.Length; i++)
-            {
-                char character = guess[i];
-                
-                if (!targetWord.Contains(character))
-                {
-                    currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
-
-                    if (!grayCharacters.Contains(character))
-                    {
-                        grayCharacters.Add(character);
-                        SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Gray);
-                    }
-                }
-                else
-                {
-                    char targetCharacter = targetWord[i];
-
-                    if (targetCharacter == character)
-                    {
-                        currentWord.SetLetterType(i, WordleLetter.LetterType.Green);
-
-                        if (!greenCharacters.Contains(targetCharacter))
-                        {
-                            yellowCharacters.Remove(targetCharacter);
-                            greenCharacters.Add(targetCharacter);
-
-                            SetKeyboardLetter(targetCharacter.ToString(), WordleLetter.LetterType.Green);
-                        }
-                    }
-                    else
-                    {
-                        int targetIndex = targetWord.IndexOf(character);
-                        bool needsLetter = false;
-
-                        while (targetIndex != -1)
-                        {
-                            if (currentWord.GetLetter(targetIndex) != targetCharacter.ToString())
-                            {
-                                needsLetter = true;
-                                break;
-                            }
-
-                            if (targetIndex == targetWord.Length - 1)
-                                break;
-
-                            targetIndex = targetWord.IndexOf(character, targetIndex + 1);
-
-                            Log($"Index: {targetIndex}", SHLogLevels.Fatal);
-                        }
-
-                        if (needsLetter)
-                        {
-                            currentWord.SetLetterType(i, WordleLetter.LetterType.Yellow);
-
-                            if (!yellowCharacters.Contains(character))
-                            {
-                                yellowCharacters.Add(character);
-                                SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Yellow);
-                            }
-                        }
-                        else
-                        {
-                            currentWord.SetLetterType(i, WordleLetter.LetterType.Gray);
-
-                            if (!grayCharacters.Contains(targetCharacter))
-                            {
-                                grayCharacters.Add(character);
-                                SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Gray);
-                            }
-                        }
-                    }
-                }
             }
 
             currentGuess++;

@@ -11,7 +11,6 @@ namespace CaveFishing.Players
     {
         [Header("Components")]
         [SerializeField] private ManagedInputProvider inputProvider;
-        [SerializeField] private Transform relativeTransform;
         [SerializeField] private FishingRod fishingRod;
 
         private IManagedInput castInput;
@@ -19,11 +18,6 @@ namespace CaveFishing.Players
         private void Awake()
         {
             castInput = inputProvider.GetInput("Cast");
-        }
-
-        private void Start()
-        {
-            fishingRod.transform.SetParent(relativeTransform);
         }
 
         private void OnEnable()
@@ -57,6 +51,9 @@ namespace CaveFishing.Players
         private void OnFishReeled()
         {
             Log("Fish reeled.");
+            var minigame = fishingRod.Bobber.GetMinigame();
+
+            minigame.Enable();
         }
     }
 }
