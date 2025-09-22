@@ -1,3 +1,4 @@
+using Shears.Signals;
 using System;
 using UnityEngine;
 
@@ -18,6 +19,12 @@ namespace CaveFishing.Games.QuickClickGame
         }
 
         public event Action PositionSet;
+
+        public void OnClicked()
+        {
+            SignalShuttle.Emit(new TargetClickedSignal());
+            Destroy(gameObject);
+        }
     }
 }
  

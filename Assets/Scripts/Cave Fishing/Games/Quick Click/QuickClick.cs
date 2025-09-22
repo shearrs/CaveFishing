@@ -1,4 +1,5 @@
 using Shears;
+using Shears.Signals;
 using System.Collections;
 using UnityEngine;
 
@@ -10,17 +11,28 @@ namespace CaveFishing.Games.QuickClickGame
         [SerializeField] private float gameDuration;
         [SerializeField] private float minSpawnTime;
         [SerializeField] private float maxSpawnTime;
+        [SerializeField, ReadOnly] private int count;
 
         private readonly Timer gameTimer = new();
         private readonly Timer buttonTimer = new();
 
+        private void OnValidate()
+        {
+            if(minSpawnTime > maxSpawnTime)
+            {
+                maxSpawnTime = minSpawnTime;
+            }
+        }
+
         public void Awake()
         {
             Enable();
+            SignalShuttle.Register<TargetClickedSignal>(OnTargetClicked);
         }
 
         public void Enable()
         {
+            count = 0;
             gameTimer.Start(gameDuration);
             
             StartCoroutine(IESpawnButtons());
@@ -54,6 +66,11 @@ namespace CaveFishing.Games.QuickClickGame
 
             var button = Instantiate(targetPrefab, transform);
             button.Position = new Vector2(x,y);
+        }
+
+        private void OnTargetClicked(TargetClickedSignal signal)
+        {
+            count++;
         }
     }
 }

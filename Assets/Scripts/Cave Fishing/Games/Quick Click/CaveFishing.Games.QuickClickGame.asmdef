@@ -3,7 +3,8 @@
     "rootNamespace": "CaveFishing.Games.QuickClickGame",
     "references": [
         "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
-        "GUID:7493c8a77dd446d4a91af371740c7ff8"
+        "GUID:7493c8a77dd446d4a91af371740c7ff8",
+        "GUID:a4c64ce83ac5e5b42bef8d9745c514f4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

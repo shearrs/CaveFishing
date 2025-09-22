@@ -340,6 +340,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5940048971761872946}
+        m_TargetAssemblyTypeName: CaveFishing.Games.QuickClickGame.ClickTarget, CaveFishing.Games.QuickClickGame
+        m_MethodName: OnClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   clickEnded:
     m_PersistentCalls:
       m_Calls:
@@ -425,10 +437,10 @@ MonoBehaviour:
   eventsFoldout: 1
   activationFoldout: 0
   selectFoldout: 0
-  clickFoldout: 0
+  clickFoldout: 1
   focusFoldout: 0
   hoverFoldout: 0
-  hoverClickedFoldout: 1
+  hoverClickedFoldout: 0
   navigationFoldout: 0
   navigation:
     type: 0
