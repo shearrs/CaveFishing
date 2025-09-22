@@ -8,7 +8,10 @@ namespace CaveFishing.Games.FishBarGame
     {
         [Header("Input")]
         [SerializeField] private ManagedInputProvider inputProvider;
-        [SerializeField] private float movementSensitivity = 1.0f;
+
+        [Header("Components")]
+        [SerializeField] private SlidingBar slidingBar;
+        [SerializeField] private SlidingFish slidingFish;
 
         private IManagedInput reelInput;
 
@@ -17,10 +20,16 @@ namespace CaveFishing.Games.FishBarGame
             reelInput = inputProvider.GetInput("Reel");
         }
 
+        private void Start()
+        {
+            Enable();
+        }
+
         public override void Enable()
         {
             reelInput.Enable();
-            reelInput.Performed += OnReelInput;
+            slidingBar.Enable();
+            slidingFish.Enable();
 
             SignalShuttle.Emit(new GameEnabledSignal());
         }
@@ -28,14 +37,16 @@ namespace CaveFishing.Games.FishBarGame
         public override void Disable()
         {
             reelInput.Disable();
-            reelInput.Performed -= OnReelInput;
+            slidingBar.Disable();
+            slidingFish.Disable();
 
             SignalShuttle.Emit(new GameDisabledSignal());
         }
 
-        private void OnReelInput(ManagedInputInfo info)
+        private void Update()
         {
-            // tell bar to move up
+            if (reelInput.IsPressed())
+                slidingBar.MoveUp();
         }
     }
 }
