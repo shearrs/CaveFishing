@@ -1,12 +1,10 @@
 using Shears;
 using Shears.Input;
-using Shears.Logging;
 using Shears.Signals;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 namespace CaveFishing.Games.WordleGame
 {
@@ -35,11 +33,6 @@ namespace CaveFishing.Games.WordleGame
         public event Action Disabled;
         public event Action InvalidWordSubmitted;
 
-        private void Start()
-        {
-            Enable();
-        }
-
         public override void Enable()
         {
             isEnding = false;
@@ -57,7 +50,7 @@ namespace CaveFishing.Games.WordleGame
             SignalShuttle.Emit(new GameEnabledSignal());
         }
 
-        public void Disable()
+        public override void Disable()
         {
             isEnding = false;
 
