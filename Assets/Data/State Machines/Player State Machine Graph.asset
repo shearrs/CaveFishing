@@ -42,14 +42,14 @@ MonoBehaviour:
       keys:
       - f41a2bd3-6d25-41ec-8e61-79132c361cc8
       values:
-      - rid: 399812652864897024
+      - rid: 399812652864897089
     parameterProviders: []
     defaultState:
-      rid: 399812652864897024
+      rid: 399812652864897089
   references:
     version: 2
     RefIds:
-    - rid: 399812652864897024
+    - rid: 399812652864897089
       type: {class: PlayerControlState, ns: CaveFishing.Players, asm: CaveFishing.Players}
       data:
         name: Player Control

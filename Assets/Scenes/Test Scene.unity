@@ -916,9 +916,9 @@ MonoBehaviour:
   inputProvider: {fileID: 11400000, guid: 86c0c9997fdcad8429921de93e929616, type: 2}
   slidingBar: {fileID: 1719235662}
   slidingFish: {fileID: 833441278}
-  successReelAmount: 0
-  reelDecayAmount: 0
-  reelPower: 0
+  reelPower: 1
+  reelDecayAmount: 1
+  currentReelAmount: 0
 --- !u!1 &1473286903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca972cbc968d2c24b8bcc9765d949e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  risingSpeed: 2
+  risingSpeed: 3
   fallSpeed: 2
   isMovingUp: 0
   progress: 0

@@ -1,3 +1,4 @@
+using Shears;
 using Shears.Input;
 using Shears.Signals;
 using UnityEngine;
@@ -14,9 +15,9 @@ namespace CaveFishing.Games.FishBarGame
         [SerializeField] private SlidingFish slidingFish;
 
         [Header("Game Settings")]
-        [SerializeField, Min(0)] private float successReelAmount;
-        [SerializeField] private float reelDecayAmount;
-        [SerializeField] private float reelPower;
+        [SerializeField, Min(0f)] private float reelPower = 1f;
+        [SerializeField, Min(0f)] private float reelDecayAmount = 1f;
+        [SerializeField, ReadOnly] private float currentReelAmount = 0f;
 
         private RectTransform barTransform;
         private RectTransform fishTransform;
@@ -59,10 +60,10 @@ namespace CaveFishing.Games.FishBarGame
             if (reelInput.IsPressed())
                 slidingBar.MoveUp();
 
-            if (barTransform.rect.Overlaps(fishTransform.rect))
-            {
-
-            }
+            if (barTransform.GetWorldRect().Overlaps(fishTransform.GetWorldRect()))
+                currentReelAmount += Time.deltaTime * reelPower;
+            else
+                currentReelAmount -= Time.deltaTime * reelDecayAmount;
         }
     }
 }
