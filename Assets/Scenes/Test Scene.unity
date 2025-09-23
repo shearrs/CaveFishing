@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &159945853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,10 +735,13 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     unityEvents: []
-  minMinMoveTime: 0.25
-  maxMinMoveTime: 1
-  minMaxMoveTime: 2
-  maxMaxMoveTime: 3
+  moveTimeRanges:
+    min:
+      min: 0.25
+      max: 1
+    max:
+      min: 2
+      max: 3
 --- !u!1 &1204563238
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +916,9 @@ MonoBehaviour:
   inputProvider: {fileID: 11400000, guid: 86c0c9997fdcad8429921de93e929616, type: 2}
   slidingBar: {fileID: 1719235662}
   slidingFish: {fileID: 833441278}
+  successReelAmount: 0
+  reelDecayAmount: 0
+  reelPower: 0
 --- !u!1 &1473286903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,6 +1433,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1466,6 +1488,22 @@ PrefabInstance:
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

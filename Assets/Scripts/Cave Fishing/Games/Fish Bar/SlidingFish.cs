@@ -12,14 +12,7 @@ namespace CaveFishing.Games.FishBarGame
     {
         [SerializeField, ReadOnly, Range(0f, 1f)] private float progress = 0.0f;
         [SerializeField] private StructTweenData tweenData;
-
-        [Header("Min Movement Range")]
-        [SerializeField] private float minMinMoveTime = 0.25f;
-        [SerializeField] private float maxMinMoveTime = 1f;
-
-        [Header("Max Movement Range")]
-        [SerializeField] private float minMaxMoveTime = 2f;
-        [SerializeField] private float maxMaxMoveTime = 3f;
+        [SerializeField] private Range<Range<float>> moveTimeRanges = new(new(0.25f, 1f), new(2f, 3f));
 
         public event Action<float> ProgressUpdated;
 
@@ -38,8 +31,8 @@ namespace CaveFishing.Games.FishBarGame
 
         private IEnumerator IEMove()
         {
-            float minMoveTime = Random.Range(minMinMoveTime, maxMinMoveTime);
-            float maxMoveTime = Random.Range(minMaxMoveTime, maxMaxMoveTime);
+            float minMoveTime = moveTimeRanges.Min.Random();
+            float maxMoveTime = moveTimeRanges.Max.Random();
 
             while (true)
             {

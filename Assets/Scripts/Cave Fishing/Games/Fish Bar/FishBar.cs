@@ -13,11 +13,22 @@ namespace CaveFishing.Games.FishBarGame
         [SerializeField] private SlidingBar slidingBar;
         [SerializeField] private SlidingFish slidingFish;
 
+        [Header("Game Settings")]
+        [SerializeField, Min(0)] private float successReelAmount;
+        [SerializeField] private float reelDecayAmount;
+        [SerializeField] private float reelPower;
+
+        private RectTransform barTransform;
+        private RectTransform fishTransform;
+
         private IManagedInput reelInput;
 
         private void Awake()
         {
             reelInput = inputProvider.GetInput("Reel");
+
+            barTransform = slidingBar.GetComponent<RectTransform>();
+            fishTransform = slidingFish.GetComponent<RectTransform>();
         }
 
         private void Start()
@@ -47,6 +58,11 @@ namespace CaveFishing.Games.FishBarGame
         {
             if (reelInput.IsPressed())
                 slidingBar.MoveUp();
+
+            if (barTransform.rect.Overlaps(fishTransform.rect))
+            {
+
+            }
         }
     }
 }
