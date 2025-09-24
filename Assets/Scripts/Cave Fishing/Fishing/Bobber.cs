@@ -44,9 +44,9 @@ namespace CaveFishing.Fishing
             isBiting = true;
         }
 
-        public Minigame GetMinigame()
+        public Fish GetFish()
         {
-            return currentSpot.GetMinigame();
+            return currentSpot.GetFish();
         }
 
         public void EndBite()

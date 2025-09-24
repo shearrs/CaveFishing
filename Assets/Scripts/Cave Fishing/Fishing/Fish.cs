@@ -5,8 +5,8 @@ namespace CaveFishing.Fishing
 {
     public class Fish : MonoBehaviour
     {
-        [SerializeField] private MinigameType type;
+        [SerializeField] private MinigameType minigameType;
 
-        public MinigameType MinigameType => type;
+        public MinigameType MinigameType => minigameType;
     }
 }

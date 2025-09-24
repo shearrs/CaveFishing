@@ -1,8 +1,8 @@
 using CaveFishing.Fishing;
-using Shears;
+using CaveFishing.Games;
 using Shears.Input;
 using Shears.Logging;
-using System.Collections;
+using Shears.Signals;
 using UnityEngine;
 
 namespace CaveFishing.Players
@@ -13,6 +13,7 @@ namespace CaveFishing.Players
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private FishingRod fishingRod;
 
+        private Fish currentFish;
         private IManagedInput castInput;
 
         private void Awake()
@@ -25,6 +26,9 @@ namespace CaveFishing.Players
             castInput.Started += OnCastInputStarted;
             castInput.Canceled += OnCastInputCanceled;
             fishingRod.FishReeled += OnFishReeled;
+
+            SignalShuttle.Register<GameWonSignal>(OnGameWon);
+            SignalShuttle.Register<GameLostSignal>(OnGameLost);
         }
 
         private void OnDisable()
@@ -32,6 +36,9 @@ namespace CaveFishing.Players
             castInput.Started -= OnCastInputStarted;
             castInput.Canceled -= OnCastInputCanceled;
             fishingRod.FishReeled -= OnFishReeled;
+
+            SignalShuttle.Deregister<GameWonSignal>(OnGameWon);
+            SignalShuttle.Deregister<GameLostSignal>(OnGameLost);
         }
 
         private void OnCastInputStarted(ManagedInputInfo info)
@@ -51,9 +58,20 @@ namespace CaveFishing.Players
         private void OnFishReeled()
         {
             Log("Fish reeled.");
-            var minigame = fishingRod.Bobber.GetMinigame();
-
+            var fish = fishingRod.Bobber.GetFish();
+            var minigame = MinigameManager.GetMinigame(fish.MinigameType);
+            
             minigame.Enable();
+        }
+
+        private void OnGameWon(GameWonSignal signal)
+        {
+            Log("Game won!");
+        }
+
+        private void OnGameLost(GameLostSignal signal)
+        {
+            Log("Game lost!");
         }
     }
 }

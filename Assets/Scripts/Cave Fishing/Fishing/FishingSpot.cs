@@ -1,4 +1,3 @@
-using CaveFishing.Games;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
@@ -7,11 +6,9 @@ namespace CaveFishing.Fishing
     {
         [SerializeField] private Fish[] fish;
 
-        public Minigame GetMinigame()
+        public Fish GetFish()
         {
-            var selectFish = fish[Random.Range(0, fish.Length)];
-
-            return MinigameManager.GetMinigame(selectFish.MinigameType);
+            return fish[Random.Range(0, fish.Length)];
         }
     }
 }

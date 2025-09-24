@@ -168,13 +168,16 @@ namespace CaveFishing.Games.WordleGame
 
             if (guess == targetWord)
             {
-                StartCoroutine(IEEndGame());
+                StartCoroutine(IEEndGame(true));
                 return;
             }
 
             currentGuess++;
             if (currentGuess >= MAX_GUESSES)
+            {
+                StartCoroutine(IEEndGame(false));
                 return;
+            }
 
             currentWord = words[currentGuess];
         }
@@ -191,13 +194,18 @@ namespace CaveFishing.Games.WordleGame
             }
         }
     
-        private IEnumerator IEEndGame()
+        private IEnumerator IEEndGame(bool win)
         {
             isEnding = true;
 
             yield return CoroutineUtil.WaitForSeconds(3.0f);
 
             Disable();
+
+            if (win)
+                SignalShuttle.Emit(new GameWonSignal());
+            else
+                SignalShuttle.Emit(new GameLostSignal());
         }
     }
 }
