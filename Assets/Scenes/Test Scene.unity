@@ -2074,22 +2074,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: damping
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: springStrength
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: damping
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: springStrength
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2129,22 +2113,6 @@ PrefabInstance:
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: damping
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: springStrength
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: damping
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: springStrength
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

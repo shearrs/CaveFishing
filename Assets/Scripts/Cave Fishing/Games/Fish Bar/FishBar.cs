@@ -2,7 +2,6 @@ using Shears.Input;
 using Shears.Signals;
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace CaveFishing.Games.FishBarGame
 {
@@ -29,11 +28,13 @@ namespace CaveFishing.Games.FishBarGame
         private void OnEnable()
         {
             progressBar.FullReelReached += OnFullReelReached;
+            progressBar.EmptyReelReached += OnEmptyReelReached;
         }
 
         private void OnDisable()
         {
             progressBar.FullReelReached -= OnFullReelReached;
+            progressBar.EmptyReelReached -= OnEmptyReelReached;
         }
 
         private void Start()
@@ -70,6 +71,11 @@ namespace CaveFishing.Games.FishBarGame
         }
 
         private void OnFullReelReached()
+        {
+            Disable();
+        }
+
+        private void OnEmptyReelReached()
         {
             Disable();
         }

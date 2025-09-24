@@ -18,12 +18,13 @@ namespace CaveFishing.Games.FishBarGame
 
         public void Enable()
         {
+            SetProgress(0.5f);
             isEnabled = true;
         }
 
         public void Disable()
         {
-            progress = 0;
+            SetProgress(0f);
             isEnabled = false;
         }
 
@@ -42,10 +43,7 @@ namespace CaveFishing.Games.FishBarGame
             else if (velocity > 0.0f && progress == 1.0f)
                 velocity = 0.0f;
 
-            progress += velocity;
-            progress = Mathf.Clamp01(progress);
-
-            ProgressUpdated?.Invoke(progress);
+            SetProgress(progress + velocity);
         }
 
         public void MoveUp()
@@ -58,6 +56,12 @@ namespace CaveFishing.Games.FishBarGame
         private void MoveDown()
         {
             velocity -= Time.deltaTime * Time.deltaTime * fallSpeed;
+        }
+
+        private void SetProgress(float value)
+        {
+            progress = Mathf.Clamp01(value);
+            ProgressUpdated?.Invoke(progress);
         }
     }
 }

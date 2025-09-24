@@ -21,6 +21,7 @@ namespace CaveFishing.Games.FishBarGame
 
         public event Action<float> ReelAmountUpdated;
         public event Action FullReelReached;
+        public event Action EmptyReelReached;
 
         public void Enable()
         {
@@ -61,6 +62,8 @@ namespace CaveFishing.Games.FishBarGame
 
             if (currentReelAmount == 1.0f)
                 FullReelReached?.Invoke();
+            else if (currentReelAmount == 0.0f)
+                EmptyReelReached?.Invoke();
         }
     }
 }
