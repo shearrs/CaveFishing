@@ -13,6 +13,7 @@ namespace CaveFishing.Games.FishBarGame
         [SerializeField, ReadOnly, Range(0f, 1f)] private float progress = 0.0f;
         [SerializeField] private StructTweenData tweenData;
         [SerializeField] private Range<Range<float>> moveTimeRanges = new(new(0.25f, 1f), new(2f, 3f));
+        [SerializeField] private Range<float> moveSpeedRange = new(0.25f, 0.8f);
 
         public event Action<float> ProgressUpdated;
 
@@ -38,6 +39,7 @@ namespace CaveFishing.Games.FishBarGame
             {
                 float startProgress = progress;
                 float newProgress = Random.Range(0f, 1f);
+                tweenData.Duration = moveSpeedRange.Random();
                 var tween = TweenManager.DoTween((t) => progress = Mathf.LerpUnclamped(startProgress, newProgress, t), tweenData);
 
                 while (tween.IsPlaying)

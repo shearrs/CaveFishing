@@ -1,5 +1,6 @@
 using Shears.Input;
 using Shears.Signals;
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -17,9 +18,22 @@ namespace CaveFishing.Games.FishBarGame
 
         private IManagedInput reelInput;
 
+        public event Action Enabled;
+        public event Action Disabled;
+
         private void Awake()
         {
             reelInput = inputProvider.GetInput("Reel");
+        }
+
+        private void OnEnable()
+        {
+            progressBar.FullReelReached += OnFullReelReached;
+        }
+
+        private void OnDisable()
+        {
+            progressBar.FullReelReached -= OnFullReelReached;
         }
 
         private void Start()
@@ -34,6 +48,7 @@ namespace CaveFishing.Games.FishBarGame
             slidingFish.Enable();
             progressBar.Enable();
 
+            Enabled?.Invoke();
             SignalShuttle.Emit(new GameEnabledSignal());
         }
 
@@ -44,6 +59,7 @@ namespace CaveFishing.Games.FishBarGame
             slidingFish.Disable();
             progressBar.Disable();
 
+            Disabled?.Invoke();
             SignalShuttle.Emit(new GameDisabledSignal());
         }
 
@@ -51,6 +67,11 @@ namespace CaveFishing.Games.FishBarGame
         {
             if (reelInput.IsPressed())
                 slidingBar.MoveUp();
+        }
+
+        private void OnFullReelReached()
+        {
+            Disable();
         }
     }
 }

@@ -1,7 +1,6 @@
 using Shears.Input;
 using Shears.Logging;
 using Shears.Tweens;
-using Shears.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace CaveFishing.Games.WordleGame.UI
 
         [Header("Components")]
         [SerializeField] private Wordle wordle;
-        [SerializeField] private ManagedPanel uiContainer;
+        [SerializeField] private Canvas gameCanvas;
 
         [Header("Words")]
         [SerializeField] private List<WordleLetterUI> keyboard;
@@ -53,7 +52,7 @@ namespace CaveFishing.Games.WordleGame.UI
 
         private void OnWordleEnabled()
         {
-            uiContainer.Enable();
+            gameCanvas.enabled = true;
 
             SubscribeToKeyboard();
             keyInput.Performed += OnKeyPressed;
@@ -61,7 +60,7 @@ namespace CaveFishing.Games.WordleGame.UI
 
         private void OnWordleDisabled()
         {
-            uiContainer.Disable();
+            gameCanvas.enabled = false;
 
             UnsubscribeFromKeyboard();
             keyInput.Performed -= OnKeyPressed;
