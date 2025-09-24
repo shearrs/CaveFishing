@@ -1,13 +1,12 @@
 {
-    "name": "CaveFishing.Games.FishBarGame",
-    "rootNamespace": "CaveFishing.Games.FishBarGame",
+    "name": "CaveFishing.Games.FishBarGame.UI",
+    "rootNamespace": "CaveFishing.Games.FishBarGame.UI",
     "references": [
         "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
-        "GUID:624a85509f829424398b0fa44ae4b076",
-        "GUID:f9343658ba9f34f40af4f1a7b0c76be7",
-        "GUID:a4c64ce83ac5e5b42bef8d9745c514f4",
+        "GUID:f407bcfcca25ec846a3710ecbfd18364",
         "GUID:47c78b473e92098469ae5153d34a31e6",
-        "GUID:7493c8a77dd446d4a91af371740c7ff8"
+        "GUID:7493c8a77dd446d4a91af371740c7ff8",
+        "GUID:d136fc9c7d98c574e91dfa917e8f3663"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
