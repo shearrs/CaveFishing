@@ -1,7 +1,7 @@
-using Shears;
 using Shears.Input;
 using Shears.Signals;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace CaveFishing.Games.FishBarGame
 {
@@ -13,23 +13,13 @@ namespace CaveFishing.Games.FishBarGame
         [Header("Components")]
         [SerializeField] private SlidingBar slidingBar;
         [SerializeField] private SlidingFish slidingFish;
-
-        [Header("Game Settings")]
-        [SerializeField, Min(0f)] private float reelPower = 1f;
-        [SerializeField, Min(0f)] private float reelDecayAmount = 1f;
-        [SerializeField, ReadOnly] private float currentReelAmount = 0f;
-
-        private RectTransform barTransform;
-        private RectTransform fishTransform;
+        [SerializeField] private ProgressBar progressBar;
 
         private IManagedInput reelInput;
 
         private void Awake()
         {
             reelInput = inputProvider.GetInput("Reel");
-
-            barTransform = slidingBar.GetComponent<RectTransform>();
-            fishTransform = slidingFish.GetComponent<RectTransform>();
         }
 
         private void Start()
@@ -42,6 +32,7 @@ namespace CaveFishing.Games.FishBarGame
             reelInput.Enable();
             slidingBar.Enable();
             slidingFish.Enable();
+            progressBar.Enable();
 
             SignalShuttle.Emit(new GameEnabledSignal());
         }
@@ -51,6 +42,7 @@ namespace CaveFishing.Games.FishBarGame
             reelInput.Disable();
             slidingBar.Disable();
             slidingFish.Disable();
+            progressBar.Disable();
 
             SignalShuttle.Emit(new GameDisabledSignal());
         }
@@ -59,11 +51,6 @@ namespace CaveFishing.Games.FishBarGame
         {
             if (reelInput.IsPressed())
                 slidingBar.MoveUp();
-
-            if (barTransform.GetWorldRect().Overlaps(fishTransform.GetWorldRect()))
-                currentReelAmount += Time.deltaTime * reelPower;
-            else
-                currentReelAmount -= Time.deltaTime * reelDecayAmount;
         }
     }
 }
