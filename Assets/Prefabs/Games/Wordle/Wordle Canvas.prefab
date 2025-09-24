@@ -47,7 +47,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7948429257544296272}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -192,10 +192,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wordle
       objectReference: {fileID: 0}
-    - target: {fileID: 900095301449367160, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 902941549176549614, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -539,10 +535,6 @@ PrefabInstance:
     - target: {fileID: 2370851780307615661, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2374619623436828015, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
-      propertyPath: <LogLevels>k__BackingField
-      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2596054373969500488, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchorMax.y
@@ -689,9 +681,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142149094881612096, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
-      propertyPath: shakeTweenData.usesDataObject
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: gameCanvas
+      value: 
+      objectReference: {fileID: 7757875774761336232}
     - target: {fileID: 4171214561036960030, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -946,10 +938,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541009751154770967, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6761713644192715947, guid: 3be5b9b118397434799bee933e8e2419, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6956811620688810030, guid: 3be5b9b118397434799bee933e8e2419, type: 3}

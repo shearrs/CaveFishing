@@ -181,6 +181,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Fish Bar",
+            "id": "2b53d270-3147-49db-a78e-43bff66c4d6b",
+            "actions": [
+                {
+                    "name": "Reel",
+                    "type": "PassThrough",
+                    "id": "521200ad-2b7a-4a90-b28d-96fdace17b6e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de8d580b-b0b8-42ce-9544-fe020efacccb",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
