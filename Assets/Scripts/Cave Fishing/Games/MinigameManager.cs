@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CaveFishing.Games
 {
-    public enum MinigameType { Wordle }
+    public enum MinigameType { None, Wordle, FishBar }
 
     [System.Serializable]
     internal class MinigameDictionary : SerializableDictionary<MinigameType, Minigame> { }

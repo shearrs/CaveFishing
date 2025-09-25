@@ -72,11 +72,13 @@ namespace CaveFishing.Games.FishBarGame
 
         private void OnFullReelReached()
         {
+            SignalShuttle.Emit(new GameWonSignal());
             Disable();
         }
 
         private void OnEmptyReelReached()
         {
+            SignalShuttle.Emit(new GameLostSignal());
             Disable();
         }
     }
