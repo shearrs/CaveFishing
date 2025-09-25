@@ -2020,32 +2020,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: chargeRotation
-      value: -45
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: reelTweenData.duration
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: reelTweenData.isExpanded
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: returnTweenData.duration
-      value: 1
+      propertyPath: chargeTweenData.isExpanded
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: returnTweenData.isExpanded
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: reelTweenData.easingFunction
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 8513386133915588134, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
-      propertyPath: reelTweenData.forceFinalValue
-      value: 1
+      propertyPath: releaseTweenData.isExpanded
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
