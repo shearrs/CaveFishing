@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 217328717460948952}
-  springStrength: 1500
+  springStrength: 2500
   damping: 50
 --- !u!1 &3045123069538034137
 GameObject:
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 8132058630175127933}
-  springStrength: 1500
+  springStrength: 2500
   damping: 50
 --- !u!1 &4066503163597484240
 GameObject:
@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 3885226734343727533}
-  springStrength: 1500
+  springStrength: 2500
   damping: 50
 --- !u!1 &5056675250599703492
 GameObject:
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   fishCooldownTime: 5
   biteTime: 1
   releaseRotation: 20
-  chargeRotation: -24
+  chargeRotation: -45
   releaseTime: 0.85
   reelTime: 0.85
   chargeTweenData:
@@ -1257,15 +1257,15 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   reelTweenData:
-    isExpanded: 0
+    isExpanded: 1
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 0.4
+    duration: 0.2
     forceFinalValue: 1
     loops: 0
     loopMode: 0
     usesCurve: 0
-    easingFunction: 27
+    easingFunction: 2
     curve:
       serializedVersion: 2
       m_Curve:
@@ -1292,10 +1292,10 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   returnTweenData:
-    isExpanded: 0
+    isExpanded: 1
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 0.4
+    duration: 1
     forceFinalValue: 1
     loops: 0
     loopMode: 0
@@ -1372,5 +1372,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 508551582412039885}
-  springStrength: 1500
+  springStrength: 2500
   damping: 50

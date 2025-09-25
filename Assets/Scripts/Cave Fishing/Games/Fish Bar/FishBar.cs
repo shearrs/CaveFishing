@@ -37,11 +37,6 @@ namespace CaveFishing.Games.FishBarGame
             progressBar.EmptyReelReached -= OnEmptyReelReached;
         }
 
-        private void Start()
-        {
-            Enable();
-        }
-
         public override void Enable()
         {
             reelInput.Enable();
