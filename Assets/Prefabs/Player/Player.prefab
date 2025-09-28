@@ -810,6 +810,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6618464238440587751}
     m_Modifications:
+    - target: {fileID: 1857383001704442200, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: reelTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857383001704442200, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: returnTweenData.isExpanded
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7116856420730325880, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_Name
       value: Fishing

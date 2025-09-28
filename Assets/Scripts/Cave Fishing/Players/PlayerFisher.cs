@@ -13,8 +13,8 @@ namespace CaveFishing.Players
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private FishingRod fishingRod;
 
-        private Fish currentFish;
         private IManagedInput castInput;
+        private Fish currentFish;
 
         private void Awake()
         {
@@ -58,8 +58,8 @@ namespace CaveFishing.Players
         private void OnFishReeled()
         {
             Log("Fish reeled.");
-            var fish = fishingRod.Bobber.GetFish();
-            var minigame = MinigameManager.GetMinigame(fish.MinigameType);
+            currentFish = fishingRod.Bobber.GetFish();
+            var minigame = MinigameManager.GetMinigame(currentFish.MinigameType);
             
             minigame.Enable();
         }
@@ -67,11 +67,19 @@ namespace CaveFishing.Players
         private void OnGameWon(GameWonSignal signal)
         {
             Log("Game won!");
+
+            Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
+            fishingRod.ReturnToRest();
+            // create an instance of the correct fish
+            // put it at the bobber position
+            // make it jump into the player's hands
         }
 
         private void OnGameLost(GameLostSignal signal)
         {
             Log("Game lost!");
+
+            fishingRod.ReturnToRest();
         }
     }
 }

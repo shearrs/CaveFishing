@@ -15,19 +15,19 @@ namespace CaveFishing.Fishing
         [SerializeField] private Bobber bobber;
         [SerializeField] private Transform castPoint;
 
-        [Header("Cast Force Settings")]
+        [FoldoutGroup("Cast Force Settings", 4)]
         [SerializeField] private float minForwardCastForce = 0.5f;
         [SerializeField] private float maxForwardCastForce = 3f;
         [SerializeField] private float minUpCastForce = 0.5f;
         [SerializeField] private float maxUpCastForce = 3f;
 
-        [Header("Fishing Settings")]
+        [FoldoutGroup("Fishing Settings", 4)]
         [SerializeField] private float minFishingTime = 5f;
         [SerializeField] private float maxFishingTime = 15f;
         [SerializeField] private float fishCooldownTime = 5f;
         [SerializeField] private float biteTime = 1f;
 
-        [Header("Tween Settings")]
+        [FoldoutGroup("Tween Settings", 8)]
         [SerializeField] private float releaseRotation = 20f;
         [SerializeField] private float chargeRotation = -45f;
         [SerializeField, Range(0f, 1f)] private float releaseTime = 0.85f;
@@ -89,7 +89,6 @@ namespace CaveFishing.Fishing
             tween?.Dispose();
             tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, reelTweenData);
             tween.AddEvent(reelTime, ReelBobber);
-            tween.AddOnComplete(OnReelTweenComplete);
 
             state = State.Reeling;
 
@@ -101,6 +100,16 @@ namespace CaveFishing.Fishing
 
                 FishReeled?.Invoke();
             }
+        }
+
+        public void ReturnToRest()
+        {
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = releaseRotation;
+
+            tween?.Dispose();
+            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, returnTweenData);
+            state = State.None;
         }
 
         private void OnEnteredWater()
@@ -124,16 +133,6 @@ namespace CaveFishing.Fishing
         private void ReelBobber()
         {
             bobber.gameObject.SetActive(false);
-        }
-
-        private void OnReelTweenComplete()
-        {
-            Vector3 eulerRotation = transform.localEulerAngles;
-            eulerRotation.x = releaseRotation;
-
-            tween?.Dispose();
-            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, returnTweenData);
-            state = State.None;
         }
 
         private IEnumerator IEFish()

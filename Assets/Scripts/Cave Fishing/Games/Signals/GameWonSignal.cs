@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CaveFishing.Games
 {
-    public struct GameWonSignal : ISignal
+    public readonly struct GameWonSignal : ISignal
     {
     }
 }
