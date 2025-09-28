@@ -10,8 +10,11 @@ namespace CaveFishing.Players
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private AreaDetector3D detector;
         [SerializeField] private ItemHolder holder;
+        [SerializeField] private float throwingForce = 50f;
         
         private IManagedInput interactInput;
+        private Vector3 itemVelocity = Vector3.zero;
+        private Vector3 previousItemPosition = Vector3.zero;
         private int heldItemLayer;
         private int previousLayer;
 
@@ -32,6 +35,17 @@ namespace CaveFishing.Players
             interactInput.Performed -= OnInteractInput;
         }
 
+        private void Update()
+        {
+            var item = holder.HeldItem;
+
+            if (item == null)
+                return;
+
+            itemVelocity = (item.transform.position - previousItemPosition);
+            previousItemPosition = item.transform.position;
+        }
+
         private void OnInteractInput(ManagedInputInfo info)
         {
             if (holder.HeldItem != null)
@@ -44,16 +58,15 @@ namespace CaveFishing.Players
                 return;
 
             if (detector.TryGetDetection<IItem>(out var item, true))
-            {
-                Debug.Log("found item");
                 Hold(item);
-            }
         }
 
         public void Hold(IItem item)
         {
             holder.Hold(item);
 
+            itemVelocity = Vector3.zero;
+            previousItemPosition = item.transform.position;
             previousLayer = item.gameObject.layer;
             item.gameObject.layer = heldItemLayer;
         }
@@ -62,7 +75,8 @@ namespace CaveFishing.Players
         {
             holder.HeldItem.gameObject.layer = previousLayer;
 
-            holder.Release();
+            Debug.Log(itemVelocity);
+            holder.Release(new(itemVelocity * throwingForce));
         }
     }
 }

@@ -991,6 +991,7 @@ MonoBehaviour:
   <LogLevels>k__BackingField: 29
   inputProvider: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
   fishingRod: {fileID: 1857383001704442200}
+  holder: {fileID: 0}
 --- !u!1 &7381473403938189742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1258,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   reelTweenData:
-    isExpanded: 1
+    isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
     duration: 0.2
@@ -1292,7 +1293,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   returnTweenData:
-    isExpanded: 1
+    isExpanded: 0
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
     duration: 1

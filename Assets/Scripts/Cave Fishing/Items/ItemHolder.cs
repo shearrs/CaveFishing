@@ -22,13 +22,13 @@ namespace CaveFishing.Items
             heldItem.transform.position = transform.TransformPoint(holdOffset);
         }
 
-        public void Release()
+        public void Release(ReleaseData data)
         {
             if (heldItem == null)
                 return;
 
             heldItem.transform.SetParent(null);
-            heldItem.Release();
+            heldItem.Release(data);
 
             heldItem = null;
         }

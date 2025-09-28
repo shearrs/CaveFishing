@@ -10,6 +10,6 @@ namespace CaveFishing.Items
 #pragma warning restore IDE1006 // Naming Styles
 
         public void Hold();
-        public void Release();
+        public void Release(ReleaseData data);
     }
 }

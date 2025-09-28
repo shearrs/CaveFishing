@@ -934,17 +934,13 @@ PrefabInstance:
       propertyPath: holder
       value: 
       objectReference: {fileID: 4528743258529390830}
-    - target: {fileID: 1857383001704442200, guid: b4b1a868d06324c458836be80c06f700, type: 3}
-      propertyPath: reelTweenData.isExpanded
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857383001704442200, guid: b4b1a868d06324c458836be80c06f700, type: 3}
-      propertyPath: returnTweenData.isExpanded
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7116856420730325880, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_Name
       value: Fishing
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749276303338104416, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9026674239116312980, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_LocalPosition.x

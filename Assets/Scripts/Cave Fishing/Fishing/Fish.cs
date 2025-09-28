@@ -22,6 +22,7 @@ namespace CaveFishing.Fishing
 
         public void Hold()
         {
+            rb.linearVelocity = Vector3.zero;
             rb.isKinematic = true;
             rb.interpolation = RigidbodyInterpolation.None;
 
@@ -29,13 +30,15 @@ namespace CaveFishing.Fishing
                 collider.enabled = false;
         }
 
-        public void Release()
+        public void Release(ReleaseData data)
         {
             rb.isKinematic = false;
             rb.interpolation = RigidbodyInterpolation.Interpolate;
 
             foreach (var collider in colliders)
                 collider.enabled = true;
+
+            rb.AddForce(data.ReleaseVelocity, ForceMode.Impulse);
         }
     }
 }
