@@ -12,6 +12,7 @@ namespace CaveFishing.Players
         [Header("Components")]
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private FishingRod fishingRod;
+        [SerializeField] private PlayerHolder holder;
 
         private IManagedInput castInput;
         private Fish currentFish;
@@ -19,6 +20,8 @@ namespace CaveFishing.Players
         private void Awake()
         {
             castInput = inputProvider.GetInput("Cast");
+
+            fishingRod.Disable();
         }
 
         private void OnEnable()
@@ -43,7 +46,9 @@ namespace CaveFishing.Players
 
         private void OnCastInputStarted(ManagedInputInfo info)
         {
-            if (fishingRod.CurrentState == FishingRod.State.Casted)
+            if (fishingRod.CurrentState == FishingRod.State.Disabled)
+                return;
+            else if (fishingRod.CurrentState == FishingRod.State.Casted)
                 fishingRod.Reel();
             else
                 fishingRod.BeginCharging();
@@ -51,7 +56,9 @@ namespace CaveFishing.Players
 
         private void OnCastInputCanceled(ManagedInputInfo info)
         {
-            if (fishingRod.CurrentState == FishingRod.State.Charging)
+            if (fishingRod.CurrentState == FishingRod.State.Disabled)
+                return;
+            else if (fishingRod.CurrentState == FishingRod.State.Charging)
                 fishingRod.Cast();
         }
 
@@ -69,10 +76,8 @@ namespace CaveFishing.Players
             Log("Game won!");
 
             Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
-            fishingRod.ReturnToRest();
-            // create an instance of the correct fish
-            // put it at the bobber position
-            // make it jump into the player's hands
+            fishingRod.Disable();
+            holder.Hold(currentFish);
         }
 
         private void OnGameLost(GameLostSignal signal)

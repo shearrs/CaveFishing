@@ -9,7 +9,7 @@ namespace CaveFishing.Fishing
 {
     public class FishingRod : SHMonoBehaviourLogger
     {
-        public enum State { None, Charging, Casted, Reeling }
+        public enum State { None, Disabled, Charging, Casted, Reeling }
 
         [Header("Components")]
         [SerializeField] private Bobber bobber;
@@ -52,6 +52,23 @@ namespace CaveFishing.Fishing
             bobber.gameObject.SetActive(false);
 
             bobber.EnteredWater += OnEnteredWater;
+        }
+
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+
+            Vector3 eulerRotation = transform.localEulerAngles;
+            eulerRotation.x = releaseRotation;
+            transform.localRotation = Quaternion.Euler(eulerRotation);
+            state = State.None;
+        }
+
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+
+            state = State.Disabled;
         }
 
         public void BeginCharging()

@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &261579415224253902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7845136746104977187}
+  m_Layer: 0
+  m_Name: Interaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7845136746104977187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261579415224253902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5061793614178156273}
+  m_Father: {fileID: 6618464238440587751}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726687741919340137
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +69,7 @@ Transform:
   m_Children:
   - {fileID: 1557243150324192995}
   - {fileID: 1343779198950833898}
+  - {fileID: 7845136746104977187}
   m_Father: {fileID: 3435577660294279687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &389442190874371504
@@ -594,6 +627,93 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5740202464734809366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5061793614178156273}
+  - component: {fileID: 4528743258529390830}
+  - component: {fileID: 6020199875246091649}
+  - component: {fileID: 996688937199497236}
+  m_Layer: 0
+  m_Name: Player Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5061793614178156273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740202464734809366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7845136746104977187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4528743258529390830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740202464734809366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2722ea230259d1f4e9d51290b1d506be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputProvider: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
+  detector: {fileID: 996688937199497236}
+  holder: {fileID: 6020199875246091649}
+--- !u!114 &6020199875246091649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740202464734809366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e18adaf495720449b4f2044df318b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdOffset: {x: 0, y: -0.17, z: 1}
+--- !u!114 &996688937199497236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740202464734809366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2143645d1bf4b1f44b36ada9b5d851dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 0
+  highlightOnDetect: 1
+  defaultGizmoColor: {r: 0, g: 0.7885525, b: 1, a: 1}
+  detectingGizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  maxDetections: 10
+  <DetectionMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  <DetectTriggers>k__BackingField: 1
+  <Radius>k__BackingField: 0.45
+  <Origin>k__BackingField: {x: 0, y: 0, z: 0}
+  <Direction>k__BackingField: {x: 0, y: 0, z: 1}
+  <Distance>k__BackingField: 3
 --- !u!1 &8547109476936458506
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +930,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6618464238440587751}
     m_Modifications:
+    - target: {fileID: 598457995618873347, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: holder
+      value: 
+      objectReference: {fileID: 4528743258529390830}
     - target: {fileID: 1857383001704442200, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: reelTweenData.isExpanded
       value: 0

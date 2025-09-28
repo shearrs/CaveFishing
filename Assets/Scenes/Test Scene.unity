@@ -289,6 +289,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06052dbb975a5c4a9391aeed6a3aeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &754088767
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3762127429020874955, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961187903781402987, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+      propertyPath: m_Name
+      value: Fish Bar Fish
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
 --- !u!1 &1204563238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,3 +1988,4 @@ SceneRoots:
   - {fileID: 2490074349106786785}
   - {fileID: 1537111976}
   - {fileID: 6103922809121495452}
+  - {fileID: 754088767}
