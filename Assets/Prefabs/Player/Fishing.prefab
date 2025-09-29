@@ -1188,6 +1188,7 @@ MonoBehaviour:
     max: 15
   fishCooldownTime: 5
   biteTime: 1
+  chargeProgress: 0
   releaseRotation: 20
   chargeRotation: -45
   releaseTime: 0.85

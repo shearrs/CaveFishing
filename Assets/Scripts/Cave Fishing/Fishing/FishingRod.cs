@@ -42,7 +42,7 @@ namespace CaveFishing.Fishing
         private Tween tween;
 
         public Bobber Bobber => bobber;
-        internal float ChargeProgress { get => chargeProgress; set => chargeProgress = value; }
+        internal float ChargeProgress { get => chargeProgress; set => chargeProgress = Mathf.Clamp01(value); }
 
         public event Action FishReeled;
         #endregion
@@ -66,7 +66,7 @@ namespace CaveFishing.Fishing
                 new CastState(this, bobber, castPoint, castInput, forwardCastRange, upCastRange, releaseRotation, releaseTime, releaseTweenData),
                 new FishingState(this, bobber, castInput, fishingTimeRange, biteTime, fishCooldownTime),
                 reelState = new ReelState(this, bobber, chargeRotation, reelTime, reelTweenData),
-                new ReturnState(this, returnTweenData, releaseRotation)
+                new ReturnState(this, castInput, returnTweenData, releaseRotation)
             );
 
             reelState.FishReeled += () => FishReeled?.Invoke();

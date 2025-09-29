@@ -8,6 +8,7 @@ namespace CaveFishing.Fishing
 
         public DisableState(FishingRod fishingRod, Bobber bobber) : base(fishingRod)
         {
+            Name = "Disable State";
             this.bobber = bobber;
         }
 

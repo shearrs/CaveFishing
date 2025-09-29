@@ -49,9 +49,9 @@ namespace CaveFishing.Players
         {
             Log("Game won!");
 
-            Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
+            var fish = Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
             fishingRod.Disable();
-            holder.Hold(currentFish);
+            holder.Hold(fish);
         }
 
         private void OnGameLost(GameLostSignal signal)

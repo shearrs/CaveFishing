@@ -21,6 +21,7 @@ namespace CaveFishing.Fishing
             IManagedInput castInput, Range<float> forwardCastRange, Range<float> upCastRange, 
             float releaseRotation, float releaseTime, ITweenData tweenData) : base(fishingRod)
         {
+            Name = "Cast State";
             this.bobber = bobber;
             this.castPoint = castPoint;
             this.castInput = castInput;

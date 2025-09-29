@@ -15,6 +15,7 @@ namespace CaveFishing.Fishing
 
         public FishingState(FishingRod fishingRod, Bobber bobber, IManagedInput castInput, Range<float> fishingTimeRange, float biteTime, float fishCooldownTime) : base(fishingRod)
         {
+            Name = "Fishing State";
             this.bobber = bobber;
             this.fishingTimeRange = fishingTimeRange;
             this.castInput = castInput;

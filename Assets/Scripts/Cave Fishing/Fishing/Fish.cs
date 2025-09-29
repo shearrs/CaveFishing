@@ -15,7 +15,7 @@ namespace CaveFishing.Fishing
 
         private void Awake()
         {
-            rb  = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
 
             colliders = GetComponentsInChildren<Collider>();
         }

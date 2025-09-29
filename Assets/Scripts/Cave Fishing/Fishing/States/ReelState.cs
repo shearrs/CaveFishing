@@ -16,6 +16,7 @@ namespace CaveFishing.Fishing
 
         public ReelState(FishingRod fishingRod, Bobber bobber, float chargeRotation, float reelTime, ITweenData tweenData) : base(fishingRod)
         {
+            Name = "Reel State";
             this.bobber = bobber;
             this.chargeRotation = chargeRotation;
             this.reelTime = reelTime;
@@ -28,9 +29,10 @@ namespace CaveFishing.Fishing
             eulerRotation.x = chargeRotation;
 
             tween?.Dispose();
-            tween = FishingRod.transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, tweenData);
+            tween = FishingRod.transform.GetRotateLocalTween(Quaternion.Euler(eulerRotation), true, tweenData);
             tween.AddEvent(reelTime, DisableBobber);
             tween.Completed += EnterReturnState;
+            FishingRod.Tween(tween);
 
             if (bobber.IsBiting)
             {

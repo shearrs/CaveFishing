@@ -9,6 +9,7 @@ namespace CaveFishing.Fishing
 
         public IdleState(FishingRod fishingRod, IManagedInput castInput) : base(fishingRod)
         {
+            Name = "Idle State";
             this.castInput = castInput;
         }
 

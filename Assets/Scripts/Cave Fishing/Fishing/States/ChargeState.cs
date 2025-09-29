@@ -13,6 +13,7 @@ namespace CaveFishing.Fishing
 
         public ChargeState(FishingRod fishingRod, IManagedInput castInput, float chargeRotation, ITweenData tweenData) : base(fishingRod)
         {
+            Name = "Charge State";
             this.castInput = castInput;
             this.chargeRotation = chargeRotation;
             this.tweenData = tweenData;

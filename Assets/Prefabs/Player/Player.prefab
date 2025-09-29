@@ -676,6 +676,7 @@ MonoBehaviour:
   inputProvider: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
   detector: {fileID: 996688937199497236}
   holder: {fileID: 6020199875246091649}
+  throwingForce: 50
 --- !u!114 &6020199875246091649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LogLevels>k__BackingField: 28
+  useGraphData: 1
   graphData: {fileID: 11400000, guid: 966fced13be51bf4fb4afc0538b803fa, type: 2}
   stateTree: []
   injectedReferences:
@@ -937,10 +939,6 @@ PrefabInstance:
     - target: {fileID: 7116856420730325880, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_Name
       value: Fishing
-      objectReference: {fileID: 0}
-    - target: {fileID: 7749276303338104416, guid: b4b1a868d06324c458836be80c06f700, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9026674239116312980, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_LocalPosition.x
