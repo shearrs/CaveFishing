@@ -75,7 +75,6 @@ namespace CaveFishing.Players
         {
             holder.HeldItem.gameObject.layer = previousLayer;
 
-            Debug.Log(itemVelocity);
             holder.Release(new(itemVelocity * throwingForce));
         }
     }
