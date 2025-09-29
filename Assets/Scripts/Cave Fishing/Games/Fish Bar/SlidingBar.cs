@@ -18,7 +18,7 @@ namespace CaveFishing.Games.FishBarGame
 
         public void Enable()
         {
-            SetProgress(0.5f);
+            SetProgress(0.4f);
             isEnabled = true;
         }
 

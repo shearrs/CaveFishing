@@ -10,24 +10,13 @@ namespace CaveFishing.Players
     public class PlayerFisher : SHMonoBehaviourLogger
     {
         [Header("Components")]
-        [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private FishingRod fishingRod;
         [SerializeField] private PlayerHolder holder;
 
-        private IManagedInput castInput;
         private Fish currentFish;
-
-        private void Awake()
-        {
-            castInput = inputProvider.GetInput("Cast");
-
-            fishingRod.Disable();
-        }
 
         private void OnEnable()
         {
-            castInput.Started += OnCastInputStarted;
-            castInput.Canceled += OnCastInputCanceled;
             fishingRod.FishReeled += OnFishReeled;
 
             SignalShuttle.Register<GameWonSignal>(OnGameWon);
@@ -36,30 +25,15 @@ namespace CaveFishing.Players
 
         private void OnDisable()
         {
-            castInput.Started -= OnCastInputStarted;
-            castInput.Canceled -= OnCastInputCanceled;
             fishingRod.FishReeled -= OnFishReeled;
 
             SignalShuttle.Deregister<GameWonSignal>(OnGameWon);
             SignalShuttle.Deregister<GameLostSignal>(OnGameLost);
         }
 
-        private void OnCastInputStarted(ManagedInputInfo info)
+        private void Start()
         {
-            if (fishingRod.CurrentState == FishingRod.State.Disabled)
-                return;
-            else if (fishingRod.CurrentState == FishingRod.State.Casted)
-                fishingRod.Reel();
-            else
-                fishingRod.BeginCharging();
-        }
-
-        private void OnCastInputCanceled(ManagedInputInfo info)
-        {
-            if (fishingRod.CurrentState == FishingRod.State.Disabled)
-                return;
-            else if (fishingRod.CurrentState == FishingRod.State.Charging)
-                fishingRod.Cast();
+            fishingRod.Enable();
         }
 
         private void OnFishReeled()
@@ -84,7 +58,7 @@ namespace CaveFishing.Players
         {
             Log("Game lost!");
 
-            fishingRod.ReturnToRest();
+            fishingRod.EnterState<ReturnState>();
         }
     }
 }

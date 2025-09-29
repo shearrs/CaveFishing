@@ -1,5 +1,7 @@
 using Shears;
+using Shears.Input;
 using Shears.Logging;
+using Shears.StateMachineGraphs;
 using Shears.Tweens;
 using System;
 using System.Collections;
@@ -9,23 +11,22 @@ namespace CaveFishing.Fishing
 {
     public class FishingRod : SHMonoBehaviourLogger
     {
-        public enum State { None, Disabled, Charging, Casted, Reeling }
-
+        #region Variables
         [Header("Components")]
+        [SerializeField] private ManagedInputProvider inputProvider;
+        [SerializeField] private StateMachine stateMachine;
         [SerializeField] private Bobber bobber;
         [SerializeField] private Transform castPoint;
 
-        [FoldoutGroup("Cast Force Settings", 4)]
-        [SerializeField] private float minForwardCastForce = 0.5f;
-        [SerializeField] private float maxForwardCastForce = 3f;
-        [SerializeField] private float minUpCastForce = 0.5f;
-        [SerializeField] private float maxUpCastForce = 3f;
+        [FoldoutGroup("Cast Force Settings", 2)]
+        [SerializeField] private Range<float> forwardCastRange = new(0.5f, 3f);
+        [SerializeField] private Range<float> upCastRange = new(0.5f, 3f);
 
         [FoldoutGroup("Fishing Settings", 4)]
-        [SerializeField] private float minFishingTime = 5f;
-        [SerializeField] private float maxFishingTime = 15f;
+        [SerializeField] private Range<float> fishingTimeRange = new(5f, 15f);
         [SerializeField] private float fishCooldownTime = 5f;
         [SerializeField] private float biteTime = 1f;
+        [SerializeField, ReadOnly, Range(0f, 1f)] private float chargeProgress;
 
         [FoldoutGroup("Tween Settings", 8)]
         [SerializeField] private float releaseRotation = 20f;
@@ -37,21 +38,38 @@ namespace CaveFishing.Fishing
         [SerializeField] private StructTweenData reelTweenData = new(0.2f, easingFunction: EasingFunction.Ease.EaseOutQuad);
         [SerializeField] private StructTweenData returnTweenData = new(1f, easingFunction: EasingFunction.Ease.EaseOutQuad);
 
+        private IManagedInput castInput;
         private Tween tween;
-        private State state = State.None;
 
-        public State CurrentState => state;
         public Bobber Bobber => bobber;
+        internal float ChargeProgress { get => chargeProgress; set => chargeProgress = value; }
 
         public event Action FishReeled;
+        #endregion
 
         private void Awake()
         {
+            castInput = inputProvider.GetInput("Cast");
+
             bobber.gameObject.SetActive(true);
             bobber.transform.SetParent(null);
             bobber.gameObject.SetActive(false);
 
-            bobber.EnteredWater += OnEnteredWater;
+            bobber.EnteredWater += () => EnterState<FishingState>();
+
+            ReelState reelState;
+
+            stateMachine.AddStates(
+                new DisableState(this, bobber),
+                new IdleState(this, castInput),
+                new ChargeState(this, castInput, chargeRotation, chargeTweenData),
+                new CastState(this, bobber, castPoint, castInput, forwardCastRange, upCastRange, releaseRotation, releaseTime, releaseTweenData),
+                new FishingState(this, bobber, castInput, fishingTimeRange, biteTime, fishCooldownTime),
+                reelState = new ReelState(this, bobber, chargeRotation, reelTime, reelTweenData),
+                new ReturnState(this, returnTweenData, releaseRotation)
+            );
+
+            reelState.FishReeled += () => FishReeled?.Invoke();
         }
 
         public void Enable()
@@ -61,119 +79,27 @@ namespace CaveFishing.Fishing
             Vector3 eulerRotation = transform.localEulerAngles;
             eulerRotation.x = releaseRotation;
             transform.localRotation = Quaternion.Euler(eulerRotation);
-            state = State.None;
+
+            EnterState<IdleState>();
         }
 
         public void Disable()
         {
-            gameObject.SetActive(false);
-
-            state = State.Disabled;
+            EnterState<DisableState>();
         }
 
-        public void BeginCharging()
+        public void EnterState<T>()
         {
-            if (state == State.Reeling)
-                return;
-
-            Vector3 eulerRotation = transform.localEulerAngles;
-            eulerRotation.x = chargeRotation;
-
-            tween?.Dispose();
-            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, chargeTweenData);
-            state = State.Charging;
+            stateMachine.EnterStateOfType<T>();
         }
-
-        public void Cast()
+    
+        public void Tween(Tween tween)
         {
-            float chargeProgress = tween.Progress;
-            float forwardForce = Mathf.Lerp(minForwardCastForce, maxForwardCastForce, chargeProgress);
-            float upForce = Mathf.Lerp(minUpCastForce, maxUpCastForce, chargeProgress);
+            this.tween?.Dispose();
 
-            Vector3 eulerRotation = transform.localEulerAngles;
-            eulerRotation.x = releaseRotation;
+            this.tween = tween;
 
-            tween?.Dispose();
-            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, releaseTweenData);
-            tween.AddEvent(releaseTime, () => OnCastTweenComplete(forwardForce, upForce));
-        }
-
-        public void Reel()
-        {
-            Vector3 eulerRotation = transform.localEulerAngles;
-            eulerRotation.x = chargeRotation;
-
-            tween?.Dispose();
-            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, reelTweenData);
-            tween.AddEvent(reelTime, ReelBobber);
-
-            state = State.Reeling;
-
-            StopAllCoroutines();
-
-            if (bobber.IsBiting)
-            {
-                bobber.EndBite();
-
-                FishReeled?.Invoke();
-            }
-        }
-
-        public void ReturnToRest()
-        {
-            Vector3 eulerRotation = transform.localEulerAngles;
-            eulerRotation.x = releaseRotation;
-
-            tween?.Dispose();
-            tween = transform.DoRotateLocalTween(Quaternion.Euler(eulerRotation), true, returnTweenData);
-            state = State.None;
-        }
-
-        private void OnEnteredWater()
-        {
-            StartCoroutine(IEFish());
-        }
-
-        private void OnCastTweenComplete(float forwardForce, float upForce)
-        {
-            Vector3 forward = castPoint.forward;
-            forward.y = 0;
-            forward.Normalize();
-            Vector3 force = forwardForce * forward + upForce * castPoint.up;
-
-            bobber.gameObject.SetActive(true);
-            bobber.Cast(castPoint.position, force);
-
-            state = State.Casted;
-        }
-
-        private void ReelBobber()
-        {
-            bobber.gameObject.SetActive(false);
-        }
-
-        private IEnumerator IEFish()
-        {
-            while (true)
-            {
-                float fishingTime = UnityEngine.Random.Range(minFishingTime, maxFishingTime);
-
-                yield return CoroutineUtil.WaitForSeconds(fishingTime);
-
-                Log("Begin bite.");
-
-                bobber.BeginBite();
-
-                yield return CoroutineUtil.WaitForSeconds(biteTime);
-
-                Log("End bite.");
-
-                bobber.EndBite();
-
-                yield return CoroutineUtil.WaitForSeconds(fishCooldownTime);
-
-                yield return null;
-            }
+            tween?.Play();
         }
     }
 }

@@ -989,7 +989,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LogLevels>k__BackingField: 29
-  inputProvider: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
   fishingRod: {fileID: 1857383001704442200}
   holder: {fileID: 0}
 --- !u!1 &7381473403938189742
@@ -1135,6 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1808051232814620116}
   - component: {fileID: 1857383001704442200}
+  - component: {fileID: 7711209448700922712}
   m_Layer: 7
   m_Name: Fishing Rod
   m_TagString: Untagged
@@ -1173,14 +1173,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LogLevels>k__BackingField: 29
+  inputProvider: {fileID: 11400000, guid: 664a6e4e55ef7db4b9dea5e91ace8d2e, type: 2}
+  stateMachine: {fileID: 7711209448700922712}
   bobber: {fileID: 2860024789912106565}
   castPoint: {fileID: 5414881159558514858}
-  minForwardCastForce: 0.5
-  maxForwardCastForce: 3
-  minUpCastForce: 0.5
-  maxUpCastForce: 3
-  minFishingTime: 5
-  maxFishingTime: 15
+  forwardCastRange:
+    min: 0.5
+    max: 3
+  upCastRange:
+    min: 0.5
+    max: 3
+  fishingTimeRange:
+    min: 5
+    max: 15
   fishCooldownTime: 5
   biteTime: 1
   releaseRotation: 20
@@ -1327,6 +1332,31 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     unityEvents: []
+--- !u!114 &7711209448700922712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7749276303338104416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53faf994fce29c42927c622a59b1529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LogLevels>k__BackingField: 29
+  useGraphData: 0
+  graphData: {fileID: 0}
+  stateTree: []
+  injectedReferences:
+    entries: []
+  runtimeInfoExpanded: 0
+  referencesExpanded: 0
+  parameterDisplay: []
+  externalParameters: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8183458405283793024
 GameObject:
   m_ObjectHideFlags: 0

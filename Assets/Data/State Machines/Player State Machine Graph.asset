@@ -42,13 +42,19 @@ MonoBehaviour:
       keys:
       - f41a2bd3-6d25-41ec-8e61-79132c361cc8
       values:
-      - rid: 2670047001792217149
+      - rid: 399812788358742090
     parameterProviders: []
     defaultState:
-      rid: 2670047001792217149
+      rid: 399812788358742090
   references:
     version: 2
     RefIds:
+    - rid: 399812788358742090
+      type: {class: PlayerControlState, ns: CaveFishing.Players, asm: CaveFishing.Players}
+      data:
+        name: Player Control
+        transitions: []
+        character: {fileID: 0}
     - rid: 2670046608922771517
       type: {class: GraphElementDictionary, ns: Shears.GraphViews, asm: Shears.GraphViews}
       data:
@@ -70,9 +76,3 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
           assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
           prettyName: Player Control State
-    - rid: 2670047001792217149
-      type: {class: PlayerControlState, ns: CaveFishing.Players, asm: CaveFishing.Players}
-      data:
-        name: Player Control
-        transitions: []
-        character: {fileID: 0}
