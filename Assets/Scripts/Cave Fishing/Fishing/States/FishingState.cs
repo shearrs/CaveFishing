@@ -31,7 +31,7 @@ namespace CaveFishing.Fishing
         {
             castInput.Performed += OnCastInputPerformed;
 
-            fishingTimer.Start();
+            fishingTimer.Start(fishingTimeRange.Random());
         }
 
         protected override void OnExit()
