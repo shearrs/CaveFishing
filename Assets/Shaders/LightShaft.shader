@@ -60,10 +60,9 @@ Shader "Custom/LightShaft"
 			{
 				half2 uv = IN.uv;
 
-				half yTest = abs(IN.normalOS.y);
+				half normalMag = abs(IN.normalOS.y);
 
-				if (yTest >= 0.01)
-					clip(-1);
+				clip(0 - normalMag);
 
 				half yPos = cos(3.14159 * uv.y - _AlphaOffset/2);
 				half alpha1 = smoothstep(_AlphaBottom, _AlphaTop, yPos);

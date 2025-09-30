@@ -1,0 +1,14 @@
+{
+    "name": "CaveFishing.Levels",
+    "rootNamespace": "CaveFishing.Levels",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

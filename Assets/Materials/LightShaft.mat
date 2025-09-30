@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
-  m_Shader: {fileID: 4800000, guid: 01fd67af1f4c019499648c00972eb51e, type: 3}
+  m_Name: LightShaft
+  m_Shader: {fileID: 4800000, guid: c5c24333963102a458b805640179aa4b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,18 +22,19 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 42cae2f043f6313409634808a75130c0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _WaveHeight: 2
-    - _WaveSpeed: 0.5
-    - _XScrollingSpeed: 0.01
-    - _YScrollingSpeed: 0.02
+    - _AlphaBlending: 0.21
+    - _AlphaBottom: 0.01
+    - _AlphaHeight: -0.77
+    - _AlphaOffset: 3.16
+    - _AlphaTop: 1
+    - _FirstAlphaBottom: 0.281
+    - _FirstAlphaTop: 0.745
+    - _SecondAlphaBottom: 0.01
+    - _SecondAlphaTop: 0.01
     m_Colors:
-    - _Albedo: {r: 0.2278889, g: 0.5060427, b: 0.5320754, a: 1}
+    - _Albedo: {r: 0.07742964, g: 0.10943389, b: 0.10943389, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
