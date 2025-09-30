@@ -25,9 +25,16 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _AlphaBlending: -11.84
-    - _AlphaHeight: 1
+    - _AlphaBlending: 0.21
+    - _AlphaBottom: 0.01
+    - _AlphaHeight: -0.77
+    - _AlphaOffset: 3.24
+    - _AlphaTop: 0.712
+    - _FirstAlphaBottom: 0.281
+    - _FirstAlphaTop: 0.745
+    - _SecondAlphaBottom: 0.01
+    - _SecondAlphaTop: 0.01
     m_Colors:
-    - _Albedo: {r: 1, g: 1, b: 1, a: 1}
+    - _Albedo: {r: 0.12415095, g: 0.17493999, b: 0.17735851, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

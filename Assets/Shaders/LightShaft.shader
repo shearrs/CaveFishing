@@ -3,8 +3,9 @@ Shader "Custom/LightShaft"
 	Properties
 	{
 		_Albedo("Albedo", Color) = (1, 1, 1, 1)
-		_AlphaHeight("Alpha Height", float) = 0.2
-		_AlphaBlending("Alpha Blending", float) = 0.5
+		_AlphaTop("Alpha Top", Range(0.01, 1)) = 0.8
+		_AlphaBottom("Alpha Bottom", Range(0.01, 1)) = 0.5
+		_AlphaOffset("Alpha Offset", float) = 3.14159
 	}
 
 	SubShader
@@ -27,18 +28,20 @@ Shader "Custom/LightShaft"
 			{
 				float2 uv : TEXCOORD0;
 				float4 positionOS : POSITION;
+				float3 normalOS : NORMAL;
 			};
 
 			struct Varyings
 			{
 				float2 uv : TEXCOORD0;
 				float4 positionHCS : SV_POSITION;
-				float3 positionOS : TEXCOORD1;
+				float3 normalOS : NORMAL;
 			};
 
 			half4 _Albedo;
-			half _AlphaHeight;
-			half _AlphaBlending;
+			half _AlphaTop;
+			half _AlphaBottom;
+			half _AlphaOffset;
 
 			Varyings vert(Attributes IN)
 			{
@@ -47,7 +50,8 @@ Shader "Custom/LightShaft"
 				half3 objectPosition = IN.positionOS.xyz;
 				OUT.positionHCS = TransformObjectToHClip(objectPosition);
 
-				OUT.positionOS = IN.positionOS.xyz;
+				OUT.uv = IN.uv;
+				OUT.normalOS = IN.normalOS;
 
 				return OUT;
 			}
@@ -55,9 +59,16 @@ Shader "Custom/LightShaft"
 			half4 frag(Varyings IN) : SV_TARGET
 			{
 				half2 uv = IN.uv;
-				float alpha = smoothstep(_AlphaHeight, _AlphaBlending, IN.positionOS.y);
 
-				half4 col = _Albedo * alpha;
+				half yTest = abs(IN.normalOS.y);
+
+				if (yTest >= 0.01)
+					clip(-1);
+
+				half yPos = cos(3.14159 * uv.y - _AlphaOffset/2);
+				half alpha1 = smoothstep(_AlphaBottom, _AlphaTop, yPos);
+
+				half4 col = _Albedo * alpha1;
 
 				return col;
 			}
