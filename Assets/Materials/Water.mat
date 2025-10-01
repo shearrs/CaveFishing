@@ -34,6 +34,6 @@ Material:
     - _XScrollingSpeed: 0.01
     - _YScrollingSpeed: 0.02
     m_Colors:
-    - _Albedo: {r: 0.2278889, g: 0.5060427, b: 0.5320754, a: 1}
+    - _Albedo: {r: 0.27550724, g: 0.4113207, b: 0.399182, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
