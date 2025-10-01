@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _WaveHeight: 2
+    - _WaveHeight: 3
     - _WaveSpeed: 0.5
     - _XScrollingSpeed: 0.01
     - _YScrollingSpeed: 0.02

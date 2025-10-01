@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.14716971, g: 0.14716971, b: 0.14716971, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.119
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 4.79
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -6315,6 +6315,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1344873973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7470633999689158525, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+  m_PrefabInstance: {fileID: 6114893314206329222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5358044b15fc9479f1feff6f6cc2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1440842330
 Mesh:
   m_ObjectHideFlags: 0
@@ -10283,7 +10294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 2f2d4dc5409d01b4abb0e66cb3fa9c67, type: 2}
-  rotationSpeed: 2
+  rotationSpeed: 4
 --- !u!4 &2064969381
 Transform:
   m_ObjectHideFlags: 0
@@ -14680,6 +14691,10 @@ PrefabInstance:
       propertyPath: m_SelectedEditorRenderState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4528743258529390830, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: fisher
+      value: 
+      objectReference: {fileID: 1344873973}
     - target: {fileID: 7062156917974878532, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_Mesh
       value: 
