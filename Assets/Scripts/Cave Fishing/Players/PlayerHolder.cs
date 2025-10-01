@@ -7,9 +7,13 @@ namespace CaveFishing.Players
 {
     public class PlayerHolder : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private AreaDetector3D detector;
         [SerializeField] private ItemHolder holder;
+        [SerializeField] private PlayerFisher fisher;
+
+        [Header("Settings")]
         [SerializeField] private float throwingForce = 50f;
         
         private IManagedInput interactInput;
@@ -69,6 +73,8 @@ namespace CaveFishing.Players
             previousItemPosition = item.transform.position;
             previousLayer = item.gameObject.layer;
             item.gameObject.layer = heldItemLayer;
+
+            fisher.Disable();
         }
 
         public void Release()
@@ -76,6 +82,8 @@ namespace CaveFishing.Players
             holder.HeldItem.gameObject.layer = previousLayer;
 
             holder.Release(new(itemVelocity * throwingForce));
+
+            fisher.Enable();
         }
     }
 }

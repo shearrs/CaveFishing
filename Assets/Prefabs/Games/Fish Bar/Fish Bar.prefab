@@ -55,7 +55,7 @@ MonoBehaviour:
   barTransform: {fileID: 6230797254112755863}
   fishTransform: {fileID: 4960089263881322566}
   reelPower: 0.18
-  reelDecayAmount: 0.35
+  reelDecayAmount: 0.2
   lenienceDecayAmount: 0.2
   currentReelAmount: 0.25
 --- !u!114 &7024701501836485218

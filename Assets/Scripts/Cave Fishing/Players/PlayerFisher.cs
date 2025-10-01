@@ -33,7 +33,17 @@ namespace CaveFishing.Players
 
         private void Start()
         {
+            Enable();
+        }
+
+        public void Enable()
+        {
             fishingRod.Enable();
+        }
+
+        public void Disable()
+        {
+            fishingRod.Disable();
         }
 
         private void OnFishReeled()
@@ -50,7 +60,6 @@ namespace CaveFishing.Players
             Log("Game won!");
 
             var fish = Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
-            fishingRod.Disable();
             holder.Hold(fish);
         }
 
