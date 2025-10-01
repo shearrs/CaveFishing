@@ -1,7 +1,9 @@
 using Shears;
 using Shears.Signals;
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CaveFishing.Games.QuickClickGame
 {
@@ -16,6 +18,9 @@ namespace CaveFishing.Games.QuickClickGame
         private readonly Timer gameTimer = new();
         private readonly Timer buttonTimer = new();
 
+        public event Action Enabled;
+        public event Action Disabled;
+
         private void OnValidate()
         {
             if(minSpawnTime > maxSpawnTime)
@@ -24,7 +29,7 @@ namespace CaveFishing.Games.QuickClickGame
             }
         }
 
-        public void Awake()
+        public void Start()
         {
             Enable();
             SignalShuttle.Register<TargetClickedSignal>(OnTargetClicked);
@@ -32,15 +37,22 @@ namespace CaveFishing.Games.QuickClickGame
 
         public void Enable()
         {
-            count = 0;
-            gameTimer.Start(gameDuration);
-            
-            StartCoroutine(IESpawnButtons());
+            Enabled?.Invoke();
         }
 
         public void Disable() 
         { 
             StopAllCoroutines();
+
+            Disabled?.Invoke();
+        }
+
+        public void StartGame()
+        {
+            count = 0;
+            gameTimer.Start(gameDuration);
+
+            StartCoroutine(IESpawnButtons());
         }
 
         private IEnumerator IESpawnButtons()
@@ -57,6 +69,8 @@ namespace CaveFishing.Games.QuickClickGame
 
                 yield return null;
             }
+
+            Disable();
         }
 
         private void SpawnButton()
