@@ -1,4 +1,5 @@
 using CaveFishing.Items;
+using Shears;
 using Shears.Detection;
 using Shears.Input;
 using UnityEngine;
@@ -73,13 +74,16 @@ namespace CaveFishing.Players
             previousItemPosition = item.transform.position;
             previousLayer = item.gameObject.layer;
             item.gameObject.layer = heldItemLayer;
+            item.transform.SetLayerOnAllChildren(heldItemLayer);
 
             fisher.Disable();
         }
 
         public void Release()
         {
-            holder.HeldItem.gameObject.layer = previousLayer;
+            var item = holder.HeldItem;
+            item.gameObject.layer = previousLayer;
+            item.transform.SetLayerOnAllChildren(previousLayer);
 
             holder.Release(new(itemVelocity * throwingForce));
 
