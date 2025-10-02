@@ -1,0 +1,17 @@
+{
+    "name": "CaveFishing.Games.PongGame.UI",
+    "rootNamespace": "CaveFishing.Games.PongGame.UI",
+    "references": [
+        "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
+        "GUID:1b517c1efabd5e64993fffd956e601f2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
