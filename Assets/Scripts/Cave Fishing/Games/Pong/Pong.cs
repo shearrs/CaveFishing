@@ -6,6 +6,7 @@ namespace CaveFishing.Games.PongGame
     {
         [SerializeField] private Player player;
         [SerializeField] private Bot bot;
+        [SerializeField] private Ball ball;
 
         private void Start()
         {
@@ -15,11 +16,14 @@ namespace CaveFishing.Games.PongGame
         public override void Enable()
         {
             player.Enable();
+            ball.SetPosition(new(0.5f, 0.5f));
+            ball.Enable();
         }
 
         public override void Disable()
         {
             player.Disable();
+            ball.Disable();
         }
     }
 }
