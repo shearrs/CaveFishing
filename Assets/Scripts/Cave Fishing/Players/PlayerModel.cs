@@ -42,7 +42,7 @@ namespace CaveFishing.Players
                 transform.localScale = Vector3.LerpUnclamped(startScale, endScale, t);
             }
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
         }
 
@@ -56,7 +56,7 @@ namespace CaveFishing.Players
                 transform.localScale = Vector3.LerpUnclamped(startScale, endScale, t);
             }
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
         }
     }

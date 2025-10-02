@@ -26,7 +26,9 @@ namespace CaveFishing.Fishing
             Vector3 eulerRotation = FishingRod.transform.localEulerAngles;
             eulerRotation.x = releaseRotation;
 
-            tween?.Dispose();
+            FishingRod.StopTween();
+
+            tween.Dispose();
             tween = FishingRod.transform.GetRotateLocalTween(Quaternion.Euler(eulerRotation), true, tweenData);
             tween.AddOnComplete(OnTweenComplete);
 
@@ -44,7 +46,8 @@ namespace CaveFishing.Fishing
 
         private void OnTweenComplete()
         {
-            FishingRod.EnterState<IdleState>();
+            if (IsActive)
+                FishingRod.EnterState<IdleState>();
         }
 
         private void OnCastInput(ManagedInputInfo info)

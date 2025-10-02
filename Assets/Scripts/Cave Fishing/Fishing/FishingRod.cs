@@ -4,7 +4,6 @@ using Shears.Logging;
 using Shears.StateMachineGraphs;
 using Shears.Tweens;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace CaveFishing.Fishing
@@ -93,13 +92,19 @@ namespace CaveFishing.Fishing
             stateMachine.EnterStateOfType<T>();
         }
     
+        public void StopTween()
+        {
+            tween.Dispose();
+        }
+
         public void Tween(Tween tween)
         {
-            this.tween?.Dispose();
+            if (this.tween.IsValid && this.tween != tween)
+                this.tween.Dispose();
 
             this.tween = tween;
 
-            tween?.Play();
+            tween.Play();
         }
     }
 }

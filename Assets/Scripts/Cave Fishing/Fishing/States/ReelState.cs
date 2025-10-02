@@ -28,10 +28,13 @@ namespace CaveFishing.Fishing
             Vector3 eulerRotation = FishingRod.transform.localEulerAngles;
             eulerRotation.x = chargeRotation;
 
-            tween?.Dispose();
+            FishingRod.StopTween();
+
+            tween.Dispose();
             tween = FishingRod.transform.GetRotateLocalTween(Quaternion.Euler(eulerRotation), true, tweenData);
             tween.AddEvent(reelTime, DisableBobber);
             tween.Completed += EnterReturnState;
+
             FishingRod.Tween(tween);
 
             if (bobber.IsBiting)

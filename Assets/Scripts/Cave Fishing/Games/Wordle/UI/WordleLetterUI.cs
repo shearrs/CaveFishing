@@ -114,7 +114,7 @@ namespace CaveFishing.Games.WordleGame.UI
             if (type == WordleLetter.LetterType.None)
                 return;
 
-            flipTween?.Dispose();
+            flipTween.Dispose();
 
             Vector3 rotation = new(0f, 90f, 0);
             flipTween = transform.DoRotateLocalTween(Quaternion.Euler(rotation), true, flipTweenData);

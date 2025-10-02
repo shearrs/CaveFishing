@@ -26,8 +26,11 @@ namespace CaveFishing.Fishing
             Vector3 eulerRotation = FishingRod.transform.localEulerAngles;
             eulerRotation.x = chargeRotation;
 
-            tween?.Dispose();
+            FishingRod.StopTween();
+
+            tween.Dispose();
             tween = FishingRod.transform.GetRotateLocalTween(Quaternion.Euler(eulerRotation), true, tweenData);
+
             FishingRod.Tween(tween);
         }
 
@@ -38,7 +41,7 @@ namespace CaveFishing.Fishing
 
         protected override void OnUpdate()
         {
-            if (tween != null)
+            if (tween.IsValid)
                 FishingRod.ChargeProgress = tween.Progress;
         }
 

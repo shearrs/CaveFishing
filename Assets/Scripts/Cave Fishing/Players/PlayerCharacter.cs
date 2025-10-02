@@ -219,7 +219,7 @@ namespace CaveFishing.Players
                 controller.center = Vector3.LerpUnclamped(startCenter, endCenter, t);
             }
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
 
             isCrouched = true;
@@ -241,7 +241,7 @@ namespace CaveFishing.Players
                 controller.center = Vector3.LerpUnclamped(startCenter, center, t);
             }
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
 
             isCrouched = false;

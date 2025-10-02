@@ -99,7 +99,7 @@ namespace CaveFishing.Players
                 firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
             }
 
-            headBobTween?.Dispose();
+            headBobTween.Dispose();
             headBobTween = TweenManager.DoTween(update, headBobTweenData);
         }
 
@@ -114,7 +114,7 @@ namespace CaveFishing.Players
                 firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
             }
 
-            headBobTween?.Dispose();
+            headBobTween.Dispose();
             headBobTween = TweenManager.DoTween(update, headBobCancelTweenData);
         }
 
@@ -127,7 +127,7 @@ namespace CaveFishing.Players
 
             void update(float t) => firstPersonState.Offset = Vector3.LerpUnclamped(startOffset, crouchOffset, t);
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
         }
 
@@ -137,7 +137,7 @@ namespace CaveFishing.Players
 
             void update(float t) => firstPersonState.Offset = Vector3.LerpUnclamped(startOffset, offset, t);
 
-            crouchTween?.Dispose();
+            crouchTween.Dispose();
             crouchTween = TweenManager.DoTween(update, crouchTweenData);
         }
     }
