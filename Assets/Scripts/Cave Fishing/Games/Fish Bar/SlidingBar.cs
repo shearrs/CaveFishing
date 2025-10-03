@@ -18,14 +18,12 @@ namespace CaveFishing.Games.FishBarGame
 
         public void Enable()
         {
-            SetProgress(0.4f);
             velocity = 0f;
             isEnabled = true;
         }
 
         public void Disable()
         {
-            SetProgress(0f);
             isEnabled = false;
         }
 
@@ -59,7 +57,7 @@ namespace CaveFishing.Games.FishBarGame
             velocity -= Time.deltaTime * Time.deltaTime * fallSpeed;
         }
 
-        private void SetProgress(float value)
+        public void SetProgress(float value)
         {
             progress = Mathf.Clamp01(value);
             ProgressUpdated?.Invoke(progress);

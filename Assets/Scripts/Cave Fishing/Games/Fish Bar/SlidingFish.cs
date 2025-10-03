@@ -21,7 +21,6 @@ namespace CaveFishing.Games.FishBarGame
         {
             StartCoroutine(IEMove());
 
-            progress = 0.5f;
             ProgressUpdated?.Invoke(progress);
         }
 
@@ -53,6 +52,12 @@ namespace CaveFishing.Games.FishBarGame
 
                 yield return CoroutineUtil.WaitForSeconds(Random.Range(minMoveTime, maxMoveTime));
             }
+        }
+
+        public void SetPosition(float position)
+        {
+            progress = position;
+            ProgressUpdated?.Invoke(progress);
         }
     }
 }

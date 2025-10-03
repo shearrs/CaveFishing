@@ -12,6 +12,7 @@ namespace CaveFishing.Games.PongGame
         [SerializeField, ReadOnly] private float currentSpeed;
         [SerializeField, ReadOnly] private Vector2 progress;
 
+        private readonly int[] Y_DIRECTIONS = new int[2] { 1, -1 };
         private Vector2 currentDirection;
         private bool isEnabled = false;
 
@@ -55,7 +56,8 @@ namespace CaveFishing.Games.PongGame
         
         private IEnumerator IEUpdate()
         {
-            currentDirection = new Vector2(0.5f, 1).normalized;
+            int yDirection = Y_DIRECTIONS[UnityEngine.Random.Range(0, Y_DIRECTIONS.Length)];
+            currentDirection = new Vector2(0.5f, yDirection).normalized;
             currentSpeed = startingSpeed;
 
             while (true)

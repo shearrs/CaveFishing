@@ -18,8 +18,12 @@ namespace CaveFishing.Games.PongGame
         [SerializeField, ReadOnly] private int playerScore = 0;
         [SerializeField, ReadOnly] private int botScore = 0;
 
+        public int PlayerScore => playerScore;
+        public int BotScore => botScore;
+
         public event Action Enabled;
         public event Action Disabled;
+        public event Action ScoreUpdated;
 
         private void OnEnable()
         {
@@ -36,6 +40,9 @@ namespace CaveFishing.Games.PongGame
         public override void Enable()
         {
             StartCoroutine(IESpawnBall());
+
+            playerScore = 0;
+            botScore = 0;
 
             player.Enable();
             bot.Enable();
@@ -57,29 +64,33 @@ namespace CaveFishing.Games.PongGame
         private void OnHitRightSide()
         {
             playerScore++;
-
             ball.Disable();
-            StartCoroutine(IESpawnBall());
+
+            ScoreUpdated?.Invoke();
 
             if (playerScore == scoreToWin)
             {
                 Disable();
                 SignalShuttle.Emit(new GameWonSignal());
             }
+            else
+                StartCoroutine(IESpawnBall());
         }
 
         private void OnHitLeftSide()
         {
             botScore++;
-
             ball.Disable();
-            StartCoroutine(IESpawnBall());
+
+            ScoreUpdated?.Invoke();
 
             if (botScore == scoreToWin)
             {
                 Disable();
                 SignalShuttle.Emit(new GameLostSignal());
             }
+            else
+                StartCoroutine(IESpawnBall());
         }
 
         private IEnumerator IESpawnBall()

@@ -39,10 +39,9 @@ namespace CaveFishing.Games.FishBarGame
 
         public override void Enable()
         {
-            reelInput.Enable();
-            slidingBar.Enable();
-            slidingFish.Enable();
-            progressBar.Enable();
+            slidingBar.SetProgress(0.45f);
+            progressBar.SetReelAmount(0.5f);
+            slidingFish.SetPosition(0.5f);
 
             Enabled?.Invoke();
             SignalShuttle.Emit(new GameEnabledSignal());
@@ -57,6 +56,14 @@ namespace CaveFishing.Games.FishBarGame
 
             Disabled?.Invoke();
             SignalShuttle.Emit(new GameDisabledSignal());
+        }
+
+        public void StartGame()
+        {
+            reelInput.Enable();
+            slidingBar.Enable();
+            slidingFish.Enable();
+            progressBar.Enable();
         }
 
         private void Update()

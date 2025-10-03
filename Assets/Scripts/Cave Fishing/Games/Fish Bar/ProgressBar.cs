@@ -25,8 +25,6 @@ namespace CaveFishing.Games.FishBarGame
 
         public void Enable()
         {
-            currentReelAmount = 0.5f;
-
             lenienceTimer.Start();
             StartCoroutine(IEUpdate());
         }
@@ -35,6 +33,12 @@ namespace CaveFishing.Games.FishBarGame
         {
             lenienceTimer.Stop();
             StopAllCoroutines();
+        }
+
+        public void SetReelAmount(float amount)
+        {
+            currentReelAmount = Mathf.Clamp01(amount);
+            ReelAmountUpdated?.Invoke(amount);
         }
 
         private IEnumerator IEUpdate()
@@ -56,9 +60,7 @@ namespace CaveFishing.Games.FishBarGame
             else
                 currentReelAmount -= Time.deltaTime * decayAmount;
 
-            currentReelAmount = Mathf.Clamp01(currentReelAmount);
-
-            ReelAmountUpdated?.Invoke(currentReelAmount);
+            SetReelAmount(currentReelAmount);
 
             if (currentReelAmount == 1.0f)
                 FullReelReached?.Invoke();
