@@ -65,13 +65,10 @@ namespace CaveFishing.Games.WordleGame
             greenCharacters.Clear();
 
             foreach (var word in words)
-            {
-                foreach (var letter in word.WordleLetters)
-                    letter.SetType(WordleLetter.LetterType.None);
-            }
+                word.Clear();
 
             foreach (var letter in keyboard)
-                letter.SetType(WordleLetter.LetterType.None);
+                letter.Clear();
         }
 
         public void AddLetter(string letter)
@@ -120,7 +117,7 @@ namespace CaveFishing.Games.WordleGame
                     if (!grayCharacters.Contains(guessCharacter))
                     {
                         grayCharacters.Add(guessCharacter);
-                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Gray);
+                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Gray, i);
                     }
 
                     guessLetters.Remove(currentWord.WordleLetters[i]);
@@ -134,7 +131,7 @@ namespace CaveFishing.Games.WordleGame
                         yellowCharacters.Remove(guessCharacter);
                         greenCharacters.Add(guessCharacter);
 
-                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Green);
+                        SetKeyboardLetter(guessCharacter.ToString(), WordleLetter.LetterType.Green, i);
                     }
 
                     guessLetters.Remove(currentWord.WordleLetters[i]);
@@ -147,20 +144,21 @@ namespace CaveFishing.Games.WordleGame
             {
                 var letter = guessLetters[i];
                 char character = letter.Letter[0];
-
+                int index = currentWord.IndexOf(letter);
+                
                 if (!targetCharacters.Contains(character))
                 {
-                    letter.SetType(WordleLetter.LetterType.Gray, currentWord.IndexOf(letter));
+                    letter.SetType(WordleLetter.LetterType.Gray, index);
 
                     continue;
                 }
 
-                letter.SetType(WordleLetter.LetterType.Yellow, currentWord.IndexOf(letter));
+                letter.SetType(WordleLetter.LetterType.Yellow, index);
 
                 if (!greenCharacters.Contains(character) && !yellowCharacters.Contains(character))
                 {
                     yellowCharacters.Add(character);
-                    SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Yellow);
+                    SetKeyboardLetter(character.ToString(), WordleLetter.LetterType.Yellow, index);
                 }
 
                 targetCharacters.Remove(character);
@@ -182,13 +180,13 @@ namespace CaveFishing.Games.WordleGame
             currentWord = words[currentGuess];
         }
     
-        private void SetKeyboardLetter(string letter, WordleLetter.LetterType type)
+        private void SetKeyboardLetter(string letter, WordleLetter.LetterType type, int delay)
         {
             foreach (var wordleLetter in keyboard)
             {
                 if (wordleLetter.Letter == letter)
                 {
-                    wordleLetter.SetType(type);
+                    wordleLetter.SetType(type, delay);
                     break;
                 }
             }

@@ -51,6 +51,12 @@ namespace CaveFishing.Games.WordleGame
 
         public int IndexOf(WordleLetter letter) => letters.IndexOf(letter);
 
+        public void Clear()
+        {
+            foreach (var letter in letters)
+                letter.Clear();
+        }
+
         private string GetWord()
         {
             string word = string.Empty;

@@ -8,6 +8,7 @@ namespace CaveFishing.Games.WordleGame
         public enum LetterType { None, Gray, Yellow, Green }
 
         [SerializeField] private string letter;
+        [SerializeField] private bool staticLetter;
         private LetterType letterType;
 
         public string Letter => letter;
@@ -15,6 +16,7 @@ namespace CaveFishing.Games.WordleGame
 
         public event Action LetterChanged;
         public event Action<int> TypeChanged;
+        public event Action Cleared;
 
         public void SetLetter(string text)
         {
@@ -28,6 +30,16 @@ namespace CaveFishing.Games.WordleGame
             letterType = type;
 
             TypeChanged?.Invoke(delay);
+        }
+
+        public void Clear()
+        {
+            if (!staticLetter)
+                letter = string.Empty;
+
+            letterType = LetterType.None;
+
+            Cleared?.Invoke();
         }
     }
 }

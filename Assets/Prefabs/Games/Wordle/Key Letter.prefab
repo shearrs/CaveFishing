@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letter: 
+  staticLetter: 1
 --- !u!114 &2207252008101297727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,7 @@ MonoBehaviour:
   button: {fileID: 3548267291896294636}
   text: {fileID: 2216917411812126743}
   background: {fileID: 1457956052714689806}
+  whiteColor: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 1}
   grayColor: {r: 0.39607844, g: 0.40784314, b: 0.41568628, a: 1}
   yellowColor: {r: 0.7882353, g: 0.7058824, b: 0.34117648, a: 1}
   greenColor: {r: 0.4117647, g: 0.67058825, b: 0.39215687, a: 1}

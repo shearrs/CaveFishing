@@ -19,6 +19,7 @@ namespace CaveFishing.Games.WordleGame.UI
         [SerializeField] private ManagedUIElement button;
         [SerializeField] private TextMeshProUGUI text;
         [SerializeField] private ManagedImage background;
+        [SerializeField] private Color whiteColor;
         [SerializeField] private Color grayColor;
         [SerializeField] private Color yellowColor;
         [SerializeField] private Color greenColor;
@@ -27,7 +28,7 @@ namespace CaveFishing.Games.WordleGame.UI
         [SerializeField] private TweenData flipTweenData = new(0.2f);
 
         private Tween flipTween;
-        private Timer flipTimer = new();
+        private readonly Timer flipTimer = new();
 
         public string Letter => letter.Letter;
 
@@ -43,6 +44,7 @@ namespace CaveFishing.Games.WordleGame.UI
         {
             letter.LetterChanged += OnLetterChanged;
             letter.TypeChanged += OnTypeChanged;
+            letter.Cleared += OnCleared;
 
             if (button != null)
                 button.ClickEnded += OnButtonClicked;
@@ -52,6 +54,7 @@ namespace CaveFishing.Games.WordleGame.UI
         {
             letter.LetterChanged -= OnLetterChanged;
             letter.TypeChanged -= OnTypeChanged;
+            letter.Cleared -= OnCleared;
 
             if (button != null)
                 button.ClickEnded -= OnButtonClicked;
@@ -86,9 +89,20 @@ namespace CaveFishing.Games.WordleGame.UI
             }
         }
 
+        private void OnCleared()
+        {
+            background.BaseColor = whiteColor;
+
+            if (text != null)
+            {
+                text.color = Color.black;
+                text.text = letter.Letter;
+            }
+        }
+
         public void SetFill(WordleLetter.LetterType type)
         {
-            Color fillColor = Color.white;
+            Color fillColor = whiteColor;
             Color textColor = Color.white;
 
             switch (type)
@@ -106,7 +120,7 @@ namespace CaveFishing.Games.WordleGame.UI
                     textColor = Color.white;
                     break;
                 case WordleLetter.LetterType.None:
-                    fillColor = Color.white;
+                    fillColor = whiteColor;
                     textColor = Color.black;
                     break;
             }

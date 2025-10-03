@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2380e3614f89d4ba4c61c338fab119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigameType: 2
+  minigameType: 1
 --- !u!54 &3135810893394235715
 Rigidbody:
   m_ObjectHideFlags: 0

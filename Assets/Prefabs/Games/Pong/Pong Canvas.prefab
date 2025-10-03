@@ -122,7 +122,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2364311433723934994}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2364311433723934994}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4686ae76173a6c408dbad5c3f90c570, type: 3}
   m_Name: 
@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4139096992174343987}
   - component: {fileID: 6752781914847134412}
+  - component: {fileID: 2897993472031119669}
   m_Layer: 0
   m_Name: Pong
   m_TagString: Untagged
@@ -255,6 +256,23 @@ MonoBehaviour:
   player: {fileID: 1431423971489457559}
   bot: {fileID: 7252086691344082044}
   ball: {fileID: 186433994373234094}
+  scoreToWin: 3
+  playerScore: 0
+  botScore: 0
+--- !u!114 &2897993472031119669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8597354244927888433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d6f59d745a0c24aae1c60678cba8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pong: {fileID: 6752781914847134412}
+  canvas: {fileID: 7601710143483289037}
 --- !u!1001 &2617983205513201109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -343,6 +361,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2792980949646833787, guid: 0191d72942869934abb1b790c243e118, type: 3}
+      propertyPath: startingSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865200243172429114, guid: 0191d72942869934abb1b790c243e118, type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 3320247575730374656}
     - target: {fileID: 4188724813611989238, guid: 0191d72942869934abb1b790c243e118, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -361,6 +387,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdb31c3385fce5d44b090fcf9cef2040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3320247575730374656 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 740580794058100181, guid: 0191d72942869934abb1b790c243e118, type: 3}
+  m_PrefabInstance: {fileID: 2617983205513201109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &3691576670082718476 stripped
