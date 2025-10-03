@@ -8,6 +8,8 @@ namespace CaveFishing.Games.PongGame
     {
         [SerializeField, ReadOnly] private float progress = 0;
 
+        public float Position => progress;
+
         public event Action<float> ProgressUpdated;
 
         public void MoveUp(float amount)

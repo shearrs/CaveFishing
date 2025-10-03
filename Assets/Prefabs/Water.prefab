@@ -149,6 +149,7 @@ MonoBehaviour:
   fish:
   - {fileID: 9101881805195776583, guid: 053a4206c1a4f8049ae1004748af9466, type: 3}
   - {fileID: 9101881805195776583, guid: 2cc9e3da9de93f846b84fb1025b4a8d5, type: 3}
+  - {fileID: 9101881805195776583, guid: 0cde6a81ac1086b49818560ba34f25be, type: 3}
 --- !u!114 &2002778906889032464
 MonoBehaviour:
   m_ObjectHideFlags: 0
