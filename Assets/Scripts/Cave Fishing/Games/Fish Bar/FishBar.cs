@@ -39,8 +39,8 @@ namespace CaveFishing.Games.FishBarGame
 
         public override void Enable()
         {
-            slidingBar.SetProgress(0.45f);
-            progressBar.SetReelAmount(0.5f);
+            slidingBar.SetProgress(0.5f);
+            progressBar.SetReelAmount(0.25f);
             slidingFish.SetPosition(0.5f);
 
             Enabled?.Invoke();
