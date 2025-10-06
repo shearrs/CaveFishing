@@ -116,7 +116,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7820325820607032661}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7820325820607032661}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4686ae76173a6c408dbad5c3f90c570, type: 3}
   m_Name: 
@@ -412,18 +412,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1925678477293261613}
     m_Modifications:
-    - target: {fileID: 1106748282831496370, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 1106748282831496370, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.41847914
-      objectReference: {fileID: 0}
-    - target: {fileID: 1106748282831496370, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: m_Color.r
-      value: 0.3150943
-      objectReference: {fileID: 0}
     - target: {fileID: 1879919294311091528, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
       propertyPath: m_Name
       value: Fish Bar
@@ -432,14 +420,6 @@ PrefabInstance:
       propertyPath: instructor
       value: 
       objectReference: {fileID: 2203289119257216989}
-    - target: {fileID: 4651013675280391585, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -595.00006
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651013675280391585, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -292.49997
-      objectReference: {fileID: 0}
     - target: {fileID: 5093335219919810878, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -524,10 +504,6 @@ PrefabInstance:
       propertyPath: gameCanvas
       value: 
       objectReference: {fileID: 106337405810376305}
-    - target: {fileID: 8656165545322236512, guid: 3f56175ed1b55804cbdb83a059c3fa4a, type: 3}
-      propertyPath: instructionText
-      value: 
-      objectReference: {fileID: 6224933194561735242}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

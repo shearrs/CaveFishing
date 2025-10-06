@@ -34,11 +34,6 @@ namespace CaveFishing.Games.FishTypingGame
         public event Action Enabled;
         public event Action Disabled;
 
-        private void Start()
-        {
-            Enable();
-        }
-
         public override void Enable()
         {
             if (isEnabled)

@@ -920,7 +920,7 @@ MonoBehaviour:
   relativeTransform: {fileID: 6618464238440587751}
   groundDetector: {fileID: 640695488072869181}
   moveSpeed: 3
-  jumpForce: 3
+  jumpForce: 4
   gravity: -9.81
 --- !u!143 &3820997423931571557
 CharacterController:

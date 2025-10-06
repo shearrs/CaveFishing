@@ -60,7 +60,9 @@ namespace CaveFishing.Fishing
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent(out FishingSpot fishingSpot))
+            var fishingSpot = other.GetComponentInParent<FishingSpot>();
+
+            if (fishingSpot == null)
                 return;
 
             rb.isKinematic = true;
