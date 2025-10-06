@@ -10,10 +10,12 @@ namespace CaveFishing.Games.FishTypingGame
     public class Keyboard : SHMonoBehaviourLogger
     {
         [SerializeField] private ManagedInputProvider inputProvider;
+        [SerializeField] private int maxLetters = 15;
         [SerializeField, ReadOnly] private string inputLetters;
 
-        private IManagedInput keyInput;
         private readonly List<ManagedKey> pressedKeys = new();
+        private IManagedInput keyInput;
+        private bool isEnabled = false;
 
         public event Action<string> InputLettersUpdated;
 
@@ -22,14 +24,37 @@ namespace CaveFishing.Games.FishTypingGame
             keyInput = inputProvider.GetInput("Key");
         }
 
-        private void OnEnable()
-        {
-            keyInput.Performed += OnKeyInput;
-        }
-
         private void OnDisable()
         {
             keyInput.Performed -= OnKeyInput;
+        }
+
+        public void Enable()
+        {
+            if (isEnabled)
+                return;
+
+            Clear();
+
+            keyInput.Performed += OnKeyInput;
+
+            isEnabled = true;
+        }
+
+        public void Disable()
+        {
+            if (!isEnabled)
+                return;
+
+            keyInput.Performed -= OnKeyInput;
+
+            isEnabled = false;
+        }
+
+        public void Clear()
+        {
+            inputLetters = string.Empty;
+            InputLettersUpdated?.Invoke(inputLetters);
         }
 
         private void OnKeyInput(ManagedInputInfo info)
@@ -51,13 +76,9 @@ namespace CaveFishing.Games.FishTypingGame
             {
                 if (inputLetters.Length > 0)
                     inputLetters = inputLetters[..^1];
-
-                return;
             }
-            else if (!key.IsLetter())
-                return;
-
-            inputLetters += key.GetDisplayName();
+            else if (key.IsLetter() && inputLetters.Length < maxLetters)
+                inputLetters += key.GetDisplayName().ToLower();
 
             InputLettersUpdated?.Invoke(inputLetters);
         }

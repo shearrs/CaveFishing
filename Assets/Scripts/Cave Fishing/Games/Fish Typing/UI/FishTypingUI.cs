@@ -1,3 +1,4 @@
+using CaveFishing.Games.UI;
 using UnityEngine;
 
 namespace CaveFishing.Games.FishTypingGame.UI
@@ -6,6 +7,7 @@ namespace CaveFishing.Games.FishTypingGame.UI
     {
         [SerializeField] private FishTyping fishTyping;
         [SerializeField] private Canvas canvas;
+        [SerializeField] private InstructionText instructionText;
 
         private void OnEnable()
         {
@@ -22,6 +24,7 @@ namespace CaveFishing.Games.FishTypingGame.UI
         private void OnEnabled()
         {
             canvas.enabled = true;
+            instructionText.Display(fishTyping.StartGame);
         }
 
         private void OnDisabled()

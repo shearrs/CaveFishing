@@ -11,7 +11,7 @@ namespace CaveFishing.Games.FishTypingGame
         [SerializeField, ReadOnly, Range(0f, 1f)] private float progress;
         [SerializeField] private float speed = 1.0f;
 
-        public string Word { get => word; set => SetWord(word); }
+        public string Word { get => word; set => SetWord(value); }
         public float Speed { get => speed; set => speed = value; }
 
         public event Action<WordFish> ReachedEnd;

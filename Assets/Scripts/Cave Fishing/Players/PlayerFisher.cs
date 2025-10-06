@@ -59,6 +59,9 @@ namespace CaveFishing.Players
         {
             Log("Game won!");
 
+            if (currentFish == null)
+                return;
+
             var fish = Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
             holder.Hold(fish);
         }

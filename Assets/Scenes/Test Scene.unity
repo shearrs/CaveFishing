@@ -11667,15 +11667,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3521730758184650588, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3521730758184650588, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3521730758184650588, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3521730758184650588, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -11696,6 +11696,14 @@ PrefabInstance:
     - target: {fileID: 3521730758184650588, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4589993291414543294, guid: 5158382abd18df044abd162509588c23, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7601710143483289037, guid: 5158382abd18df044abd162509588c23, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12041,13 +12049,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 265004710}
     m_Modifications:
-    - target: {fileID: 1370280218588216985, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5145848479213122379, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
       propertyPath: m_Name
       value: Fish Typing Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145848479213122379, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6951594851081671296, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
       propertyPath: m_Pivot.x

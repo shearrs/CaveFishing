@@ -12,9 +12,12 @@ namespace CaveFishing.Games.FishTypingGame
         [Header("Components")]
         [SerializeField] private WordFish fishPrefab;
         [SerializeField] private Transform fishContainer;
+        [SerializeField] private Keyboard keyboard;
 
         [Header("Game Settings")]
         [SerializeField, Min(10f)] private float gameTime;
+        [SerializeField, Min(1f)] private float maxSpeedScaling;
+        [SerializeField, Min(1f)] private float maxSpawnTimeScaling;
 
         [Header("Fish Settings")]
         [SerializeField] private Range<float> spawnTimeRange;
@@ -22,18 +25,22 @@ namespace CaveFishing.Games.FishTypingGame
         [SerializeField] private Range<float> ySpawnRange;
         [SerializeField] private Range<float> fishSpeedRange = new(0.1f, 0.25f);
 
+        private readonly Timer gameTimer = new();
         private readonly List<WordFish> spawnedFish = new();
         private bool isEnabled = false;
 
         public event Action Enabled;
         public event Action Disabled;
 
+        private void Start()
+        {
+            Enable();
+        }
+
         public override void Enable()
         {
             if (isEnabled)
                 return;
-
-            StartCoroutine(IESpawnFish());
 
             isEnabled = true;
             Enabled?.Invoke();
@@ -52,6 +59,8 @@ namespace CaveFishing.Games.FishTypingGame
                 Destroy(fish.gameObject);
             }
 
+            keyboard.Disable();
+            keyboard.InputLettersUpdated -= OnInputLettersUpdated;
             spawnedFish.Clear();
             StopAllCoroutines();
 
@@ -61,26 +70,68 @@ namespace CaveFishing.Games.FishTypingGame
             SignalShuttle.Emit(new GameDisabledSignal());
         }
 
+        public void StartGame()
+        {
+            keyboard.Enable();
+            keyboard.InputLettersUpdated += OnInputLettersUpdated;
+            StartCoroutine(IESpawnFish());
+        }
+
+        private void OnInputLettersUpdated(string inputWord)
+        {
+            WordFish fishToType = null;
+
+            foreach (var fish in spawnedFish)
+            {
+                if (fish.Word == inputWord)
+                {
+                    fishToType = fish;
+                    break;
+                }
+            }
+
+            if (fishToType != null)
+            {
+                spawnedFish.Remove(fishToType);
+                fishToType.Type();
+                keyboard.Clear();
+            }
+        }
+
         private IEnumerator IESpawnFish()
         {
-            float spawnTime = spawnTimeRange.Random();
+            gameTimer.Start(gameTime);
 
-            while (true)
+            while (!gameTimer.IsDone)
             {
+                float t = gameTimer.Percentage * gameTimer.Percentage;
+                float spawnScale = Mathf.Lerp(1f, maxSpawnTimeScaling, t);
+                float spawnTime = spawnTimeRange.Random() / spawnScale;
+
+                Debug.Log(gameTimer.Percentage);
+
                 yield return CoroutineUtil.WaitForSeconds(spawnTime);
 
+                float speedScale = Mathf.Lerp(1f, maxSpeedScaling, t);
                 var fish = Instantiate(fishPrefab, fishContainer);
 
                 Vector2 position = new(xSpawnPosition, ySpawnRange.Random());
                 fish.transform.localPosition = position;
 
                 fish.Word = WordDatabase.GetWord();
-                fish.Speed = fishSpeedRange.Random();
+                fish.Speed = fishSpeedRange.Random() * speedScale;
 
                 fish.ReachedEnd += OnFishReachedEnd;
+                spawnedFish.Add(fish);
 
                 yield return null;
             }
+
+            while (spawnedFish.Count > 0)
+                yield return null;
+
+            Disable();
+            SignalShuttle.Emit(new GameWonSignal());
         }
 
         private void OnFishReachedEnd(WordFish fish)

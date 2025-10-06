@@ -299,6 +299,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Fish Typing",
+            "id": "a170c88a-6312-417f-b32b-f1ca3391ffea",
+            "actions": [
+                {
+                    "name": "Key",
+                    "type": "PassThrough",
+                    "id": "5b82f04d-c7a3-4414-b276-b8b2b77a7d70",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "56943e37-2152-43db-98f3-133f12db0513",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

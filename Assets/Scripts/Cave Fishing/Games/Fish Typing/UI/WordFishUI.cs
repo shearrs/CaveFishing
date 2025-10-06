@@ -1,4 +1,5 @@
 using Shears;
+using TMPro;
 using UnityEngine;
 
 namespace CaveFishing.Games.FishTypingGame.UI
@@ -6,6 +7,7 @@ namespace CaveFishing.Games.FishTypingGame.UI
     public class WordFishUI : MonoBehaviour
     {
         [SerializeField] private WordFish fish;
+        [SerializeField] private TextMeshProUGUI textMesh;
         [SerializeField] private Range<float> movementRange;
 
         private RectTransform rectTransform;
@@ -18,11 +20,13 @@ namespace CaveFishing.Games.FishTypingGame.UI
         private void OnEnable()
         {
             fish.ProgressUpdated += OnProgressUpdated;
+            fish.WordUpdated += OnWordUpdated;
         }
 
         private void OnDisable()
         {
             fish.ProgressUpdated -= OnProgressUpdated;
+            fish.WordUpdated -= OnWordUpdated;
         }
 
         private void OnProgressUpdated(float progress)
@@ -32,5 +36,10 @@ namespace CaveFishing.Games.FishTypingGame.UI
 
             rectTransform.localPosition = position;
         }
+
+        private void OnWordUpdated(string word)
+        {
+            textMesh.text = word;
+        }    
     }
 }
