@@ -21,10 +21,8 @@ namespace CaveFishing.Players
         [SerializeField] private TweenData headBobTweenData = new(0.25f, loops: -1, loopMode:LoopMode.PingPong);
 
         private float headBobOffset;
-
         private ManagedCamera managedCamera;
         private FirstPersonCameraState firstPersonState;
-
         private Tween crouchTween;
         private Tween headBobTween;
         private ITweenData crouchTweenData;
