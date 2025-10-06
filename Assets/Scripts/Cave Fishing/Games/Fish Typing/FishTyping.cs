@@ -3,6 +3,7 @@ using Shears;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using Shears.Signals;
 
 namespace CaveFishing.Games.FishTypingGame
 {
@@ -12,11 +13,14 @@ namespace CaveFishing.Games.FishTypingGame
         [SerializeField] private WordFish fishPrefab;
         [SerializeField] private Transform fishContainer;
 
-        [Header("Settings")]
+        [Header("Game Settings")]
         [SerializeField, Min(10f)] private float gameTime;
+
+        [Header("Fish Settings")]
         [SerializeField] private Range<float> spawnTimeRange;
         [SerializeField] private float xSpawnPosition;
         [SerializeField] private Range<float> ySpawnRange;
+        [SerializeField] private Range<float> fishSpeedRange = new(0.1f, 0.25f);
 
         private readonly List<WordFish> spawnedFish = new();
         private bool isEnabled = false;
@@ -33,6 +37,8 @@ namespace CaveFishing.Games.FishTypingGame
 
             isEnabled = true;
             Enabled?.Invoke();
+
+            SignalShuttle.Emit(new GameEnabledSignal());
         }
 
         public override void Disable()
@@ -51,6 +57,8 @@ namespace CaveFishing.Games.FishTypingGame
 
             isEnabled = false;
             Disabled?.Invoke();
+
+            SignalShuttle.Emit(new GameDisabledSignal());
         }
 
         private IEnumerator IESpawnFish()
@@ -66,6 +74,9 @@ namespace CaveFishing.Games.FishTypingGame
                 Vector2 position = new(xSpawnPosition, ySpawnRange.Random());
                 fish.transform.localPosition = position;
 
+                fish.Word = WordDatabase.GetWord();
+                fish.Speed = fishSpeedRange.Random();
+
                 fish.ReachedEnd += OnFishReachedEnd;
 
                 yield return null;
@@ -74,7 +85,8 @@ namespace CaveFishing.Games.FishTypingGame
 
         private void OnFishReachedEnd(WordFish fish)
         {
-            
+            Disable();
+            SignalShuttle.Emit(new GameLostSignal());
         }
     }
 }

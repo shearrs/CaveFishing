@@ -11,11 +11,12 @@ namespace CaveFishing.Games.FishTypingGame
         [SerializeField, ReadOnly, Range(0f, 1f)] private float progress;
         [SerializeField] private float speed = 1.0f;
 
-        public string Word { get => word; set => word = value; }
+        public string Word { get => word; set => SetWord(word); }
         public float Speed { get => speed; set => speed = value; }
 
         public event Action<WordFish> ReachedEnd;
         public event Action<float> ProgressUpdated;
+        public event Action<string> WordUpdated;
 
         private void Start()
         {
@@ -27,14 +28,17 @@ namespace CaveFishing.Games.FishTypingGame
             Destroy(gameObject);
         }
 
+        private void SetWord(string newWord)
+        {
+            word = newWord;
+            WordUpdated?.Invoke(newWord);
+        }
+
         private IEnumerator IESwim()
         {
-            while (true)
+            while (progress < 1.0f)
             {
                 SetProgress(progress + (speed * Time.deltaTime));
-
-                if (progress == 1.0f)
-                    break;
 
                 yield return null;
             }
