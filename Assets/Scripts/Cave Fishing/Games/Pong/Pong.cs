@@ -25,11 +25,6 @@ namespace CaveFishing.Games.PongGame
         public event Action Disabled;
         public event Action ScoreUpdated;
 
-        private void Start()
-        {
-            Enable();
-        }
-
         private void OnEnable()
         {
             ball.HitLeftSide += OnHitLeftSide;

@@ -9,16 +9,27 @@ namespace CaveFishing.Games.UI
 {
     public class InstructionText : MonoBehaviour
     {
+        [SerializeField] private Instructor instructor;
         [SerializeField] private Image[] elements;
         [SerializeField] private TextMeshProUGUI textMesh;
         [SerializeField] private float displayTime = 1;
 
-        public void Display(Action completeCallback)
+        private void OnEnable()
         {
-            StartCoroutine(IEDisplay(completeCallback));
+            instructor.InstructionRequested += OnInstructionRequested;
         }
 
-        private IEnumerator IEDisplay(Action completeCallback)
+        private void OnDisable()
+        {
+            instructor.InstructionRequested -= OnInstructionRequested;
+        }
+
+        private void OnInstructionRequested()
+        {
+            StartCoroutine(IEDisplay());
+        }
+
+        private IEnumerator IEDisplay()
         {
             textMesh.enabled = true;
 
@@ -32,7 +43,7 @@ namespace CaveFishing.Games.UI
             foreach (var element in elements)
                 element.enabled = false;
 
-            completeCallback?.Invoke();
+            instructor.Complete();
         }
     }
 }

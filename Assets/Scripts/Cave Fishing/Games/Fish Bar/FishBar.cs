@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using Shears.Input;
 using Shears.Signals;
 using System;
@@ -11,6 +12,7 @@ namespace CaveFishing.Games.FishBarGame
         [SerializeField] private ManagedInputProvider inputProvider;
 
         [Header("Components")]
+        [SerializeField] private Instructor instructor;
         [SerializeField] private SlidingBar slidingBar;
         [SerializeField] private SlidingFish slidingFish;
         [SerializeField] private ProgressBar progressBar;
@@ -42,6 +44,8 @@ namespace CaveFishing.Games.FishBarGame
             slidingBar.SetProgress(0.5f);
             progressBar.SetReelAmount(0.25f);
             slidingFish.SetPosition(0.5f);
+
+            instructor.Instruct(StartGame);
 
             Enabled?.Invoke();
             SignalShuttle.Emit(new GameEnabledSignal());

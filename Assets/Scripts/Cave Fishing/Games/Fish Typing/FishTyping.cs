@@ -1,15 +1,17 @@
-using System;
+using Mono.Cecil.Cil;
 using Shears;
-using System.Collections;
-using UnityEngine;
-using System.Collections.Generic;
 using Shears.Signals;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace CaveFishing.Games.FishTypingGame
 {
     public class FishTyping : Minigame
     {
         [Header("Components")]
+        [SerializeField] private Instructor instructor;
         [SerializeField] private WordFish fishPrefab;
         [SerializeField] private Transform fishContainer;
         [SerializeField] private Keyboard keyboard;
@@ -43,8 +45,10 @@ namespace CaveFishing.Games.FishTypingGame
                 return;
 
             isEnabled = true;
-            Enabled?.Invoke();
 
+            instructor.Instruct(StartGame);
+
+            Enabled?.Invoke();
             SignalShuttle.Emit(new GameEnabledSignal());
         }
 
@@ -107,8 +111,6 @@ namespace CaveFishing.Games.FishTypingGame
                 float t = gameTimer.Percentage * gameTimer.Percentage;
                 float spawnScale = Mathf.Lerp(1f, maxSpawnTimeScaling, t);
                 float spawnTime = spawnTimeRange.Random() / spawnScale;
-
-                Debug.Log(gameTimer.Percentage);
 
                 yield return CoroutineUtil.WaitForSeconds(spawnTime);
 

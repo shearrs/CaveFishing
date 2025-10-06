@@ -7,7 +7,6 @@ namespace CaveFishing.Games.FishBarGame.UI
     {
         [SerializeField] private FishBar fishBar;
         [SerializeField] private Canvas gameCanvas;
-        [SerializeField] private InstructionText instructionText;
 
         private void OnEnable()
         {
@@ -24,7 +23,6 @@ namespace CaveFishing.Games.FishBarGame.UI
         private void OnEnabled()
         {
             gameCanvas.enabled = true;
-            instructionText.Display(fishBar.StartGame);
         }
 
         private void OnDisabled()

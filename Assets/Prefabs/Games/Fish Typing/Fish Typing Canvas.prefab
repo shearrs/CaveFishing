@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <LogLevels>k__BackingField: 29
+  instructor: {fileID: 7795694506632100425}
   fishPrefab: {fileID: 6535449184561057510, guid: 3f1036d63a6527d4594588d6b5370908, type: 3}
   fishContainer: {fileID: 3861328956738097417}
   keyboard: {fileID: 6139258140691695078}
@@ -134,8 +135,8 @@ MonoBehaviour:
     min: -340
     max: 340
   fishSpeedRange:
-    min: 0.05
-    max: 0.15
+    min: 0.04
+    max: 0.11
 --- !u!114 &4995391983517451747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishTyping: {fileID: 6988788790508854557}
   canvas: {fileID: 1370280218588216985}
-  instructionText: {fileID: 8927215576161755033}
 --- !u!1 &1263686520924209919
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2012747985238830619}
+  - component: {fileID: 7795694506632100425}
   - component: {fileID: 8927215576161755033}
   m_Layer: 5
   m_Name: Instruction Text
@@ -488,6 +489,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7795694506632100425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131214363762055480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675b43cac72c5c1419d5e7d7f73844fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8927215576161755033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cecc08b212fbee744ae84f4b51491127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructor: {fileID: 7795694506632100425}
   elements: []
   textMesh: {fileID: 1960574542328965574}
   displayTime: 2

@@ -10691,6 +10691,23 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1967508746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4131214363762055480, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+  m_PrefabInstance: {fileID: 5162560044938190912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1967508749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967508746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675b43cac72c5c1419d5e7d7f73844fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1986054315
 Mesh:
   m_ObjectHideFlags: 0
@@ -11699,11 +11716,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4589993291414543294, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752781914847134412, guid: 5158382abd18df044abd162509588c23, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7601710143483289037, guid: 5158382abd18df044abd162509588c23, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12055,7 +12076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145848479213122379, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6951594851081671296, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
       propertyPath: m_Pivot.x
@@ -12137,10 +12158,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6988788790508854557, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+      propertyPath: fishSpeedRange.max
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6988788790508854557, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+      propertyPath: fishSpeedRange.min
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927215576161755033, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+      propertyPath: instructor
+      value: 
+      objectReference: {fileID: 1967508749}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4131214363762055480, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1967508749}
   m_SourcePrefab: {fileID: 100100000, guid: 0906f290d4278b34e8c40d7fad02fb65, type: 3}
 --- !u!114 &5162560044938190913 stripped
 MonoBehaviour:
