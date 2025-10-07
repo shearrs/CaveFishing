@@ -30,6 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5061793614178156273}
+  - {fileID: 7881535129776218642}
   m_Father: {fileID: 6618464238440587751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726687741919340137
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 671394426872992253}
+  fisher: {fileID: 7470633999689158525}
 --- !u!1 &2225050135058674583
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,10 +387,10 @@ MonoBehaviour:
   defaultGizmoColor: {r: 0, g: 1, b: 0.52732944, a: 1}
   detectingGizmoColor: {r: 0, g: 1, b: 0.021003485, a: 1}
   maxDetections: 1
-  <DetectionMask>k__BackingField:
+  detectionMask:
     serializedVersion: 2
-    m_Bits: 1
-  <DetectTriggers>k__BackingField: 0
+    m_Bits: 23
+  detectTriggers: 0
   <Radius>k__BackingField: 0.45
   <Offset>k__BackingField: {x: 0, y: 0.35, z: 0}
 --- !u!1 &3193294400553278297
@@ -859,14 +861,88 @@ MonoBehaviour:
   defaultGizmoColor: {r: 0, g: 0.7885525, b: 1, a: 1}
   detectingGizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   maxDetections: 10
-  <DetectionMask>k__BackingField:
+  detectionMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  <DetectTriggers>k__BackingField: 1
+  detectTriggers: 1
   <Radius>k__BackingField: 0.45
   <Origin>k__BackingField: {x: 0, y: 0, z: 0}
   <Direction>k__BackingField: {x: 0, y: 0, z: 1}
   <Distance>k__BackingField: 3
+--- !u!1 &8213385773839912421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7881535129776218642}
+  - component: {fileID: 1202573416329533296}
+  - component: {fileID: 8907777340976969560}
+  m_Layer: 0
+  m_Name: Block Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7881535129776218642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213385773839912421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7845136746104977187}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202573416329533296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213385773839912421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c05db39d27372d4ba954ef162fb0c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <LogLevels>k__BackingField: 29
+  inputProvider: {fileID: 11400000, guid: 05af23fc0b204ac459972ca1ed5ec666, type: 2}
+  detector: {fileID: 8907777340976969560}
+--- !u!114 &8907777340976969560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213385773839912421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1fabbcfe4a0cf46b68fdd5e2a45c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 0
+  highlightOnDetect: 1
+  defaultGizmoColor: {r: 0, g: 0.6227062, b: 1, a: 1}
+  detectingGizmoColor: {r: 0.044460535, g: 1, b: 0, a: 1}
+  maxDetections: 10
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  detectTriggers: 0
+  castCameraToCursor: 1
+  originCamera: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 1}
+  distance: 3
 --- !u!1 &8547109476936458506
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +997,7 @@ MonoBehaviour:
   groundDetector: {fileID: 640695488072869181}
   moveSpeed: 3
   jumpForce: 4
-  gravity: -9.81
+  gravity: -12
 --- !u!143 &3820997423931571557
 CharacterController:
   m_ObjectHideFlags: 0

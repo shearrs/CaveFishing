@@ -6,12 +6,26 @@ namespace CaveFishing.Games.FishCraftGame
 {
     public class ExitFishCraftGame : Minigame
     {
-        [SerializeField] private PlayerCharacter character;
+        [Header("Player")]
+        [SerializeField] private Player player;
+        [SerializeField] private BlockInteractor interactor;
+
+        [Header("Game")]
         [SerializeField] private Transform returnPoint;
+
+        private Color originalFogColor;
+
+        private void Awake()
+        {
+            originalFogColor = RenderSettings.fogColor;
+        }
 
         public override void Enable()
         {
-            character.transform.position = returnPoint.transform.position;
+            player.Character.SetPosition(returnPoint.position);
+            interactor.Disable();
+
+            RenderSettings.fogColor = originalFogColor;
 
             SignalShuttle.Emit(new GameEnabledSignal());
         }

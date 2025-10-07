@@ -7,6 +7,10 @@ namespace CaveFishing.Players
     public class Player : MonoBehaviour
     {
         [SerializeField] private PlayerCharacter character;
+        [SerializeField] private PlayerFisher fisher;
+
+        public PlayerCharacter Character => character;
+        public PlayerFisher Fisher => fisher;
 
         private void OnEnable()
         {

@@ -1,0 +1,17 @@
+{
+    "name": "CaveFishing.Games.FishCraftGame.UI",
+    "rootNamespace": "CaveFishing.Games.FishCraftGame.UI",
+    "references": [
+        "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
+        "GUID:40096b79c81dcb146ad08b4780a7f6ba"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

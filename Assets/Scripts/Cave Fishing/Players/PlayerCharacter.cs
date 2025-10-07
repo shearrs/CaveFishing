@@ -100,6 +100,13 @@ namespace CaveFishing.Players
             isEnabled = false;
         }
 
+        public void SetPosition(Vector3 position)
+        {
+            controller.enabled = false;
+            controller.transform.position = position;
+            controller.enabled = true;
+        }
+
         public void UpdateCharacter()
         {
             if (!isEnabled)

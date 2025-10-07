@@ -2,9 +2,12 @@
     "name": "CaveFishing.Games.FishCraftGame",
     "rootNamespace": "CaveFishing.Games.FishCraftGame",
     "references": [
+        "GUID:624a85509f829424398b0fa44ae4b076",
         "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
         "GUID:f9343658ba9f34f40af4f1a7b0c76be7",
         "GUID:a4c64ce83ac5e5b42bef8d9745c514f4",
+        "GUID:2d52c993d31d6ff478ecb20384e7700a",
+        "GUID:82e1ca9b695ad5f4b9951665b5cfbd3f",
         "GUID:5cb9b49caeb04804393ac93afe3aaf32",
         "GUID:7493c8a77dd446d4a91af371740c7ff8"
     ],

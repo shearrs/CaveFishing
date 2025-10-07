@@ -327,6 +327,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Fish Craft",
+            "id": "708541ce-e386-4098-9867-6aac2a2e3060",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "PassThrough",
+                    "id": "db2dea0c-a654-4ab5-847f-d887a6f2d795",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Alternative Interact",
+                    "type": "PassThrough",
+                    "id": "71144935-1fc6-4a35-9b06-ada0bd138e3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "540592a9-c579-4d56-804d-4cd604c0da00",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff72dca9-2d0f-4f44-8c81-dd75cbd872bd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Alternative Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

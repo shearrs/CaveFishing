@@ -7,16 +7,29 @@ namespace CaveFishing.Games.FishCraftGame
 {
     public class EnterFishCraftGame : Minigame
     {
-        [SerializeField] private PlayerCharacter character;
+        [Header("Player")]
+        [SerializeField] private Player player;
+        [SerializeField] private BlockInteractor interactor;
+
+        [Header("Game")]
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private List<Block> blocks;
+        [SerializeField] private Color fogColor;
+
+        private void Start()
+        {
+            Invoke(nameof(Enable), 1.0f);
+        }
 
         public override void Enable()
         {
             foreach (var block in blocks)
                 block.ResetBlock();
 
-            character.transform.position = spawnPoint.position;
+            player.Character.SetPosition(spawnPoint.position);
+            player.Fisher.Disable();
+            interactor.Enable();
+            RenderSettings.fogColor = fogColor;
 
             SignalShuttle.Emit(new GameEnabledSignal());
 
