@@ -2,6 +2,7 @@
     "name": "CaveFishing.Games.FishCraftGame.UI",
     "rootNamespace": "CaveFishing.Games.FishCraftGame.UI",
     "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
         "GUID:40096b79c81dcb146ad08b4780a7f6ba"
     ],
