@@ -11794,8 +11794,12 @@ PrefabInstance:
       objectReference: {fileID: 403623806}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: fish.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: 'fish.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5161492042128650500, guid: 72ea5d077bfe3f1468458cda80f19226, type: 3}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[1]'
       value: 

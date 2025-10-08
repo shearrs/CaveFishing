@@ -9,7 +9,6 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [SerializeField] private Inventory inventory;
         [SerializeField] private ManagedInputProvider inputProvider;
-        [SerializeField] private ItemData testItem;
         [SerializeField] private ItemData stringItem;
 
         private IManagedInput toggleInput;
@@ -22,8 +21,6 @@ namespace CaveFishing.Games.FishCraftGame
 
         private void OnDisable()
         {
-
-
             Disable();
         }
 
@@ -36,7 +33,6 @@ namespace CaveFishing.Games.FishCraftGame
             SignalShuttle.Register<CraftingTableClosedSignal>(OnCraftingTableClosed);
 
             toggleInput.Performed += OnToggleInput;
-            inventory.AddItem(new(testItem), 12);
             inventory.AddItem(new(stringItem), 2);
 
             isEnabled = true;

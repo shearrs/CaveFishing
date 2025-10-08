@@ -26,10 +26,13 @@ namespace CaveFishing.Games.FishCraftGame
             player.Character.SetPosition(returnPoint.position);
             interactor.Disable();
             fishCraftPlayer.Disable();
+            transform.parent.gameObject.SetActive(false);
 
             RenderSettings.fogColor = originalFogColor;
 
             SignalShuttle.Emit(new GameEnabledSignal());
+
+            Disable();
         }
 
         public override void Disable()
