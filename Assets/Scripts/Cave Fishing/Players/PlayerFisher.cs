@@ -62,6 +62,8 @@ namespace CaveFishing.Players
             if (currentFish == null)
                 return;
 
+            SignalShuttle.Emit(new FishCaughtSignal(currentFish));
+
             var fish = Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
             holder.Hold(fish);
         }

@@ -7,7 +7,11 @@ namespace CaveFishing.Games.FishCraftGame
     public class CraftingRecipes : ProtectedSingleton<CraftingRecipes>
     {
         [SerializeField] private ItemData stickData;
+        [SerializeField] private ItemData stringData;
+        [SerializeField] private ItemData fishingRodData;
+        [SerializeField] private ItemData oakLogData;
         [SerializeField] private ItemData oakPlanksData;
+        [SerializeField] private ItemData craftingTableData;
 
         private readonly ItemData[] ingredients = new ItemData[9];
         private Recipe2x2[] recipe2x2s;
@@ -21,37 +25,139 @@ namespace CaveFishing.Games.FishCraftGame
             {
                 new(
                     null,           oakPlanksData,
+                    null,           oakPlanksData,
+                    stickData, 4
+                ),
+                new(
+                    oakPlanksData,  null,
                     oakPlanksData,  null,
                     stickData, 4
+                ),
+                new(
+                    oakLogData,     null,
+                    null,           null,
+                    oakPlanksData, 4
+                ),
+                new(
+                    null,           oakLogData,
+                    null,           null,
+                    oakPlanksData, 4
+                ),
+                new(
+                    null,           null,
+                    oakLogData,     null,
+                    oakPlanksData, 4
+                ),
+                new(
+                    null,           null,
+                    null,           oakLogData,
+                    oakPlanksData, 4
+                ),
+                new(
+                    oakPlanksData,  oakPlanksData,
+                    oakPlanksData,  oakPlanksData,
+                    craftingTableData, 1
                 )
             };
 
             recipe3x3s = new Recipe3x3[]
             {
                 new(
-                    null,           oakPlanksData,  null,
+                    oakPlanksData,  null,           null,
                     oakPlanksData,  null,           null,
                     null,           null,           null,
                     stickData, 4
                 ),
                 new(
-                    null,           null,           null,
                     null,           oakPlanksData,  null,
+                    null,           oakPlanksData,  null,
+                    null,  null,           null,
+                    stickData, 4
+                ),
+                new(
+                    null,           null,           oakPlanksData,
+                    null,           null,           oakPlanksData,
+                    null,           null,           null,
+                    stickData, 4
+                ),
+                new(
+                    null,           null,           null,
+                    oakPlanksData,  null,           null,
                     oakPlanksData,  null,           null,
                     stickData, 4
                 ),
                 new(
-                    null,           null,           oakPlanksData,
-                    null,           oakPlanksData,  null,
                     null,           null,           null,
+                    null,           oakPlanksData,  null,
+                    null,           oakPlanksData,  null,
                     stickData, 4
                 ),
                 new(
                     null,           null,           null,
                     null,           null,           oakPlanksData,
-                    null,           oakPlanksData,  null,
+                    null,           null,           oakPlanksData,
                     stickData, 4
                 ),
+                new (
+                    oakLogData, null, null,
+                    null, null, null,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, oakLogData, null,
+                    null, null, null,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, oakLogData,
+                    null, null, null,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    oakLogData, null, null,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    null, oakLogData, null,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    null, null, oakLogData,
+                    null, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    null, null, null,
+                    oakLogData, null, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    null, null, null,
+                    null, oakLogData, null,
+                    oakPlanksData, 4
+                ),
+                new (
+                    null, null, null,
+                    null, null, null,
+                    null, null, oakLogData,
+                    oakPlanksData, 4
+                ),
+                new(
+                    null, null, stickData,
+                    null, stickData, stringData,
+                    stickData, null, stringData,
+                    fishingRodData, 1
+                )
             };
         }
 
@@ -76,7 +182,6 @@ namespace CaveFishing.Games.FishCraftGame
                     if (recipe3x3.IsValid(ingredients))
                     {
                         recipe = recipe3x3;
-                        Debug.Log("3x3: " + recipe);
 
                         return true;
                     }
@@ -89,7 +194,6 @@ namespace CaveFishing.Games.FishCraftGame
                     if (recipe2x2.IsValid(ingredients))
                     {
                         recipe = recipe2x2;
-                        Debug.Log("2x2: " + recipe);
 
                         return true;
                     }

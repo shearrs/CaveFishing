@@ -6,18 +6,20 @@ namespace CaveFishing.Games.FishCraftGame.UI
 {
     public class CraftingResultSlot : MonoBehaviour
     {
-        [SerializeField] private CraftingTable table;
+        [SerializeField] private InventoryCraftingTable table;
         [SerializeField] private Image spriteImage;
         [SerializeField] private TextMeshProUGUI textMesh;
 
         private void OnEnable()
         {
-            table.RecipeChanged -= OnRecipeChanged;
+            table.RecipeChanged += OnRecipeChanged;
+            table.Inventory.Closed += OnInventoryClosed;
         }
 
         private void OnDisable()
         {
             table.RecipeChanged -= OnRecipeChanged;
+            table.Inventory.Closed -= OnInventoryClosed;
         }
 
         public void Select()
@@ -37,8 +39,16 @@ namespace CaveFishing.Games.FishCraftGame.UI
                 spriteImage.enabled = true;
                 textMesh.enabled = true;
                 spriteImage.sprite = recipe.Result.Sprite;
-                textMesh.text = recipe.Count.ToString();
+
+                string count = recipe.Count > 1 ? recipe.Count.ToString() : "";
+
+                textMesh.text = count;
             }
+        }
+
+        private void OnInventoryClosed()
+        {
+            OnRecipeChanged(null);
         }
     }
 }

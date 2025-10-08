@@ -67,8 +67,13 @@ namespace CaveFishing.Games.FishCraftGame
                     else if (targetedBlock.IsBreaking && !interactInput.IsPressed())
                         targetedBlock.EndBreaking();
 
-                    if (alternativeInput.WasPressedThisFrame() && holder.HeldItem != null)
-                        PlaceBlock();
+                    if (alternativeInput.WasPressedThisFrame())
+                    {
+                        if (targetedBlock.IsUsable)
+                            targetedBlock.Use();
+                        else if (holder.HeldItem != null && holder.HeldItem.Data.IsBlock)
+                            PlaceBlock();
+                    }
                 }
 
                 yield return null;

@@ -34,7 +34,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
 
         private void UpdateVisual(Item item)
         {
-            if (item == null)
+            if (item == null || item.Data.Texture == null)
             {
                 block.gameObject.SetActive(false);
                 heldItem.gameObject.SetActive(false);

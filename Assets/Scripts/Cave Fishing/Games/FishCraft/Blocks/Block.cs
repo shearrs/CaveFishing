@@ -9,14 +9,17 @@ namespace CaveFishing.Games.FishCraftGame
     public class Block : MonoBehaviour
     {
         [SerializeField] private bool isBreakable = true;
+        [SerializeField] private bool isUsable = false;
         [SerializeField, Min(0.1f), ShowIf("isBreakable")] private float timeToBreak = 1f;
         [SerializeField, ShowIf("isBreakable")] private ItemData drop;
 
         private bool isBreaking = false;
 
+        public bool IsUsable => isUsable;
         public bool IsBreaking => isBreaking;
         public ItemData Drop => drop;
 
+        public event Action Used;
         public event Action HoverBegan;
         public event Action HoverEnded;
         public event Action<float> BreakAmountUpdated;
@@ -28,6 +31,11 @@ namespace CaveFishing.Games.FishCraftGame
 
             EndBreaking();
             EndHover();
+        }
+
+        public void Use()
+        {
+            Used?.Invoke();
         }
 
         public void BeginBreaking()

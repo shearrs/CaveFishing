@@ -2,6 +2,8 @@ using Shears.Input;
 using Shears.Tweens;
 using Shears.Cameras;
 using UnityEngine;
+using Shears.Signals;
+using CaveFishing.Games;
 
 namespace CaveFishing.Players
 {
@@ -66,6 +68,9 @@ namespace CaveFishing.Players
             character.EndedMoving += OnEndedMoving;
             character.Crouched += OnCrouched;
             character.Uncrouched += OnUncrouched;
+
+            SignalShuttle.Register<GameEnabledSignal>(OnGameEnabled);
+            SignalShuttle.Register<GameDisabledSignal>(OnGameDisabled);
         }
 
         private void OnDisable()
@@ -74,12 +79,25 @@ namespace CaveFishing.Players
             character.EndedMoving -= OnEndedMoving;
             character.Crouched -= OnCrouched;
             character.Uncrouched -= OnUncrouched;
+
+            SignalShuttle.Deregister<GameEnabledSignal>(OnGameEnabled);
+            SignalShuttle.Deregister<GameDisabledSignal>(OnGameDisabled);
         }
 
         private void OnDestroy()
         {
             Destroy(managedCamera);
             Destroy(firstPersonState);
+        }
+
+        private void OnGameEnabled(GameEnabledSignal signal)
+        {
+            Disable();
+        }
+
+        private void OnGameDisabled(GameDisabledSignal signal)
+        {
+            Enable();
         }
 
         public void Enable()

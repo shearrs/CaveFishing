@@ -15,6 +15,8 @@ namespace CaveFishing.Games.FishCraftGame
 
         public IReadOnlyList<InventorySlot> Slots => slots;
 
+        public bool IsOpen => isOpen;
+
         public event Action Opened;
         public event Action Closed;
 

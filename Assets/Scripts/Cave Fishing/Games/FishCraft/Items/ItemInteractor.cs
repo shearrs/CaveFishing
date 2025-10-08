@@ -9,6 +9,8 @@ namespace CaveFishing.Games.FishCraftGame
         
         private Inventory currentInventory;
 
+        public Item HeldItem => holdSlot.Item;
+
         private void OnEnable()
         {
             SignalShuttle.Register<InventorySlotSelectedSignal>(OnInventorySlotSelected);
@@ -26,6 +28,11 @@ namespace CaveFishing.Games.FishCraftGame
         public void Hold(Item item, int count)
         {
             holdSlot.SetItem(item, count);
+        }
+
+        public void AddCount(int count)
+        {
+            holdSlot.AddCount(count);
         }
 
         private void OnInventorySlotSelected(InventorySlotSelectedSignal signal)

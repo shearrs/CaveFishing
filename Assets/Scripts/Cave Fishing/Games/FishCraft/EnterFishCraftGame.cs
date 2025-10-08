@@ -17,11 +17,6 @@ namespace CaveFishing.Games.FishCraftGame
         [SerializeField] private List<Block> blocks;
         [SerializeField] private Color fogColor;
 
-        private void Start()
-        {
-            Invoke(nameof(Enable), 1.0f);
-        }
-
         public override void Enable()
         {
             foreach (var block in blocks)

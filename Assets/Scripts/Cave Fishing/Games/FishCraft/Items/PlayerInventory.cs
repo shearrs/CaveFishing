@@ -1,4 +1,5 @@
 using Shears.Input;
+using Shears.Signals;
 using System;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace CaveFishing.Games.FishCraftGame
         [SerializeField] private Inventory inventory;
         [SerializeField] private ManagedInputProvider inputProvider;
         [SerializeField] private ItemData testItem;
+        [SerializeField] private ItemData stringItem;
 
         private IManagedInput toggleInput;
         private bool isEnabled = false;
@@ -20,6 +22,8 @@ namespace CaveFishing.Games.FishCraftGame
 
         private void OnDisable()
         {
+
+
             Disable();
         }
 
@@ -28,8 +32,12 @@ namespace CaveFishing.Games.FishCraftGame
             if (isEnabled)
                 return;
 
+            SignalShuttle.Register<CraftingTableUsedSignal>(OnCraftingTableOpened);
+            SignalShuttle.Register<CraftingTableClosedSignal>(OnCraftingTableClosed);
+
             toggleInput.Performed += OnToggleInput;
             inventory.AddItem(new(testItem), 12);
+            inventory.AddItem(new(stringItem), 2);
 
             isEnabled = true;
         }
@@ -39,9 +47,22 @@ namespace CaveFishing.Games.FishCraftGame
             if (!isEnabled)
                 return;
 
+            SignalShuttle.Deregister<CraftingTableUsedSignal>(OnCraftingTableOpened);
+            SignalShuttle.Deregister<CraftingTableClosedSignal>(OnCraftingTableClosed);
+
             toggleInput.Performed -= OnToggleInput;
 
             isEnabled = false;
+        }
+
+        private void OnCraftingTableOpened(CraftingTableUsedSignal signal)
+        {
+            toggleInput.Performed -= OnToggleInput;
+        }
+
+        private void OnCraftingTableClosed(CraftingTableClosedSignal signal)
+        {
+            toggleInput.Performed += OnToggleInput;
         }
 
         private void OnToggleInput(ManagedInputInfo info)
