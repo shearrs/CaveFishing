@@ -57,6 +57,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 11400000, guid: 49fcab71991a893478ae0d1046d905e7, type: 2}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: timeToBreak
       value: 1.25
       objectReference: {fileID: 0}

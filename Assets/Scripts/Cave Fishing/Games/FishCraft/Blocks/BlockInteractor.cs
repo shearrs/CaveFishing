@@ -1,6 +1,5 @@
 using Shears.Detection;
 using Shears.Input;
-using Shears.Interaction;
 using Shears.Logging;
 using System.Collections;
 using UnityEngine;
@@ -10,7 +9,9 @@ namespace CaveFishing.Games.FishCraftGame
     public class BlockInteractor : SHMonoBehaviourLogger
     {
         [SerializeField] private ManagedInputProvider inputProvider;
-        [SerializeField] private AreaDetector3D detector;
+        [SerializeField] private RayDetector3D detector;
+        [SerializeField] private ItemHolder holder;
+        [SerializeField] private Inventory inventory;
 
         private IManagedInput interactInput;
         private IManagedInput alternativeInput;
@@ -61,16 +62,28 @@ namespace CaveFishing.Games.FishCraftGame
 
                 if (targetedBlock != null)
                 {
-                    bool isInputPressed = interactInput.IsPressed();
-
-                    if (!targetedBlock.IsBreaking && isInputPressed)
+                    if (!targetedBlock.IsBreaking && interactInput.IsPressed())
                         targetedBlock.BeginBreaking();
-                    else if (targetedBlock.IsBreaking && !isInputPressed)
+                    else if (targetedBlock.IsBreaking && !interactInput.IsPressed())
                         targetedBlock.EndBreaking();
+
+                    if (alternativeInput.WasPressedThisFrame() && holder.HeldItem != null)
+                        PlaceBlock();
                 }
 
                 yield return null;
             }
+        }
+
+        private void PlaceBlock()
+        {
+            var block = Instantiate(holder.HeldItem.Data.Block);
+            var hit = detector.GetHit(0);
+
+            block.transform.SetParent(targetedBlock.transform.parent);
+            block.transform.position = targetedBlock.transform.position + hit.normal;
+
+            holder.HeldSlot.RemoveCount(1);
         }
 
         private void UpdateTargetedBlock()
@@ -78,10 +91,30 @@ namespace CaveFishing.Games.FishCraftGame
             previousBlock = targetedBlock;
 
             detector.Detect();
-            detector.TryGetDetection(out targetedBlock, true);
+            detector.TryGetDetection(out Block newTarget, true);
+
+            if (newTarget == targetedBlock)
+                return;
 
             if (targetedBlock != null)
+                targetedBlock.Broke -= OnTargetBroke;
+
+            targetedBlock = newTarget;
+
+            if (targetedBlock != null)
+            {
                 targetedBlock.BeginHover();
+                targetedBlock.Broke += OnTargetBroke;
+            }
+        }
+
+        private void OnTargetBroke()
+        {
+            if (targetedBlock.Drop == null)
+                return;
+
+            var item = new Item(targetedBlock.Drop);
+            inventory.AddItem(item);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [SerializeField] private Hotbar hotbar;
 
+        public InventorySlot HeldSlot => hotbar.SelectedSlot;
         public Item HeldItem => hotbar.SelectedSlot == null ? null : hotbar.SelectedSlot.Item;
 
         public event Action Enabled { add => hotbar.Enabled += value; remove => hotbar.Enabled -= value; }

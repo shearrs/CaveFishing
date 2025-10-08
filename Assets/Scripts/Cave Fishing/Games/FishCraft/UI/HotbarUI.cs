@@ -39,6 +39,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
                 return;
 
             container.SetActive(true);
+            UpdateVisual(hotbar.SelectedSlot);
 
             isEnabled = true;
         }
@@ -54,6 +55,11 @@ namespace CaveFishing.Games.FishCraftGame.UI
         }
 
         private void OnSelectedSlotChanged(InventorySlot slot)
+        {
+            UpdateVisual(slot);
+        }
+
+        private void UpdateVisual(InventorySlot slot)
         {
             var slotUI = slotsToUI[slot];
 

@@ -1,4 +1,4 @@
-using Shears.Interaction;
+using Shears;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,16 +8,19 @@ namespace CaveFishing.Games.FishCraftGame
     [SelectionBase]
     public class Block : MonoBehaviour
     {
-        [SerializeField, Min(0.1f)] private float timeToBreak = 1f;
         [SerializeField] private bool isBreakable = true;
+        [SerializeField, Min(0.1f), ShowIf("isBreakable")] private float timeToBreak = 1f;
+        [SerializeField, ShowIf("isBreakable")] private ItemData drop;
 
         private bool isBreaking = false;
 
         public bool IsBreaking => isBreaking;
+        public ItemData Drop => drop;
 
         public event Action HoverBegan;
         public event Action HoverEnded;
         public event Action<float> BreakAmountUpdated;
+        public event Action Broke;
 
         public void ResetBlock()
         {
@@ -54,6 +57,7 @@ namespace CaveFishing.Games.FishCraftGame
             if (!isBreakable)
                 return;
 
+            Broke?.Invoke();
             gameObject.SetActive(false);
         }
 

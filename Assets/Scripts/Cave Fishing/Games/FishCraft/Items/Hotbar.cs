@@ -97,9 +97,20 @@ namespace CaveFishing.Games.FishCraftGame
 
         private void SelectSlot(InventorySlot slot)
         {
+            if (selectedSlot != null)
+                selectedSlot.DataUpdated -= OnSelectedSlotUpdated;
+
             selectedSlot = slot;
 
+            if (selectedSlot != null)
+                selectedSlot.DataUpdated += OnSelectedSlotUpdated;
+
             SelectedSlotChanged?.Invoke(slot);
+        }
+
+        private void OnSelectedSlotUpdated()
+        {
+            SelectedSlotChanged?.Invoke(selectedSlot);
         }
     }
 }

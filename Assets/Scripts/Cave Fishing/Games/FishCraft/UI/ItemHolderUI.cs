@@ -9,6 +9,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
 
         private void OnEnable()
         {
+            holder.Enabled += OnEnabled;
             holder.HeldItemChanged += OnHeldItemChanged;
 
             UpdateVisual(holder.HeldItem);
@@ -16,7 +17,13 @@ namespace CaveFishing.Games.FishCraftGame.UI
 
         private void OnDisable()
         {
+            holder.Enabled -= OnEnabled;
             holder.HeldItemChanged -= OnHeldItemChanged;
+        }
+
+        private void OnEnabled()
+        {
+            UpdateVisual(holder.HeldItem);
         }
 
         private void OnHeldItemChanged(Item item)

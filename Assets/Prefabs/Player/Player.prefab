@@ -1086,6 +1086,7 @@ MonoBehaviour:
   <LogLevels>k__BackingField: 29
   inputProvider: {fileID: 11400000, guid: 05af23fc0b204ac459972ca1ed5ec666, type: 2}
   detector: {fileID: 8907777340976969560}
+  holder: {fileID: 7375514564844781363}
 --- !u!114 &8907777340976969560
 MonoBehaviour:
   m_ObjectHideFlags: 0
