@@ -1087,6 +1087,7 @@ MonoBehaviour:
   inputProvider: {fileID: 11400000, guid: 05af23fc0b204ac459972ca1ed5ec666, type: 2}
   detector: {fileID: 8907777340976969560}
   holder: {fileID: 7375514564844781363}
+  inventory: {fileID: 0}
 --- !u!114 &8907777340976969560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,7 +1113,7 @@ MonoBehaviour:
   originCamera: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 1}
-  distance: 3
+  distance: 4
 --- !u!1 &8547109476936458506
 GameObject:
   m_ObjectHideFlags: 0

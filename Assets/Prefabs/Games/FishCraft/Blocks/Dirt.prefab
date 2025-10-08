@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4553100443344705939, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: m_Name
-      value: Dirt Variant
+      value: Dirt
       objectReference: {fileID: 0}
     - target: {fileID: 5222743145484645484, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -55,6 +55,14 @@ PrefabInstance:
     - target: {fileID: 5406786052212550449, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a3bb8a765040ca44a41edf80cd8d736, type: 2}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: timeToBreak
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

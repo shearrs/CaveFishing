@@ -28,7 +28,7 @@ namespace CaveFishing.Games.FishCraftGame
             CursorManager.SetCursorLockMode(CursorLockMode.None);
 
             Opened?.Invoke();
-            SignalShuttle.Emit(new InventoryOpenedSignal());
+            SignalShuttle.Emit(new InventoryOpenedSignal(this));
         }
 
         public void Close()

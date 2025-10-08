@@ -6,15 +6,21 @@ namespace CaveFishing.Games.FishCraftGame
     public class ItemInteractor : MonoBehaviour
     {
         [SerializeField] private InventorySlot holdSlot;
+        
+        private Inventory currentInventory;
 
         private void OnEnable()
         {
             SignalShuttle.Register<InventorySlotSelectedSignal>(OnInventorySlotSelected);
+            SignalShuttle.Register<InventoryOpenedSignal>(OnInventoryOpened);
+            SignalShuttle.Register<InventoryClosedSignal>(OnInventoryClosed);
         }
 
         private void OnDisable()
         {
             SignalShuttle.Deregister<InventorySlotSelectedSignal>(OnInventorySlotSelected);
+            SignalShuttle.Deregister<InventoryOpenedSignal>(OnInventoryOpened);
+            SignalShuttle.Deregister<InventoryClosedSignal>(OnInventoryClosed);
         }
 
         private void OnInventorySlotSelected(InventorySlotSelectedSignal signal)
@@ -23,6 +29,20 @@ namespace CaveFishing.Games.FishCraftGame
                 AltSelect(signal.Slot);
             else
                 Select(signal.Slot);
+        }
+
+        private void OnInventoryOpened(InventoryOpenedSignal signal)
+        {
+            currentInventory = signal.Inventory;
+        }
+
+        private void OnInventoryClosed(InventoryClosedSignal signal)
+        {
+            if (holdSlot.Item != null)
+            {
+                currentInventory.AddItem(holdSlot.Item, holdSlot.Count);
+                holdSlot.SetItem(null, 0);
+            }
         }
 
         private void Select(InventorySlot slot)

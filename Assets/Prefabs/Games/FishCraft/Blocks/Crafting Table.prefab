@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4553100443344705939, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: m_Name
-      value: Crafting Table Variant
+      value: Crafting Table
       objectReference: {fileID: 0}
     - target: {fileID: 5222743145484645484, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c56c2650b227f3428d89eac6b24921f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
