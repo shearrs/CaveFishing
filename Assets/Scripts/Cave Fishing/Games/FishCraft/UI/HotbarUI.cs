@@ -1,40 +1,63 @@
-using Shears.Signals;
 using UnityEngine;
+using Shears.UI;
+using System.Collections.Generic;
 
 namespace CaveFishing.Games.FishCraftGame.UI
 {
     public class HotbarUI : MonoBehaviour
     {
+        [SerializeField] private Hotbar hotbar;
         [SerializeField] private GameObject container;
+        [SerializeField] private List<InventorySlotUI> slots;
+
+        private readonly Dictionary<InventorySlot, InventorySlotUI> slotsToUI = new();
+        private bool isEnabled = false;
+
+        private void Awake()
+        {
+            foreach (var slot in slots)
+                slotsToUI[slot.Slot] = slot;
+        }
 
         private void OnEnable()
         {
-            SignalShuttle.Register<InventoryOpenedSignal>(OnInventoryOpened);
-            SignalShuttle.Register<InventoryClosedSignal>(OnInventoryClosed);
-            SignalShuttle.Register<GameEnabledSignal>(OnGameEnabled);
+            hotbar.Enabled += OnEnabled;
+            hotbar.Disabled += OnDisabled;
+            hotbar.SelectedSlotChanged += OnSelectedSlotChanged;
         }
 
         private void OnDisable()
         {
-            SignalShuttle.Deregister<InventoryOpenedSignal>(OnInventoryOpened);
-            SignalShuttle.Deregister<InventoryClosedSignal>(OnInventoryClosed);
-            SignalShuttle.Deregister<GameEnabledSignal>(OnGameEnabled);
+            hotbar.Enabled -= OnEnabled;
+            hotbar.Disabled -= OnDisabled;
+            hotbar.SelectedSlotChanged -= OnSelectedSlotChanged;
         }
 
-        private void OnInventoryOpened(InventoryOpenedSignal signal)
+        private void OnEnabled()
         {
-            container.SetActive(false);
-        }
+            if (isEnabled)
+                return;
 
-        private void OnInventoryClosed(InventoryClosedSignal signal)
-        {
             container.SetActive(true);
+
+            isEnabled = true;
         }
 
-        private void OnGameEnabled(GameEnabledSignal signal)
+        private void OnDisabled()
         {
-            if (signal.Type == MinigameType.FishCraft)
-                container.SetActive(true);
+            if (!isEnabled)
+                return;
+
+            container.SetActive(false);
+
+            isEnabled = false;
+        }
+
+        private void OnSelectedSlotChanged(InventorySlot slot)
+        {
+            var slotUI = slotsToUI[slot];
+
+            ManagedUIEventSystem.Focus(slotUI.Element);
         }
     }
 }

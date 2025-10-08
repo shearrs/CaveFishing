@@ -1,4 +1,5 @@
 using Shears.Signals;
+using Shears.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,10 @@ namespace CaveFishing.Games.FishCraftGame.UI
         [SerializeField] private InventorySlot slot;
         [SerializeField] private Image spriteImage;
         [SerializeField] private TextMeshProUGUI textMesh;
+        [SerializeField] private ManagedUIElement element;
+
+        public ManagedUIElement Element => element;
+        public InventorySlot Slot => slot;
 
         private void OnEnable()
         {

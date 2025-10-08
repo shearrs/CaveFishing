@@ -442,6 +442,7 @@ MonoBehaviour:
   slot: {fileID: 8495085163115079371}
   spriteImage: {fileID: 9084666554721762072}
   textMesh: {fileID: 4209013348781311738}
+  element: {fileID: 7891222643913923280}
 --- !u!114 &7891222643913923280
 MonoBehaviour:
   m_ObjectHideFlags: 0
