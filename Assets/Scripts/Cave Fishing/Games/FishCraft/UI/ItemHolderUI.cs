@@ -7,6 +7,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
         [SerializeField] private ItemHolder holder;
         [SerializeField] private MeshRenderer block;
         [SerializeField] private MeshRenderer heldItem;
+        [SerializeField] private Transform heldItemPivot;
 
         private void OnEnable()
         {
@@ -49,6 +50,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
             {
                 block.gameObject.SetActive(false);
                 heldItem.gameObject.SetActive(true);
+                heldItemPivot.transform.localRotation = Quaternion.Euler(item.Data.DisplayRotation);
                 heldItem.material.mainTexture = item.Data.Texture;
             }
         }
