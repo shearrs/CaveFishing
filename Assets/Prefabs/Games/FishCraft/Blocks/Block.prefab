@@ -133,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bb56fa21462404a8e5c541c133d758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 1
   isBreakable: 1
+  timeToBreak: 1
+  drop: {fileID: 0}
 --- !u!114 &4873626300079884978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +303,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 61c9981e663eda84b89fe611b2c09524, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 235c30bb9fb1f2d4196506d23f186bd0, type: 2}
     - target: {fileID: 919132149155446097, guid: 61c9981e663eda84b89fe611b2c09524, type: 3}
       propertyPath: m_Name
       value: block

@@ -6,6 +6,7 @@ namespace CaveFishing.Games.FishCraftGame
     public class CraftingTable : MonoBehaviour
     {
         [SerializeField] private List<InventorySlot> slots;
+        [SerializeField] private CraftingOutputSlot outputSlot;
 
         private void OnEnable()
         {

@@ -13,6 +13,7 @@ namespace CaveFishing.Games.FishCraftGame
         public string Name => itemName;
         public Sprite Sprite => sprite;
         public Block Block => block;
+        public bool IsBlock => block != null;
         public Texture2D Texture => texture;
     }
 }

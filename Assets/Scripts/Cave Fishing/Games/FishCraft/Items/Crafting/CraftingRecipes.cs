@@ -1,19 +1,30 @@
+using Shears;
 using UnityEngine;
 
 namespace CaveFishing.Games.FishCraftGame
 {
-    public class CraftingRecipes : MonoBehaviour
+    public class CraftingRecipes : ProtectedSingleton<CraftingRecipes>
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        [SerializeField] private ItemData stickData;
+        [SerializeField] private ItemData oakPlanksData;
+
+        private IRecipe[] recipes;
+
+        protected override void Awake()
         {
-        
+            base.Awake();
+
+            recipes = new IRecipe[]
+            {
+                new Recipe2x2(  null,           oakPlanksData,
+                                oakPlanksData,  null,
+                                stickData)
+            };
         }
 
-        // Update is called once per frame
-        void Update()
+        private bool TryGetRecipe(Item[] ingredients)
         {
-        
+
         }
     }
 }

@@ -6,6 +6,7 @@ namespace CaveFishing.Games.FishCraftGame.UI
     {
         [SerializeField] private ItemHolder holder;
         [SerializeField] private MeshRenderer block;
+        [SerializeField] private MeshRenderer heldItem;
 
         private void OnEnable()
         {
@@ -34,11 +35,21 @@ namespace CaveFishing.Games.FishCraftGame.UI
         private void UpdateVisual(Item item)
         {
             if (item == null)
-                block.gameObject.SetActive(false);
-            else
             {
+                block.gameObject.SetActive(false);
+                heldItem.gameObject.SetActive(false);
+            }
+            else if (item.Data.IsBlock)
+            {
+                heldItem.gameObject.SetActive(false);
                 block.gameObject.SetActive(true);
                 block.material.mainTexture = item.Data.Texture;
+            }
+            else
+            {
+                block.gameObject.SetActive(false);
+                heldItem.gameObject.SetActive(true);
+                heldItem.material.mainTexture = item.Data.Texture;
             }
         }
     }
