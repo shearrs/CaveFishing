@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 948415369283294297}
   - component: {fileID: 8570815600399837756}
   - component: {fileID: 2867873394838189844}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Highlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -15, y: -15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &948415369283294297
 CanvasRenderer:
@@ -59,14 +59,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18f3c6635627d8646afebb2718ac3f36, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f7ca6e2214bcc48b623a28ac97a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modulate: {r: 1, g: 1, b: 1, a: 1}
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  modulate: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &2253887099404743283
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7252839523481358784}
   - component: {fileID: 5153886955436907685}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Tweeners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,11 +139,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playOnEnable: 0
-  image: {fileID: 1766943797453079645}
+  image: {fileID: 8570815600399837756}
   data:
     usesDataObject: 0
     tweenDataObject: {fileID: 0}
-    duration: 1
+    duration: 0
     forceFinalValue: 1
     loops: 0
     loopMode: 0
@@ -156,8 +157,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     unityEvents: []
   type: 0
-  color1: {r: 1, g: 1, b: 1, a: 1}
-  color2: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  color1: {r: 1, g: 1, b: 1, a: 0}
+  color2: {r: 1, g: 1, b: 1, a: 0.39215687}
 --- !u!1 &4173778270661698037
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ GameObject:
   - component: {fileID: 2792305713270628156}
   - component: {fileID: 2816966424867486295}
   - component: {fileID: 9084666554721762072}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -244,7 +245,7 @@ GameObject:
   - component: {fileID: 1818546899897362881}
   - component: {fileID: 9005744806036281295}
   - component: {fileID: 4209013348781311738}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -381,7 +382,7 @@ GameObject:
   - component: {fileID: 8495085163115079371}
   - component: {fileID: 5498568457716601369}
   - component: {fileID: 7891222643913923280}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0e4b3f72caf744e8cf8b7dfd70e7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: 
   count: 0
 --- !u!114 &5498568457716601369
 MonoBehaviour:
@@ -473,6 +475,38 @@ MonoBehaviour:
       m_Calls: []
   clickEnded:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5498568457716601369}
+        m_TargetAssemblyTypeName: CaveFishing.Games.FishCraftGame.UI.InventorySlotUI,
+          CaveFishing.Games.FishCraftGame.UI
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  altClickBegan:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5498568457716601369}
+        m_TargetAssemblyTypeName: CaveFishing.Games.FishCraftGame.UI.InventorySlotUI,
+          CaveFishing.Games.FishCraftGame.UI
+        m_MethodName: AlternativeSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  altClickEnded:
+    m_PersistentCalls:
       m_Calls: []
   focusBegan:
     m_PersistentCalls:
@@ -482,23 +516,60 @@ MonoBehaviour:
       m_Calls: []
   hoverBegan:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5153886955436907685}
+        m_TargetAssemblyTypeName: Shears.Tweens.ImageTweener, Shears.Tweens
+        m_MethodName: Play1To2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hoverEnded:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5153886955436907685}
+        m_TargetAssemblyTypeName: Shears.Tweens.ImageTweener, Shears.Tweens
+        m_MethodName: Play2To1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hoverBeganClicked:
     m_PersistentCalls:
       m_Calls: []
   hoverEndedClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5153886955436907685}
+        m_TargetAssemblyTypeName: Shears.Tweens.ImageTweener, Shears.Tweens
+        m_MethodName: Play2To1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   flagsFoldout: 0
   eventsFoldout: 1
   activationFoldout: 0
   selectFoldout: 0
   clickFoldout: 0
+  altClickFoldout: 1
   focusFoldout: 0
-  hoverFoldout: 1
+  hoverFoldout: 0
   hoverClickedFoldout: 0
   navigationFoldout: 0
   navigation:
@@ -519,7 +590,7 @@ GameObject:
   - component: {fileID: 4295610450688459642}
   - component: {fileID: 1766943797453079645}
   - component: {fileID: 8835175186820653887}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -595,4 +666,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f7ca6e2214bcc48b623a28ac97a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
   modulate: {r: 1, g: 1, b: 1, a: 1}

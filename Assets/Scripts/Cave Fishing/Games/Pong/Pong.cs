@@ -58,7 +58,7 @@ namespace CaveFishing.Games.PongGame
             bot.Disable();
 
             Disabled?.Invoke();
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.Pong));
         }
 
         private void OnHitRightSide()

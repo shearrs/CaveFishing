@@ -1,7 +1,6 @@
 using CaveFishing.Players;
 using Shears.Signals;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 namespace CaveFishing.Games.FishCraftGame
 {
@@ -10,6 +9,7 @@ namespace CaveFishing.Games.FishCraftGame
         [SerializeField] private PlayerCharacter character;
         [SerializeField] private PlayerInventory inventory;
         [SerializeField] private PlayerCamera cam;
+        [SerializeField] private BlockInteractor interactor;
 
         private bool isEnabled = false;
 
@@ -49,12 +49,14 @@ namespace CaveFishing.Games.FishCraftGame
         {
             character.Disable();
             cam.Disable();
+            interactor.Disable();
         }
 
         private void OnInventoryClosed(InventoryClosedSignal signal)
         {
             character.Enable();
             cam.Enable();
+            interactor.Enable();
         }
     }
 }

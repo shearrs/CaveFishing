@@ -3,8 +3,15 @@ using UnityEngine;
 
 namespace CaveFishing.Games
 {
-    public struct GameEnabledSignal : ISignal
+    public readonly struct GameEnabledSignal : ISignal
     {
+        private readonly MinigameType type;
 
+        public readonly MinigameType Type => type;
+
+        public GameEnabledSignal(MinigameType type)
+        { 
+            this.type = type; 
+        }
     }
 }

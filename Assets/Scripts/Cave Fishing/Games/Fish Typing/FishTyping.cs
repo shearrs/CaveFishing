@@ -66,7 +66,7 @@ namespace CaveFishing.Games.FishTypingGame
             isEnabled = false;
             Disabled?.Invoke();
 
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.FishTyping));
         }
 
         public void StartGame()

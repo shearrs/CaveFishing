@@ -59,7 +59,7 @@ namespace CaveFishing.Games.FishBarGame
             progressBar.Disable();
 
             Disabled?.Invoke();
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.FishBar));
         }
 
         public void StartGame()

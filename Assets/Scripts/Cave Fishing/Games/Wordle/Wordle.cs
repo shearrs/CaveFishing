@@ -55,7 +55,7 @@ namespace CaveFishing.Games.WordleGame
             isEnding = false;
 
             Disabled?.Invoke();
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.Wordle));
         }
 
         private void ResetLetters()

@@ -35,7 +35,7 @@ namespace CaveFishing.Games.FishCraftGame
 
             RenderSettings.fogColor = fogColor;
 
-            SignalShuttle.Emit(new GameEnabledSignal());
+            SignalShuttle.Emit(new GameEnabledSignal(MinigameType.FishCraft));
 
             Disable();
         }

@@ -7,8 +7,12 @@ namespace CaveFishing.Games.FishCraftGame
     {
         private const int MAX_STACK = 64;
 
+#if UNITY_EDITOR
+        [SerializeField] private string itemName;
+#endif
         [SerializeField] private int count;
-        private Item item;
+
+        private Item item = null;
 
         public Item Item => item;
         public int Count => count;
@@ -20,10 +24,37 @@ namespace CaveFishing.Games.FishCraftGame
             this.item = item;
             this.count = count;
 
-            DataUpdated?.Invoke();
+            UpdateData();
         }
 
-        public void AddCount(int count) => this.count += count;
+        public void AddCount(int count)
+        {
+            this.count += count;
+
+            UpdateData();
+        }
+
+        public void RemoveCount(int count)
+        {
+            this.count -= count;
+
+            if (this.count == 0)
+                item = null;
+
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
+#if UNITY_EDITOR
+            if (item == null)
+                itemName = string.Empty;
+            else
+                itemName = item.Name;
+#endif
+
+            DataUpdated?.Invoke();
+        }
 
         public bool IsFull() => count == MAX_STACK;
     }

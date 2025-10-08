@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace CaveFishing.Games.FishCraftGame
 {
-    [System.Serializable]
     public class Item
     {
         [SerializeField, ReadOnly] private ItemData data;

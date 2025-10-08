@@ -35,7 +35,7 @@ namespace CaveFishing.Games.FishCraftGame
         public override void Disable()
         {
             SignalShuttle.Emit(new GameWonSignal());
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.FishCraft));
         }
     }
 }

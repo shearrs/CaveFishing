@@ -1,9 +1,11 @@
+using Shears.Signals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CaveFishing.Games.FishCraftGame.UI
 {
+    [SelectionBase]
     public class InventorySlotUI : MonoBehaviour
     {
         [SerializeField] private InventorySlot slot;
@@ -20,6 +22,16 @@ namespace CaveFishing.Games.FishCraftGame.UI
         private void OnDisable()
         {
             slot.DataUpdated -= OnDataUpdated;
+        }
+
+        public void Select()
+        {
+            SignalShuttle.Emit(new InventorySlotSelectedSignal(slot, false));
+        }
+
+        public void AlternativeSelect()
+        {
+            SignalShuttle.Emit(new InventorySlotSelectedSignal(slot, true));
         }
 
         private void OnDataUpdated()

@@ -1,4 +1,5 @@
 using Shears.Input;
+using Shears.Logging;
 using Shears.Signals;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace CaveFishing.Games.FishCraftGame
 {
-    public class Inventory : MonoBehaviour
+    public class Inventory : SHMonoBehaviourLogger
     {
         [SerializeField] private List<InventorySlot> slots = new();
 
@@ -74,9 +75,17 @@ namespace CaveFishing.Games.FishCraftGame
             }
 
             if (stackableSlot != null)
+            {
                 stackableSlot.AddCount(count);
+                Log($"Adding {item.Name} to stack slot {stackableSlot}.", SHLogLevels.Verbose, context: stackableSlot);
+            }
             else if (firstEmptySlot != null)
+            {
                 firstEmptySlot.SetItem(item, count);
+                Log($"Adding {item.Name} to empty slot {firstEmptySlot}.", SHLogLevels.Verbose, context: firstEmptySlot);
+            }
+            else
+                Log($"Could not find available slot for {item.Name}!", SHLogLevels.Verbose);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [SerializeField] private Inventory inventory;
         [SerializeField] private ManagedInputProvider inputProvider;
+        [SerializeField] private ItemData testItem;
 
         private IManagedInput toggleInput;
         private bool isEnabled = false;
@@ -28,6 +29,7 @@ namespace CaveFishing.Games.FishCraftGame
                 return;
 
             toggleInput.Performed += OnToggleInput;
+            inventory.AddItem(new(testItem), 12);
 
             isEnabled = true;
         }
