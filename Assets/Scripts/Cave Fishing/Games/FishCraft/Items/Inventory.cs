@@ -1,3 +1,5 @@
+using Shears.Input;
+using Shears.Signals;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +10,8 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [SerializeField] private List<InventorySlot> slots = new();
 
+        private bool isOpen = false;
+
         public IReadOnlyList<InventorySlot> Slots => slots;
 
         public event Action Opened;
@@ -15,12 +19,36 @@ namespace CaveFishing.Games.FishCraftGame
 
         public void Open()
         {
+            if (isOpen)
+                return;
+
+            isOpen = true;
+            CursorManager.SetCursorVisibility(true);
+            CursorManager.SetCursorLockMode(CursorLockMode.None);
+
             Opened?.Invoke();
+            SignalShuttle.Emit(new InventoryOpenedSignal());
         }
 
         public void Close()
         {
+            if (!isOpen)
+                return;
+
+            isOpen = false;
+            CursorManager.SetCursorVisibility(false);
+            CursorManager.SetCursorLockMode(CursorLockMode.Locked);
+
             Closed?.Invoke();
+            SignalShuttle.Emit(new InventoryClosedSignal());
+        }
+
+        public void Toggle()
+        {
+            if (isOpen)
+                Close();
+            else
+                Open();
         }
 
         public void AddItem(Item item, int count = 1)

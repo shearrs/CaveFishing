@@ -24,15 +24,21 @@ namespace CaveFishing.Games.FishCraftGame.UI
 
         private void OnDataUpdated()
         {
-            var sprite = slot.Item.Data.Sprite;
-            string count = slot.Count == 0 ? string.Empty : slot.Count.ToString();
+            var item = slot.Item;
 
-            if (sprite == null)
+            if (item == null || item.Data == null)
+            {
                 spriteImage.enabled = false;
+                textMesh.text = string.Empty;
+            }
             else
-                spriteImage.sprite = sprite;
+            {
+                string count = slot.Count == 1 ? string.Empty : slot.Count.ToString();
 
-            textMesh.text = count;
+                spriteImage.enabled = true;
+                spriteImage.sprite = item.Data.Sprite;
+                textMesh.text = count;
+            }
         }
     }
 }

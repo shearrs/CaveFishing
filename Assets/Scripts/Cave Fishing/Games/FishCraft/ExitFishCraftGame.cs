@@ -8,6 +8,7 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [Header("Player")]
         [SerializeField] private Player player;
+        [SerializeField] private FishCraftPlayer fishCraftPlayer;
         [SerializeField] private BlockInteractor interactor;
 
         [Header("Game")]
@@ -24,6 +25,7 @@ namespace CaveFishing.Games.FishCraftGame
         {
             player.Character.SetPosition(returnPoint.position);
             interactor.Disable();
+            fishCraftPlayer.Disable();
 
             RenderSettings.fogColor = originalFogColor;
 

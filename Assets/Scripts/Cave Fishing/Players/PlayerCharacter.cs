@@ -83,8 +83,6 @@ namespace CaveFishing.Players
             if (isEnabled)
                 return;
 
-            CursorManager.SetCursorVisibility(false);
-            CursorManager.SetCursorLockMode(CursorLockMode.Locked);
             inputMap.EnableAllInputs();
 
             isEnabled = true;

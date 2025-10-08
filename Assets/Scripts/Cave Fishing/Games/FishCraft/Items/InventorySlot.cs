@@ -7,8 +7,8 @@ namespace CaveFishing.Games.FishCraftGame
     {
         private const int MAX_STACK = 64;
 
-        [SerializeField] private Item item;
         [SerializeField] private int count;
+        private Item item;
 
         public Item Item => item;
         public int Count => count;

@@ -8,8 +8,6 @@ namespace CaveFishing.Players
     [RequireComponent(typeof(ManagedCamera), typeof(FirstPersonCameraState))]
     public class PlayerCamera : MonoBehaviour
     {
-        [SerializeField] private bool isEnabled = true;
-
         [Header("Components")]
         [SerializeField] private ManagedInputMap inputMap;
         [SerializeField] private PlayerCharacter character;
@@ -20,6 +18,7 @@ namespace CaveFishing.Players
         [SerializeField] private float headBobHeight = 0.05f;
         [SerializeField] private TweenData headBobTweenData = new(0.25f, loops: -1, loopMode:LoopMode.PingPong);
 
+        private bool isEnabled = false;
         private float headBobOffset;
         private ManagedCamera managedCamera;
         private FirstPersonCameraState firstPersonState;
@@ -58,10 +57,7 @@ namespace CaveFishing.Players
 
         private void Start()
         {
-            if (!isEnabled)
-                managedCamera.SetState(null);
-            else
-                managedCamera.SetState(firstPersonState);
+            Enable();
         }
 
         private void OnEnable()
@@ -84,6 +80,26 @@ namespace CaveFishing.Players
         {
             Destroy(managedCamera);
             Destroy(firstPersonState);
+        }
+
+        public void Enable()
+        {
+            if (isEnabled)
+                return;
+
+            managedCamera.SetState(firstPersonState);
+
+            isEnabled = true;
+        }
+
+        public void Disable()
+        {
+            if (!isEnabled)
+                return;
+
+            managedCamera.SetState(null);
+
+            isEnabled = false;
         }
 
         private void OnBeganMoving()

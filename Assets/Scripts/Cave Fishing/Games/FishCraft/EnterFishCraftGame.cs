@@ -9,6 +9,7 @@ namespace CaveFishing.Games.FishCraftGame
     {
         [Header("Player")]
         [SerializeField] private Player player;
+        [SerializeField] private FishCraftPlayer fishCraftPlayer;
         [SerializeField] private BlockInteractor interactor;
 
         [Header("Game")]
@@ -26,9 +27,12 @@ namespace CaveFishing.Games.FishCraftGame
             foreach (var block in blocks)
                 block.ResetBlock();
 
-            player.Character.SetPosition(spawnPoint.position);
             player.Fisher.Disable();
+
+            player.Character.SetPosition(spawnPoint.position);
             interactor.Enable();
+            fishCraftPlayer.Enable();
+
             RenderSettings.fogColor = fogColor;
 
             SignalShuttle.Emit(new GameEnabledSignal());
