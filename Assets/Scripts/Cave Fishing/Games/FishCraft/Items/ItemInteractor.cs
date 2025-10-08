@@ -23,6 +23,11 @@ namespace CaveFishing.Games.FishCraftGame
             SignalShuttle.Deregister<InventoryClosedSignal>(OnInventoryClosed);
         }
 
+        public void Hold(Item item, int count)
+        {
+            holdSlot.SetItem(item, count);
+        }
+
         private void OnInventorySlotSelected(InventorySlotSelectedSignal signal)
         {
             if (signal.AlternativeSelection)

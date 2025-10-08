@@ -47,7 +47,7 @@ namespace CaveFishing.Games.FishCraftGame
         private void UpdateData()
         {
 #if UNITY_EDITOR
-            if (item == null)
+            if (item == null || item.Data == null)
                 itemName = string.Empty;
             else
                 itemName = item.Name;

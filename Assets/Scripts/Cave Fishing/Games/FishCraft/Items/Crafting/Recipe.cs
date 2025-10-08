@@ -5,6 +5,7 @@ namespace CaveFishing.Games.FishCraftGame
     public interface IRecipe
     {
         public ItemData Result { get; }
+        public int Count { get; }
 
         public bool IsValid(ItemData[] items);
     }
@@ -15,12 +16,15 @@ namespace CaveFishing.Games.FishCraftGame
                                     item3, item4, item5,
                                     item6, item7, item8;
         private readonly ItemData result;
+        private readonly int count;
 
-        public ItemData Result => result;
+        public readonly ItemData Result => result;
+        public readonly int Count => count;
 
         public Recipe3x3(ItemData item0, ItemData item1, ItemData item2,
                         ItemData item3, ItemData item4, ItemData item5,
-                        ItemData item6, ItemData item7, ItemData item8, ItemData result)
+                        ItemData item6, ItemData item7, ItemData item8, 
+                        ItemData result, int count)
         {
             this.item0 = item0;
             this.item1 = item1;
@@ -32,6 +36,7 @@ namespace CaveFishing.Games.FishCraftGame
             this.item7 = item7;
             this.item8 = item8;
             this.result = result;
+            this.count = count;
         }
 
         public readonly bool IsValid(ItemData[] items)
@@ -68,17 +73,21 @@ namespace CaveFishing.Games.FishCraftGame
         private readonly ItemData item0, item1,
                                     item2, item3;
         private readonly ItemData result;
+        private readonly int count;
 
-        public ItemData Result => result;
+        public readonly ItemData Result => result;
+        public readonly int Count => count;
 
-        public Recipe2x2(ItemData item0, ItemData item1, ItemData item2,
-                        ItemData item3, ItemData result)
+        public Recipe2x2(ItemData item0, ItemData item1, 
+                         ItemData item2, ItemData item3, 
+                         ItemData result, int count)
         {
             this.item0 = item0;
             this.item1 = item1;
             this.item2 = item2;
             this.item3 = item3;
             this.result = result;
+            this.count = count;
         }
 
         public readonly bool IsValid(ItemData[] items)
