@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace CaveFishing.Fishing
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Rigidbody)), SelectionBase]
     public class Fish : MonoBehaviour, IItem
     {
         [SerializeField] private MinigameType minigameType;
+        [SerializeField] private Vector3 holdRotation = new(0f, 90f, 0f);
         private Rigidbody rb;
         private Collider[] colliders;
 
         public MinigameType MinigameType => minigameType;
+        public Quaternion HoldRotation => Quaternion.Euler(holdRotation);
 
         private void Awake()
         {

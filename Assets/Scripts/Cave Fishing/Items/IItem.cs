@@ -9,6 +9,8 @@ namespace CaveFishing.Items
         public Transform transform { get; }
 #pragma warning restore IDE1006 // Naming Styles
 
+        public Quaternion HoldRotation { get; }
+
         public void Hold();
         public void Release(ReleaseData data);
     }

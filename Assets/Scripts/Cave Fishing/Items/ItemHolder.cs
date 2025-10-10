@@ -19,7 +19,7 @@ namespace CaveFishing.Items
             heldItem.Hold();
 
             heldItem.transform.SetParent(transform);
-            heldItem.transform.position = transform.TransformPoint(holdOffset);
+            heldItem.transform.SetLocalPositionAndRotation(holdOffset, item.HoldRotation);
         }
 
         public void Release(ReleaseData data)
