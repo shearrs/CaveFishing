@@ -7,6 +7,7 @@ namespace CaveFishing.Audio
     public class FootstepAudioPlayer : MonoBehaviour
     {
         [SerializeField] private PlayerCamera cam;
+        [SerializeField] private PlayerCharacter character;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private Range<float> pitchRange = new(0.85f, 1.15f);
 
@@ -22,6 +23,9 @@ namespace CaveFishing.Audio
 
         private void OnSteppedDown()
         {
+            if (!character.IsGrounded)
+                return;
+
             audioSource.pitch = pitchRange.Random();
             audioSource.Play();
         }

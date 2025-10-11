@@ -22,7 +22,7 @@ namespace CaveFishing.Games.QuickClickGame
 
         public void OnClicked()
         {
-            SignalShuttle.Emit(new TargetClickedSignal());
+            SignalShuttle.Emit(new TargetClickedSignal(this));
             Destroy(gameObject);
         }
     }

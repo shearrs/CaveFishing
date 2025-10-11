@@ -133,7 +133,7 @@ namespace CaveFishing.Players
 
                 firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
 
-                if (headBobOffset == 0.0f)
+                if (t == 0.0f)
                     SteppedDown?.Invoke();
             }
 

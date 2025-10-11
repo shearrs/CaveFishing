@@ -43,6 +43,7 @@ namespace CaveFishing.Players
         private IManagedInput crouchInput;
 
         public ITweenData CrouchTweenData => crouchTweenData;
+        public bool IsGrounded => groundDetector.Detect();
 
         public event Action BeganMoving;
         public event Action EndedMoving;
