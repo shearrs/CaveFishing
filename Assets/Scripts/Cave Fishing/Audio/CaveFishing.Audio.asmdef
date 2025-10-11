@@ -2,8 +2,7 @@
     "name": "CaveFishing.Audio",
     "rootNamespace": "CaveFishing.Audio",
     "references": [
-        "GUID:b28a31c08beef024d83a7aa1ec3f2f6d",
-        "GUID:5cb9b49caeb04804393ac93afe3aaf32"
+        "GUID:b28a31c08beef024d83a7aa1ec3f2f6d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

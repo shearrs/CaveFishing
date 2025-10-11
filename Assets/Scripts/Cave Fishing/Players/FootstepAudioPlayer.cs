@@ -1,8 +1,7 @@
-using CaveFishing.Players;
 using Shears;
 using UnityEngine;
 
-namespace CaveFishing.Audio
+namespace CaveFishing.Players
 {
     public class FootstepAudioPlayer : MonoBehaviour
     {

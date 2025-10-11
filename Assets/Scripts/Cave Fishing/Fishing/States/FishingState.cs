@@ -1,5 +1,6 @@
 using Shears;
 using Shears.Input;
+using UnityEngine;
 
 namespace CaveFishing.Fishing
 {
@@ -8,17 +9,19 @@ namespace CaveFishing.Fishing
         private readonly Bobber bobber;
         private readonly IManagedInput castInput;
         private readonly Range<float> fishingTimeRange;
+        private readonly AudioClip bobberClip;
 
         private readonly Timer fishingTimer = new();
         private readonly Timer biteTimer;
         private readonly Timer fishCooldownTimer;
 
-        public FishingState(FishingRod fishingRod, Bobber bobber, IManagedInput castInput, Range<float> fishingTimeRange, float biteTime, float fishCooldownTime) : base(fishingRod)
+        public FishingState(FishingRod fishingRod, Bobber bobber, IManagedInput castInput, Range<float> fishingTimeRange, float biteTime, float fishCooldownTime, AudioClip bobberClip) : base(fishingRod)
         {
             Name = "Fishing State";
             this.bobber = bobber;
             this.fishingTimeRange = fishingTimeRange;
             this.castInput = castInput;
+            this.bobberClip = bobberClip;
             biteTimer = new(biteTime);
             fishCooldownTimer = new(fishCooldownTime);
 
@@ -32,6 +35,8 @@ namespace CaveFishing.Fishing
             castInput.Performed += OnCastInputPerformed;
 
             fishingTimer.Start(fishingTimeRange.Random());
+
+            FishingRod.PlayClip(bobberClip);
         }
 
         protected override void OnExit()

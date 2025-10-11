@@ -10,17 +10,19 @@ namespace CaveFishing.Fishing
         private readonly float chargeRotation;
         private readonly float reelTime;
         private readonly ITweenData tweenData;
+        private readonly AudioClip reelClip;
         private Tween tween;
 
         public event Action FishReeled;
 
-        public ReelState(FishingRod fishingRod, Bobber bobber, float chargeRotation, float reelTime, ITweenData tweenData) : base(fishingRod)
+        public ReelState(FishingRod fishingRod, Bobber bobber, float chargeRotation, float reelTime, ITweenData tweenData, AudioClip reelClip) : base(fishingRod)
         {
             Name = "Reel State";
             this.bobber = bobber;
             this.chargeRotation = chargeRotation;
             this.reelTime = reelTime;
             this.tweenData = tweenData;
+            this.reelClip = reelClip;
         }
 
         protected override void OnEnter()
@@ -36,6 +38,7 @@ namespace CaveFishing.Fishing
             tween.Completed += EnterReturnState;
 
             FishingRod.Tween(tween);
+            FishingRod.PlayClip(reelClip);
 
             if (bobber.IsBiting)
             {

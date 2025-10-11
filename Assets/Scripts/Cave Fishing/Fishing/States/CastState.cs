@@ -15,11 +15,12 @@ namespace CaveFishing.Fishing
         private readonly float releaseRotation;
         private readonly float releaseTime;
         private readonly ITweenData tweenData;
+        private readonly AudioClip castClip;
         private Tween tween;
 
         public CastState(FishingRod fishingRod, Bobber bobber, Transform castPoint, 
             IManagedInput castInput, Range<float> forwardCastRange, Range<float> upCastRange, 
-            float releaseRotation, float releaseTime, ITweenData tweenData) : base(fishingRod)
+            float releaseRotation, float releaseTime, ITweenData tweenData, AudioClip castClip) : base(fishingRod)
         {
             Name = "Cast State";
             this.bobber = bobber;
@@ -30,6 +31,7 @@ namespace CaveFishing.Fishing
             this.releaseRotation = releaseRotation;
             this.releaseTime = releaseTime;
             this.tweenData = tweenData;
+            this.castClip = castClip;
         }
 
         protected override void OnEnter()
@@ -50,6 +52,7 @@ namespace CaveFishing.Fishing
             tween.AddEvent(releaseTime, () => OnReleaseBobberTime(forwardForce, upForce));
 
             FishingRod.Tween(tween);
+            FishingRod.PlayClip(castClip);
 
             bobber.EnteredWater += OnBobberEnteredWater;
         }

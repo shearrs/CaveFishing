@@ -16,6 +16,7 @@ namespace CaveFishing.Fishing
         [SerializeField] private StateMachine stateMachine;
         [SerializeField] private Bobber bobber;
         [SerializeField] private Transform castPoint;
+        [SerializeField] private AudioSource audioSource;
 
         [FoldoutGroup("Cast Force Settings", 2)]
         [SerializeField] private Range<float> forwardCastRange = new(0.5f, 3f);
@@ -36,6 +37,11 @@ namespace CaveFishing.Fishing
         [SerializeField] private StructTweenData releaseTweenData = new(0.25f, easingFunction: EasingFunction.Ease.EaseOutBack);
         [SerializeField] private StructTweenData reelTweenData = new(0.2f, easingFunction: EasingFunction.Ease.EaseOutQuad);
         [SerializeField] private StructTweenData returnTweenData = new(1f, easingFunction: EasingFunction.Ease.EaseOutQuad);
+
+        [FoldoutGroup("Audio Clips", 4)]
+        [SerializeField] private AudioClip castClip;
+        [SerializeField] private AudioClip bobberClip;
+        [SerializeField] private AudioClip reelClip;
 
         private IManagedInput castInput;
         private Tween tween;
@@ -62,9 +68,9 @@ namespace CaveFishing.Fishing
                 new DisableState(this, bobber),
                 new IdleState(this, castInput),
                 new ChargeState(this, castInput, chargeRotation, chargeTweenData),
-                new CastState(this, bobber, castPoint, castInput, forwardCastRange, upCastRange, releaseRotation, releaseTime, releaseTweenData),
-                new FishingState(this, bobber, castInput, fishingTimeRange, biteTime, fishCooldownTime),
-                reelState = new ReelState(this, bobber, chargeRotation, reelTime, reelTweenData),
+                new CastState(this, bobber, castPoint, castInput, forwardCastRange, upCastRange, releaseRotation, releaseTime, releaseTweenData, castClip),
+                new FishingState(this, bobber, castInput, fishingTimeRange, biteTime, fishCooldownTime, bobberClip),
+                reelState = new ReelState(this, bobber, chargeRotation, reelTime, reelTweenData, reelClip),
                 new ReturnState(this, castInput, returnTweenData, releaseRotation)
             );
 
@@ -105,6 +111,12 @@ namespace CaveFishing.Fishing
             this.tween = tween;
 
             tween.Play();
+        }
+
+        public void PlayClip(AudioClip clip)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+            audioSource.PlayOneShot(clip);
         }
     }
 }
