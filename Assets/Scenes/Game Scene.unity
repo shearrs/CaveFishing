@@ -12317,12 +12317,12 @@ PrefabInstance:
       objectReference: {fileID: 403623806}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: fish.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[0]'
       value: 
-      objectReference: {fileID: 5161492042128650500, guid: 72ea5d077bfe3f1468458cda80f19226, type: 3}
+      objectReference: {fileID: 3543339777821587898, guid: 5a3628f52d68c274da8f2fa3362596e0, type: 3}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[1]'
       value: 
@@ -12335,6 +12335,10 @@ PrefabInstance:
       propertyPath: 'fish.Array.data[3]'
       value: 
       objectReference: {fileID: 7156208702056582509, guid: 92d76148a77bc344f8d8a5c7c986d884, type: 3}
+    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: 'fish.Array.data[4]'
+      value: 
+      objectReference: {fileID: 6025293992385362063, guid: a48f0510080987a44ae46032836a1bc8, type: 3}
     - target: {fileID: 5325162993241922542, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -13063,10 +13067,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 265004710}
     m_Modifications:
-    - target: {fileID: 106337405810376305, guid: 7232a5323e49e384587488654fde47c2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1925678477293261613, guid: 7232a5323e49e384587488654fde47c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13147,10 +13147,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2011268594232789216, guid: 7232a5323e49e384587488654fde47c2, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7820325820607032661, guid: 7232a5323e49e384587488654fde47c2, type: 3}
       propertyPath: m_Name
       value: Fish Bar Canvas
@@ -13187,7 +13183,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: springStrength
-      value: 30
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: damping
@@ -13195,7 +13191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: springStrength
-      value: 30
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13243,7 +13239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: springStrength
-      value: 30
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 5175829719320753414, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_PolyMesh.m_Mesh
@@ -13267,7 +13263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: springStrength
-      value: 30
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

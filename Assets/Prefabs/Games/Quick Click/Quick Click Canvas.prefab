@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d18c45156aa3014face49daa45f07d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <LogLevels>k__BackingField: 29
   targetPrefab: {fileID: 5940048971761872946, guid: f7bc8ae098823b24c9d1b4c4f8d521c2, type: 3}
   audioSource: {fileID: 5217054028320427821}
   gameDuration: 15
@@ -292,8 +293,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: CLICK THE BUBBLES
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08da45f3c29885c45ac09b6c4e14bc6f, type: 2}
+  m_sharedMaterial: {fileID: 4719905296222183960, guid: 08da45f3c29885c45ac09b6c4e14bc6f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

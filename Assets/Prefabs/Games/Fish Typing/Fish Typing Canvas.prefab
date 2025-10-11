@@ -763,8 +763,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: TYPE THE WORDS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 08da45f3c29885c45ac09b6c4e14bc6f, type: 2}
+  m_sharedMaterial: {fileID: 4719905296222183960, guid: 08da45f3c29885c45ac09b6c4e14bc6f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
