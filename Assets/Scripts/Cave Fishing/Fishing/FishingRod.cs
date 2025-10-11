@@ -45,9 +45,11 @@ namespace CaveFishing.Fishing
 
         private IManagedInput castInput;
         private Tween tween;
+        private bool isEnabled = false;
 
-        public Bobber Bobber => bobber;
         internal float ChargeProgress { get => chargeProgress; set => chargeProgress = Mathf.Clamp01(value); }
+        public Bobber Bobber => bobber;
+        public bool IsEnabled => isEnabled;
 
         public event Action FishReeled;
         #endregion
@@ -79,6 +81,9 @@ namespace CaveFishing.Fishing
 
         public void Enable()
         {
+            if (isEnabled)
+                return;
+
             gameObject.SetActive(true);
 
             Vector3 eulerRotation = transform.localEulerAngles;
@@ -86,11 +91,18 @@ namespace CaveFishing.Fishing
             transform.localRotation = Quaternion.Euler(eulerRotation);
 
             EnterState<IdleState>();
+
+            isEnabled = true;
         }
 
         public void Disable()
         {
+            if (!isEnabled)
+                return;
+
             EnterState<DisableState>();
+
+            isEnabled = false;
         }
 
         public void EnterState<T>()

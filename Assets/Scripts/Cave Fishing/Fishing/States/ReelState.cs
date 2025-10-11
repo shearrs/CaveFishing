@@ -50,6 +50,7 @@ namespace CaveFishing.Fishing
 
         protected override void OnExit()
         {
+            tween.Dispose();
         }
 
         protected override void OnUpdate()

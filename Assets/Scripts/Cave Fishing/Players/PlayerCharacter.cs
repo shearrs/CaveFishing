@@ -1,3 +1,4 @@
+using CaveFishing.Games;
 using Shears;
 using Shears.Detection;
 using Shears.Input;

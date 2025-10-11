@@ -13,6 +13,7 @@ namespace CaveFishing.Players
         [SerializeField] private FishingRod fishingRod;
         [SerializeField] private PlayerHolder holder;
 
+        private bool wasEnabledBeforePause = false;
         private Fish currentFish;
 
         private void OnEnable()
@@ -21,6 +22,7 @@ namespace CaveFishing.Players
 
             SignalShuttle.Register<GameWonSignal>(OnGameWon);
             SignalShuttle.Register<GameLostSignal>(OnGameLost);
+            SignalShuttle.Register<GamePausedChangedSignal>(OnGamePausedChanged);
         }
 
         private void OnDisable()
@@ -29,6 +31,7 @@ namespace CaveFishing.Players
 
             SignalShuttle.Deregister<GameWonSignal>(OnGameWon);
             SignalShuttle.Deregister<GameLostSignal>(OnGameLost);
+            SignalShuttle.Deregister<GamePausedChangedSignal>(OnGamePausedChanged);
         }
 
         private void Start()
@@ -44,6 +47,20 @@ namespace CaveFishing.Players
         public void Disable()
         {
             fishingRod.Disable();
+        }
+
+        private void OnGamePausedChanged(GamePausedChangedSignal signal)
+        {
+            if (signal.IsPaused)
+            {
+                wasEnabledBeforePause = fishingRod.IsEnabled;
+                Disable();
+            }
+            else
+            {
+                if (wasEnabledBeforePause)
+                    Enable();
+            }
         }
 
         private void OnFishReeled()
