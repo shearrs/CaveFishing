@@ -3467,7 +3467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauser: {fileID: 589270041}
-  playerCamera: {fileID: 1365711501}
 --- !u!43 &601528647
 Mesh:
   m_ObjectHideFlags: 0
@@ -12539,30 +12538,6 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 403623806}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: fish.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: 'fish.Array.data[0]'
-      value: 
-      objectReference: {fileID: 3543339777821587898, guid: 5a3628f52d68c274da8f2fa3362596e0, type: 3}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: 'fish.Array.data[1]'
-      value: 
-      objectReference: {fileID: 6602349571463736568, guid: 61e365197ccafa14586e5778d73a511d, type: 3}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: 'fish.Array.data[2]'
-      value: 
-      objectReference: {fileID: 5396189717168699868, guid: 6ae901ead753d1049a83b6971d854452, type: 3}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: 'fish.Array.data[3]'
-      value: 
-      objectReference: {fileID: 7156208702056582509, guid: 92d76148a77bc344f8d8a5c7c986d884, type: 3}
-    - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
-      propertyPath: 'fish.Array.data[4]'
-      value: 
-      objectReference: {fileID: 6025293992385362063, guid: a48f0510080987a44ae46032836a1bc8, type: 3}
     - target: {fileID: 5325162993241922542, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14224,6 +14199,10 @@ PrefabInstance:
     - target: {fileID: 3360036908802617475, guid: 42638b413b80e114da29d92ede77c5d0, type: 3}
       propertyPath: m_Name
       value: FishCraft
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360036908802617475, guid: 42638b413b80e114da29d92ede77c5d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3374399688338369764, guid: 42638b413b80e114da29d92ede77c5d0, type: 3}
       propertyPath: m_AnchorMax.y

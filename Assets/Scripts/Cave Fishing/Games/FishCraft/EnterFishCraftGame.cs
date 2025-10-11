@@ -19,6 +19,8 @@ namespace CaveFishing.Games.FishCraftGame
 
         public override void Enable()
         {
+            gameObject.SetActive(true);
+
             foreach (var block in blocks)
                 block.ResetBlock();
 

@@ -22,6 +22,7 @@ namespace CaveFishing.Players
         [SerializeField] private TweenData headBobTweenData = new(0.25f, loops: -1, loopMode:LoopMode.PingPong);
 
         private bool isEnabled = false;
+        private bool wasEnabledBeforePause = false;
         private float headBobOffset;
         private ManagedCamera managedCamera;
         private FirstPersonCameraState firstPersonState;
@@ -76,6 +77,7 @@ namespace CaveFishing.Players
 
             SignalShuttle.Register<GameEnabledSignal>(OnGameEnabled);
             SignalShuttle.Register<GameDisabledSignal>(OnGameDisabled);
+            SignalShuttle.Register<GamePausedChangedSignal>(OnGamePausedChanged);
         }
 
         private void OnDisable()
@@ -87,6 +89,7 @@ namespace CaveFishing.Players
 
             SignalShuttle.Deregister<GameEnabledSignal>(OnGameEnabled);
             SignalShuttle.Deregister<GameDisabledSignal>(OnGameDisabled);
+            SignalShuttle.Deregister<GamePausedChangedSignal>(OnGamePausedChanged);
         }
 
         private void OnDestroy()
@@ -103,6 +106,22 @@ namespace CaveFishing.Players
         private void OnGameDisabled(GameDisabledSignal signal)
         {
             Enable();
+        }
+
+        private void OnGamePausedChanged(GamePausedChangedSignal signal)
+        {
+            if (signal.IsPaused)
+            {
+                if (isEnabled)
+                    wasEnabledBeforePause = true;
+
+                Disable();
+            }
+            else
+            {
+                if (wasEnabledBeforePause)
+                    Enable();
+            }
         }
 
         public void Enable()
