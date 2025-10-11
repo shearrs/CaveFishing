@@ -30,6 +30,8 @@ namespace CaveFishing.Players
         private ITweenData crouchTweenData;
         private readonly ITweenData headBobCancelTweenData = new TweenData(0.15f);
 
+        public bool IsEnabled => isEnabled;
+
         public event Action SteppedDown;
 
         private void OnValidate()

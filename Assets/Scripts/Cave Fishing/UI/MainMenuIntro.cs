@@ -10,9 +10,8 @@ namespace CaveFishing.UI
     {
         [SerializeField] private Image image;
         [SerializeField] private Color startColor;
-        [SerializeField] private Image startButtonImage;
-        [SerializeField] private Image startButtonBackgroundImage;
-        [SerializeField] private TextMeshProUGUI startButtonText;
+        [SerializeField] private FadeInButton startButton;
+        [SerializeField] private FadeInButton quitButton;
 
         [FoldoutGroup("Fade In", 5)]
         [SerializeField] private Range<float> verticalWaveStrengths = new(0.001f, 0.05f);
@@ -45,18 +44,6 @@ namespace CaveFishing.UI
             material.SetFloat(verticalWaveSpeedID, waveSpeeds.Max);
             material.SetFloat(horizontalWaveSpeedID, waveSpeeds.Max);
 
-            var color = startButtonImage.color;
-            color.a = 0;
-            startButtonImage.color = color;
-
-            color = startButtonBackgroundImage.color;
-            color.a = 0;
-            startButtonBackgroundImage.color = color;
-
-            color = startButtonText.color;
-            color.a = 0;
-            startButtonText.color = color;
-
             var backgroundTween = TweenManager.CreateTween((t) =>
             {
                 image.color = Color.Lerp(startColor, Color.white, t);
@@ -67,23 +54,16 @@ namespace CaveFishing.UI
                 material.SetFloat(horizontalWaveSpeedID, waveSpeeds.Lerp(t, true));
             }, introTweenData);
 
-            var textTween = TweenManager.CreateTween((t) =>
+            backgroundTween.Completed += () =>
             {
-                var color = startButtonImage.color;
-                color.a = t;
-                startButtonImage.color = color;
+                startButton.FadeIn();
 
-                color = startButtonBackgroundImage.color;
-                color.a = t;
-                startButtonBackgroundImage.color = color;
-
-                color = startButtonText.color;
-                color.a = t;
-                startButtonText.color = color;
-            });
-
-            backgroundTween.Completed += textTween.Play;
-
+                coroutineChain
+                    .WaitForSeconds(1)
+                    .Then(quitButton.FadeIn)
+                    .Run();
+            };
+            
             coroutineChain
                 .WaitForSeconds(delayDuration)
                 .Then(() => image.raycastTarget = false)
