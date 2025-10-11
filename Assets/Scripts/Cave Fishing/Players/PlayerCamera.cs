@@ -4,6 +4,7 @@ using Shears.Cameras;
 using UnityEngine;
 using Shears.Signals;
 using CaveFishing.Games;
+using System;
 
 namespace CaveFishing.Players
 {
@@ -28,6 +29,8 @@ namespace CaveFishing.Players
         private Tween headBobTween;
         private ITweenData crouchTweenData;
         private readonly ITweenData headBobCancelTweenData = new TweenData(0.15f);
+
+        public event Action SteppedDown;
 
         private void OnValidate()
         {
@@ -129,6 +132,9 @@ namespace CaveFishing.Players
                 headBobOffset = Mathf.LerpUnclamped(startOffset, headBobHeight, t);
 
                 firstPersonState.OffsetModifier = new Vector3(0f, headBobOffset, 0f);
+
+                if (headBobOffset == 0.0f)
+                    SteppedDown?.Invoke();
             }
 
             headBobTween.Dispose();
