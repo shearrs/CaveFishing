@@ -12,6 +12,8 @@ namespace CaveFishing.Games.FishCraftGame
         [SerializeField] private bool isUsable = false;
         [SerializeField, Min(0.1f), ShowIf("isBreakable")] private float timeToBreak = 1f;
         [SerializeField, ShowIf("isBreakable")] private ItemData drop;
+        [SerializeField, ShowIf("isBreakable")] private AudioSource audioSource;
+        [SerializeField, ShowIf("isBreakable")] private AudioClip breakClip;
 
         private bool isBreaking = false;
 
@@ -24,6 +26,11 @@ namespace CaveFishing.Games.FishCraftGame
         public event Action HoverEnded;
         public event Action<float> BreakAmountUpdated;
         public event Action Broke;
+
+        private void Awake()
+        {
+            audioSource.transform.SetParent(transform.parent);
+        }
 
         public void ResetBlock()
         {
@@ -65,6 +72,8 @@ namespace CaveFishing.Games.FishCraftGame
             if (!isBreakable)
                 return;
 
+            PlaySound();
+
             Broke?.Invoke();
             gameObject.SetActive(false);
         }
@@ -77,6 +86,13 @@ namespace CaveFishing.Games.FishCraftGame
         public void EndHover()
         {
             HoverEnded?.Invoke();
+        }
+
+        public void PlaySound()
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+            audioSource.clip = breakClip;
+            audioSource.Play();
         }
 
         private IEnumerator IEBreak()

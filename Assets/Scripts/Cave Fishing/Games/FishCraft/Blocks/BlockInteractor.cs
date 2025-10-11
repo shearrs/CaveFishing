@@ -89,6 +89,8 @@ namespace CaveFishing.Games.FishCraftGame
             block.transform.position = targetedBlock.transform.position + hit.normal;
 
             holder.HeldSlot.RemoveCount(1);
+
+            block.PlaySound();
         }
 
         private void UpdateTargetedBlock()

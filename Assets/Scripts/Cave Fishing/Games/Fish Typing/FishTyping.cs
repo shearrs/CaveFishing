@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using Shears;
 using Shears.Signals;
 using System;
@@ -44,7 +43,7 @@ namespace CaveFishing.Games.FishTypingGame
             instructor.Instruct(StartGame);
 
             Enabled?.Invoke();
-            SignalShuttle.Emit(new GameEnabledSignal());
+            SignalShuttle.Emit(new GameEnabledSignal(MinigameType.FishTyping));
         }
 
         public override void Disable()

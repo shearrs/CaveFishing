@@ -7237,9 +7237,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1464647276}
   - component: {fileID: 1464647280}
+  - component: {fileID: 1464647281}
   - component: {fileID: 1464647279}
   - component: {fileID: 1464647278}
-  - component: {fileID: 1464647277}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -7262,19 +7262,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1464647277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464647275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a248ded287cb654492234aedb9895bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ambientSound: {fileID: 8300000, guid: 29a4100ba297e824c95e1802be5cdce9, type: 3}
 --- !u!82 &1464647278
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7483,6 +7470,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource0: {fileID: 1464647279}
   musicSource1: {fileID: 1464647278}
+--- !u!114 &1464647281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464647275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6bc275a4cc555e4baadebdc12941587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigameMusic: {fileID: 8300000, guid: 0331d9e2ca91aab428e82bc4cc2fc6d5, type: 3}
+  fishCraftMusic: {fileID: 8300000, guid: 3bfaa67d1435d1a45b1d1abae025bee2, type: 3}
+  ambientSound: {fileID: 8300000, guid: 29a4100ba297e824c95e1802be5cdce9, type: 3}
 --- !u!1001 &1537111976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12320,7 +12322,7 @@ PrefabInstance:
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[0]'
       value: 
-      objectReference: {fileID: 6025293992385362063, guid: a48f0510080987a44ae46032836a1bc8, type: 3}
+      objectReference: {fileID: 5161492042128650500, guid: 72ea5d077bfe3f1468458cda80f19226, type: 3}
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[1]'
       value: 
@@ -13179,6 +13181,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996623707735180689, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931058164950232042, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3435577660294279687, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13219,6 +13237,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4410387469153171411, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5175829719320753414, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_PolyMesh.m_Mesh
       value: 
@@ -13235,6 +13261,14 @@ PrefabInstance:
       propertyPath: hotbar
       value: 
       objectReference: {fileID: 228298071}
+    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: damping
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358804900880059232, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: springStrength
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

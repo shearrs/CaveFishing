@@ -57,6 +57,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: breakClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 10d4afd2a085de84e8f57e69073d17db, type: 3}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
       propertyPath: timeToBreak
       value: 5
       objectReference: {fileID: 0}

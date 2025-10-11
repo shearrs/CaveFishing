@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: drop
       value: 
       objectReference: {fileID: 11400000, guid: 3a3bb8a765040ca44a41edf80cd8d736, type: 2}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: breakClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f6de89ad078487045a118210c1c52584, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

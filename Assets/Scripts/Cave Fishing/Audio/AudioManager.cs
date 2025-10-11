@@ -19,8 +19,10 @@ namespace CaveFishing.Audio
             {
                 var source = GetOtherMusicSource();
                 source.volume = volume;
+                source.clip = clip;
 
-                source.PlayOneShot(clip);
+                currentMusicSource = source;
+                source.Play();
             }
             else
                 StartCoroutine(IEFadeTo(clip, fadeDuration, volume));
@@ -54,7 +56,8 @@ namespace CaveFishing.Audio
             float fromVolume = fromSource.volume;
 
             currentMusicSource = toSource;
-            toSource.PlayOneShot(clip);
+            toSource.clip = clip;
+            toSource.Play();
 
             while (elapsedTime < fadeDuration)
             {
@@ -63,8 +66,13 @@ namespace CaveFishing.Audio
                 fromSource.volume = Mathf.Lerp(fromVolume, 0, t);
                 toSource.volume = Mathf.Lerp(0, targetVolume, t);
 
+                elapsedTime += Time.deltaTime;
+
                 yield return null;
             }
+
+            fromSource.volume = 0;
+            toSource.volume = targetVolume;
 
             fromSource.Stop();
         }

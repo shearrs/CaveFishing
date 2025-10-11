@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: isUsable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7572645018996622534, guid: ad1b609e13f423240b8380ea246e15cc, type: 3}
+      propertyPath: breakClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 037a5e93f3f9ab34b9889a31871136f9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

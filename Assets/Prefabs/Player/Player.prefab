@@ -1406,7 +1406,7 @@ MonoBehaviour:
   relativeTransform: {fileID: 6618464238440587751}
   groundDetector: {fileID: 640695488072869181}
   moveSpeed: 3
-  jumpForce: 4.5
+  jumpForce: 5
   gravity: -12
 --- !u!143 &3820997423931571557
 CharacterController:
@@ -1469,7 +1469,7 @@ MonoBehaviour:
           assemblyName: CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
           prettyName: Player Character
         value: {fileID: 671394426872992253}
-  runtimeInfoExpanded: 1
+  runtimeInfoExpanded: 0
   referencesExpanded: 1
   parameterDisplay: []
   externalParameters: []

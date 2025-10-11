@@ -1,3 +1,4 @@
+using CaveFishing.Audio;
 using Shears;
 using Shears.Signals;
 using System;
@@ -41,7 +42,7 @@ namespace CaveFishing.Games.QuickClickGame
             won = false;
 
             Enabled?.Invoke();
-            SignalShuttle.Emit(new GameEnabledSignal());
+            SignalShuttle.Emit(new GameEnabledSignal(MinigameType.QuickClick));
         }
 
         public override void Disable() 
@@ -68,7 +69,7 @@ namespace CaveFishing.Games.QuickClickGame
 
         public void EndGame()
         {
-            SignalShuttle.Emit(new GameDisabledSignal());
+            SignalShuttle.Emit(new GameDisabledSignal(MinigameType.QuickClick));
 
             if (won)
                 SignalShuttle.Emit(new GameWonSignal());
