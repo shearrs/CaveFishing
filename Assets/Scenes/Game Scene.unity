@@ -13892,7 +13892,7 @@ PrefabInstance:
     - target: {fileID: 5033454137443157778, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: 'fish.Array.data[0]'
       value: 
-      objectReference: {fileID: 5161492042128650500, guid: 72ea5d077bfe3f1468458cda80f19226, type: 3}
+      objectReference: {fileID: 6602349571463736568, guid: 61e365197ccafa14586e5778d73a511d, type: 3}
     - target: {fileID: 5325162993241922542, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14725,7 +14725,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 351448213418619942, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: runtimeInfoExpanded
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1202573416329533296, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: inventory

@@ -1,6 +1,5 @@
 using CaveFishing.Fishing;
 using CaveFishing.Games;
-using Shears.Input;
 using Shears.Logging;
 using Shears.Signals;
 using UnityEngine;
@@ -12,6 +11,7 @@ namespace CaveFishing.Players
         [Header("Components")]
         [SerializeField] private FishingRod fishingRod;
         [SerializeField] private PlayerHolder holder;
+        [SerializeField] private AudioSource fishCatchAudioSource;
 
         private bool wasEnabledBeforePause = false;
         private Fish currentFish;
@@ -80,6 +80,9 @@ namespace CaveFishing.Players
                 return;
 
             SignalShuttle.Emit(new FishCaughtSignal(currentFish));
+
+            fishCatchAudioSource.pitch = Random.Range(0.85f, 1.15f);
+            fishCatchAudioSource.Play();
 
             var fish = Instantiate(currentFish, fishingRod.Bobber.transform.position, Quaternion.identity);
             holder.Hold(fish);

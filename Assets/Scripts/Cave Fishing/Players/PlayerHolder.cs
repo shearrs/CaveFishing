@@ -13,6 +13,7 @@ namespace CaveFishing.Players
         [SerializeField] private AreaDetector3D detector;
         [SerializeField] private ItemHolder holder;
         [SerializeField] private PlayerFisher fisher;
+        [SerializeField] private AudioSource audioSource;
 
         [Header("Settings")]
         [SerializeField] private float throwingForce = 50f;
@@ -76,6 +77,9 @@ namespace CaveFishing.Players
             item.gameObject.layer = heldItemLayer;
             item.transform.SetLayerOnAllChildren(heldItemLayer);
 
+            audioSource.pitch = 1.0f;
+            audioSource.Play();
+
             fisher.Disable();
         }
 
@@ -86,6 +90,9 @@ namespace CaveFishing.Players
             item.transform.SetLayerOnAllChildren(previousLayer);
 
             holder.Release(new(itemVelocity * throwingForce));
+
+            audioSource.pitch = 0.75f;
+            audioSource.Play();
 
             fisher.Enable();
         }
