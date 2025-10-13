@@ -7,6 +7,7 @@ namespace CaveFishing.Games.PongGame
 {
     public class Ball : MonoBehaviour
     {
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private float startingSpeed = 0.1f;
         [SerializeField] private float speedIncrease = 0.01f;
         [SerializeField, ReadOnly] private float currentSpeed;
@@ -67,7 +68,12 @@ namespace CaveFishing.Games.PongGame
                 position = position.ClampComponents(0, 1);
 
                 if (position.y == 1 || position.y == 0)
+                {
                     currentDirection.y = -currentDirection.y;
+
+                    audioSource.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+                    audioSource.Play();
+                }
 
                 if (position.x == 1)
                     HitRightSide?.Invoke();
@@ -84,6 +90,9 @@ namespace CaveFishing.Games.PongGame
         {
             currentDirection.x = -currentDirection.x;
             currentSpeed += speedIncrease;
+
+            audioSource.pitch = UnityEngine.Random.Range(0.85f, 1.15f);
+            audioSource.Play();
         }
     }
 }

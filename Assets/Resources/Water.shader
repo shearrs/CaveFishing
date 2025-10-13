@@ -3,7 +3,7 @@ Shader "Custom/Water"
 	Properties 
 	{
 		_Albedo("Albedo", Color) = (1, 1, 1, 1)
-		_BaseMap("Base Map", 2D) = "white"
+		_MainTex("Main Texture", 2D) = "white"
 		_WaveSpeed("Wave Speed", float) = 1
 		_WaveHeight("Wave Height", float) = 1
 		_XScrollingSpeed("X Scrolling Speed", float) = 0.1
@@ -39,11 +39,11 @@ Shader "Custom/Water"
 			half _YScrollingSpeed;
 			half _WaveSpeed;
 			half _WaveHeight;
-			TEXTURE2D(_BaseMap);
-			SAMPLER(sampler_BaseMap);
+			TEXTURE2D(_MainTex);
+			SAMPLER(sampler_MainTex);
 
 			CBUFFER_START(UnityPerMaterial)
-				float4 _BaseMap_ST;
+				float4 _MainTex_ST;
 			CBUFFER_END
 
 			Varyings vert(Attributes IN)
@@ -56,18 +56,18 @@ Shader "Custom/Water"
 
 				OUT.positionHCS = TransformObjectToHClip(objectSpace);
 
-				OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
+				OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);
 
 				return OUT;
 			}
-
+			 
 			half4 frag(Varyings IN) : SV_Target
 			{
 				half2 uv = IN.uv;
 				uv.x += _Time.y * _XScrollingSpeed;
 				uv.y += _Time.y * _YScrollingSpeed;
 
-				half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
+				half4 col = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
 				col *= _Albedo;
 
 				return col;

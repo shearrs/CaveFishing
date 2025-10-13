@@ -18,34 +18,35 @@ Shader "Custom/Vertex Unlit"
 			#pragma multi_compile_fog
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderVariablesFunctions.hlsl"
 
 			struct Attributes
 			{
-				half4 positionOS : POSITION;
-				half2 uv : TEXCOORD0;
-				half4 color : COLOR0;
+				float4 positionOS : POSITION;
+				float2 uv : TEXCOORD0;
+				float4 color : COLOR0;
 			};
 
 			struct Varyings
 			{
-				half4 positionHCS : SV_POSITION;
-				half3 positionWS : TEXCOORD2;
-				half2 uv : TEXCOORD0;
-				half4 color: TEXCOORD1;
+				float4 positionHCS : SV_POSITION;
+				float3 positionWS : TEXCOORD2;
+				float2 uv : TEXCOORD0;
+				float4 color: TEXCOORD1;
 			};
 
-			half4 _Albedo;
+			float4 _Albedo;
 			TEXTURE2D(_BaseMap);
 			SAMPLER(sampler_BaseMap);
 
 			CBUFFER_START(UnityPerMaterial)
-				half4 _BaseMap_ST;
+				float4 _BaseMap_ST;
 			CBUFFER_END
 
 			Varyings vert(Attributes IN)
 			{
 				Varyings OUT;
-				VertexPositionInputs positions = GetVertexPositionInputs(IN.positionOS);
+				VertexPositionInputs positions = GetVertexPositionInputs(IN.positionOS.xyz);
 
 				OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
 				OUT.positionWS = positions.positionWS.xyz;
@@ -55,27 +56,11 @@ Shader "Custom/Vertex Unlit"
 				return OUT;
 			}
 
-			void applyFog(inout half4 color, half3 positionWS)
-			{
-				float4 inColor = color;
-
-				#if defined(FOG_LINEAR) || defined(FOG_EXP) || defined(FOG_EXP2)
-				half viewZ = -TransformWorldToView(positionWS).z;
-				half nearZToFarZ = max(viewZ - _ProjectionParams.y, 0);
-				half density = 1.0f - ComputeFogIntensity(ComputeFogFactorZ0ToFar(nearZToFarZ));
-				
-				color = lerp(color, unity_FogColor, density);
-				#else
-				color = color;
-				#endif
-			}
-
 			half4 frag(Varyings IN) : SV_Target
 			{
-				half2 uv = IN.uv;
-				half4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
+				float2 uv = IN.uv;
+				float4 col = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
 				col *= _Albedo * IN.color;
-				applyFog(col, IN.positionWS);
 
 				return col;
 			}

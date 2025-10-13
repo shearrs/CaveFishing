@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using Shears.Input;
 using Shears.Signals;
 using System;

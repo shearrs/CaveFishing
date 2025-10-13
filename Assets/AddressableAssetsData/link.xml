@@ -1,0 +1,302 @@
+<linker>
+  <assembly fullname="CaveFishing.Audio, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Audio.AudioManager" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Fishing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Fishing.Bobber" preserve="all" />
+    <type fullname="CaveFishing.Fishing.CaveFishingSpot" preserve="all" />
+    <type fullname="CaveFishing.Fishing.Fish" preserve="all" />
+    <type fullname="CaveFishing.Fishing.FishingLine" preserve="all" />
+    <type fullname="CaveFishing.Fishing.FishingRod" preserve="all" />
+    <type fullname="CaveFishing.Fishing.FishingSpot" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.GameMusic" preserve="all" />
+    <type fullname="CaveFishing.Games.GamePauser" preserve="all" />
+    <type fullname="CaveFishing.Games.Instructor" preserve="all" />
+    <type fullname="CaveFishing.Games.MinigameManager" preserve="all" />
+    <type fullname="CaveFishing.Games.MinigameDictionary" preserve="nothing" serialized="true" />
+    <type fullname="CaveFishing.Games.MinigameType" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishBarGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishBarGame.FishBar" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.ProgressBar" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.SlidingBar" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.SlidingFish" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishBarGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishBarGame.UI.FishBarUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.UI.ProgressBarUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.UI.SlidingBarUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishBarGame.UI.SlidingFishUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishCraftGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishCraftGame.Block" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.BlockInteractor" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.CraftingRecipes" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.CraftingTable" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.EnterFishCraftGame" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.ExitFishCraftGame" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.FishCraftPlayer" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.Hotbar" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.Inventory" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.InventoryCraftingTable" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.InventorySlot" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.ItemData" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.ItemHolder" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.ItemInteractor" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.PlayerInventory" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishCraftGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.BlockHighlighter" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.CraftingResultSlot" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.CraftingTableUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.HoldSlotUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.HotbarUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.InventorySlotUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.InventoryUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishCraftGame.UI.ItemHolderUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishTypingGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishTypingGame.FishTyping" preserve="all" />
+    <type fullname="CaveFishing.Games.FishTypingGame.Keyboard" preserve="all" />
+    <type fullname="CaveFishing.Games.FishTypingGame.WordFish" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.FishTypingGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.FishTypingGame.UI.FishTypingUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishTypingGame.UI.KeyboardUI" preserve="all" />
+    <type fullname="CaveFishing.Games.FishTypingGame.UI.WordFishUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.PongGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.PongGame.Ball" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.Bot" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.Paddle" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.Player" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.Pong" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.PongGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.PongGame.UI.BallUI" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.UI.PaddleUI" preserve="all" />
+    <type fullname="CaveFishing.Games.PongGame.UI.PongUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.QuickClickGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.QuickClickGame.ClickTarget" preserve="all" />
+    <type fullname="CaveFishing.Games.QuickClickGame.QuickClick" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.QuickClickGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.QuickClickGame.UI.ClickTargetUI" preserve="all" />
+    <type fullname="CaveFishing.Games.QuickClickGame.UI.QuickClickUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.UI.InstructionImage" preserve="all" />
+    <type fullname="CaveFishing.Games.UI.InstructionText" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.WordleGame, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.WordleGame.Wordle" preserve="all" />
+    <type fullname="CaveFishing.Games.WordleGame.WordleLetter" preserve="all" />
+    <type fullname="CaveFishing.Games.WordleGame.WordleWord" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Games.WordleGame.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Games.WordleGame.UI.WordleLetterUI" preserve="all" />
+    <type fullname="CaveFishing.Games.WordleGame.UI.WordleUI" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Items, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Items.ItemHolder" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Levels, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Levels.Weather" preserve="all" />
+  </assembly>
+  <assembly fullname="CaveFishing.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.Players.FootstepAudioPlayer" preserve="all" />
+    <type fullname="CaveFishing.Players.Player" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerCamera" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerCharacter" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerFisher" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerHolder" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerModel" preserve="all" />
+    <type fullname="CaveFishing.Players.PlayerControlState" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="CaveFishing.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CaveFishing.UI.FadeInButton" preserve="all" />
+    <type fullname="CaveFishing.UI.MainMenuIntro" preserve="all" />
+  </assembly>
+  <assembly fullname="Shears.Beziers, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Beziers.Bezier" preserve="all" />
+  </assembly>
+  <assembly fullname="Shears.Cameras, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Cameras.FirstPersonCameraState" preserve="all" />
+    <type fullname="Shears.Cameras.ManagedCamera" preserve="all" />
+  </assembly>
+  <assembly fullname="Shears.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Pauser" preserve="all" />
+    <type fullname="Shears.SpringRotator" preserve="all" />
+    <type fullname="Shears.JsonList`1" preserve="nothing" serialized="true" />
+    <type fullname="Shears.Range`1" preserve="nothing" serialized="true" />
+    <type fullname="Shears.SerializableDictionaryEntry`2" preserve="nothing" serialized="true" />
+    <type fullname="Shears.SerializableSystemType" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Shears.Detection, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Detection.RayDetector3D" preserve="all" />
+    <type fullname="Shears.Detection.SphereCastDetector" preserve="all" />
+    <type fullname="Shears.Detection.SphereDetector" preserve="all" />
+  </assembly>
+  <assembly fullname="Shears.Input, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Input.ManagedInputDispatcher" preserve="all" />
+    <type fullname="Shears.Input.ManagedInputMap" preserve="all" />
+    <type fullname="Shears.Input.ManagedInputDispatcher/InputEvent" preserve="nothing" serialized="true" />
+    <type fullname="Shears.Input.ManagedInputInfo" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Shears.Loading, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Loading.DefaultLoadingScreen" preserve="all" />
+    <type fullname="Shears.Loading.Loader" preserve="all" />
+    <type fullname="Shears.Loading.LoadEvent" preserve="all" />
+    <type fullname="Shears.LoadAction" preserve="nothing" serialized="true" />
+    <type fullname="Shears.Loading.LoadRequest" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Shears.StateMachineGraphs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.StateMachineGraphs.StateMachine" preserve="all" />
+    <type fullname="Shears.StateMachineGraphs.StateMachineGraph" preserve="all" />
+    <type fullname="Shears.StateMachineGraphs.GraphCompilationData" preserve="nothing" serialized="true" />
+    <type fullname="Shears.StateMachineGraphs.ParameterDictionary" preserve="nothing" serialized="true" />
+    <type fullname="Shears.StateMachineGraphs.StateDictionary" preserve="nothing" serialized="true" />
+    <type fullname="Shears.StateMachineGraphs.StateInjectReference" preserve="nothing" serialized="true" />
+    <type fullname="Shears.StateMachineGraphs.StateInjectReferenceDictionary" preserve="nothing" serialized="true" />
+    <type fullname="Shears.StateMachineGraphs.StateNodeData" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Shears.Tweens, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.Tweens.ImageTweener" preserve="all" />
+    <type fullname="Shears.Tweens.TweenDataObject" preserve="all" />
+    <type fullname="Shears.Tweens.StructTweenData" preserve="nothing" serialized="true" />
+    <type fullname="Shears.Tweens.TweenData" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Shears.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Shears.UI.ManagedCanvas" preserve="all" />
+    <type fullname="Shears.UI.ManagedImage" preserve="all" />
+    <type fullname="Shears.UI.ManagedUIElement" preserve="all" />
+    <type fullname="Shears.UI.ManagedUIEventSystem" preserve="all" />
+    <type fullname="Shears.UI.ManagedUINavigation" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.InputSystem, Version=1.14.2.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputActionReference" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.UI.InputSystemUIInputModule" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputAction" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputActionMap" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputBinding" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputControlScheme" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputControlScheme/DeviceRequirement" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Polybrush, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Polybrush.PolybrushMesh" preserve="all" />
+    <type fullname="UnityEngine.Polybrush.PolyMesh" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Polybrush.SubMesh" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalLightData" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.TemporalAA/Settings" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.FaceInfo_Legacy" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.KerningTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.VertexGradient" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
+    <type fullname="UnityEngine.AudioListener" preserve="all" />
+    <type fullname="UnityEngine.AudioSource" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Camera" preserve="all" />
+    <type fullname="UnityEngine.Cubemap" preserve="all" />
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Light" preserve="all" />
+    <type fullname="UnityEngine.LightmapSettings" preserve="all" />
+    <type fullname="UnityEngine.LineRenderer" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.RenderSettings" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent`1" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider2D" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody2D" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.CharacterController" preserve="all" />
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.PhysicsMaterial" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
+    <type fullname="UnityEngine.SphereCollider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Font" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
+    <type fullname="UnityEngine.UI.Button" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.ContentSizeFitter" preserve="all" />
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+    <type fullname="UnityEngine.UI.GridLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.Image" preserve="all" />
+    <type fullname="UnityEngine.UI.Slider" preserve="all" />
+    <type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.AnimationTriggers" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="Shears.GraphViews">
+    <type fullname="Shears.GraphViews.GraphElementClipboardData" preserve="nothing" serialized="true" />
+    <type fullname="Shears.GraphViews.GraphElementDictionary" preserve="nothing" serialized="true" />
+    <type fullname="Shears.GraphViews.GraphLayer" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextCoreFontEngineModule">
+    <type fullname="UnityEngine.TextCore.FaceInfo" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.Glyph" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphMetrics" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.LowLevel.GlyphValueRecord" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>
