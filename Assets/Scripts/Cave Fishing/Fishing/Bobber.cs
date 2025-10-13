@@ -66,6 +66,7 @@ namespace CaveFishing.Fishing
                 return;
 
             rb.isKinematic = true;
+            transform.position = other.ClosestPoint(transform.position);
 
             currentSpot = fishingSpot;
             EnteredWater?.Invoke();
