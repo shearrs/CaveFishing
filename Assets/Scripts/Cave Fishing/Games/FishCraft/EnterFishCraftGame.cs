@@ -13,19 +13,15 @@ namespace CaveFishing.Games.FishCraftGame
         [SerializeField] private BlockInteractor interactor;
 
         [Header("Game")]
+        [SerializeField] private Instructor instructor;
         [SerializeField] private Transform spawnPoint;
-        [SerializeField] private List<Block> blocks;
         [SerializeField] private Color fogColor;
 
         public override void Enable()
         {
             gameObject.SetActive(true);
 
-            foreach (var block in blocks)
-                block.ResetBlock();
-
             player.Fisher.Disable();
-
             player.Character.SetPosition(spawnPoint.position);
             interactor.Enable();
             fishCraftPlayer.Enable();
@@ -34,6 +30,7 @@ namespace CaveFishing.Games.FishCraftGame
 
             SignalShuttle.Emit(new GameEnabledSignal(MinigameType.FishCraft));
 
+            instructor.Instruct(null);
             Disable();
         }
 

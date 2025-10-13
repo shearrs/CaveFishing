@@ -140,6 +140,7 @@ namespace CaveFishing.Players
                 return;
 
             managedCamera.SetState(null);
+            headBobTween.Dispose();
 
             isEnabled = false;
         }
