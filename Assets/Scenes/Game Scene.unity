@@ -1692,7 +1692,7 @@ MonoBehaviour:
   clickFoldout: 0
   altClickFoldout: 0
   focusFoldout: 0
-  hoverFoldout: 0
+  hoverFoldout: 1
   hoverClickedFoldout: 0
   navigationFoldout: 0
   navigation:
@@ -13940,6 +13940,10 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 256286041}
+    - target: {fileID: 655525040830103814, guid: fc7a796cdba22444bb68074533620462, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dc7b4f56237b8814c88259714f807ef5, type: 2}
     - target: {fileID: 676920998632953900, guid: fc7a796cdba22444bb68074533620462, type: 3}
       propertyPath: m_PolyMesh.m_Mesh
       value: 
@@ -14290,7 +14294,7 @@ PrefabInstance:
       objectReference: {fileID: 727581002}
     - target: {fileID: 2862630693487247162, guid: 9a00cf1de2c858545a23c86bd996185f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2874966829578035042, guid: 9a00cf1de2c858545a23c86bd996185f, type: 3}
       propertyPath: m_Mesh
@@ -14416,6 +14420,10 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 861643855}
+    - target: {fileID: 7436376431127640059, guid: 9a00cf1de2c858545a23c86bd996185f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f12975a5a81cceb448a7ca50ad864791, type: 2}
     - target: {fileID: 7544770037663500820, guid: 9a00cf1de2c858545a23c86bd996185f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8300004

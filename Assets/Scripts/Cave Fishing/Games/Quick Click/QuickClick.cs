@@ -92,7 +92,7 @@ namespace CaveFishing.Games.QuickClickGame
                 yield return null;
             }
 
-            yield return CoroutineUtil.WaitForSeconds(1.5f);
+            yield return CoroutineUtil.WaitForSeconds(4f);
 
             Disable();
         }
