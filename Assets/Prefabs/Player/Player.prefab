@@ -5004,9 +5004,29 @@ PrefabInstance:
       propertyPath: holder
       value: 
       objectReference: {fileID: 4528743258529390830}
+    - target: {fileID: 1143003601293069680, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: endOffset.y
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009538574650143774, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: springStrength
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138068095606887572, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: springStrength
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969512938460022957, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: springStrength
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 7116856420730325880, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_Name
       value: Fishing
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382974368541227759, guid: b4b1a868d06324c458836be80c06f700, type: 3}
+      propertyPath: springStrength
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 9026674239116312980, guid: b4b1a868d06324c458836be80c06f700, type: 3}
       propertyPath: m_LocalPosition.x

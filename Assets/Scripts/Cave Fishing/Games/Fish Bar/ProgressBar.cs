@@ -10,6 +10,7 @@ namespace CaveFishing.Games.FishBarGame
         [Header("Components")]
         [SerializeField] private RectTransform barTransform;
         [SerializeField] private RectTransform fishTransform;
+        [SerializeField] private AudioSource audioSource;
 
         [Header("Settings")]
         [SerializeField, Min(0f)] private float reelPower = .18f;
@@ -27,12 +28,16 @@ namespace CaveFishing.Games.FishBarGame
         {
             lenienceTimer.Start();
             StartCoroutine(IEUpdate());
+
+            audioSource.Play();
         }
 
         public void Disable()
         {
             lenienceTimer.Stop();
             StopAllCoroutines();
+
+            audioSource.Stop();
         }
 
         public void SetReelAmount(float amount)
@@ -56,9 +61,15 @@ namespace CaveFishing.Games.FishBarGame
             float decayAmount = lenienceTimer.IsDone ? reelDecayAmount : lenienceDecayAmount;
 
             if (barTransform.GetWorldRect().Overlaps(fishTransform.GetWorldRect()))
+            {
+                audioSource.pitch = 0.95f;
                 currentReelAmount += Time.deltaTime * reelPower;
+            }
             else
+            {
+                audioSource.pitch = 0.75f;
                 currentReelAmount -= Time.deltaTime * decayAmount;
+            }
 
             SetReelAmount(currentReelAmount);
 

@@ -14803,6 +14803,10 @@ PrefabInstance:
       propertyPath: m_PolyMesh.m_Mesh
       value: 
       objectReference: {fileID: 1241362513}
+    - target: {fileID: 6935512445606146574, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: endOffset.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7062156917974878532, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -14815,6 +14819,10 @@ PrefabInstance:
       propertyPath: hotbar
       value: 
       objectReference: {fileID: 228298071}
+    - target: {fileID: 7843382688355118326, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
+      propertyPath: drawGizmos
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8269169415265798950, guid: ef9143aba7e7ac145a52175d9b39b397, type: 3}
       propertyPath: runtimeInfoExpanded
       value: 0
